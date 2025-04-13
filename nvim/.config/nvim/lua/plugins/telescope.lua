@@ -64,6 +64,11 @@ return {
                         },
                     },
                 },
+                pickers = {
+                    find_files = {
+                        follow = true
+                    }
+                },
             })
 
             -- Enable telescope fzf native, if installed
