@@ -1,0 +1,16 @@
+#!/bin/sh
+WALLPAPER_DIR='/home/michael/Images/walls'
+
+if [ -z "$1" ]; then
+    WALLPAPER_PATH=$(shuf -en1 ${WALLPAPER_DIR}/*)
+else
+    WALLPAPER_PATH=$1
+fi
+
+feh --bg-scale "$WALLPAPER_PATH"
+wal -i "$WALLPAPER_PATH" -nq
+
+ln -sf ~/.cache/wal/dunstrc ~/.config/dunst/dunstrc
+
+killall dunst
+dunst &

@@ -1,0 +1,4 @@
+#!/bin/sh
+
+[ $(echo -e "No\nYes" | dmenu -i -p "You pressed the exit shortcut. Do you really want to
+exit i3? This will end your X session.") == "Yes" ] && i3-msg exit

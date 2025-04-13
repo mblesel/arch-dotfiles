@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+mv "$(cat ~/.cache/wal/wal)" ~/Images/walls-trash/
+pypr wall next

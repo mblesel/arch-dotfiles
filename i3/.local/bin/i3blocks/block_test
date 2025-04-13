@@ -1,0 +1,11 @@
+#!/bin/sh
+
+case $BLOCK_BUTTON in
+    1) notify-send "LEFT BUTTON" ;;
+    2) notify-send "MIDDLE BUTTON" ;;
+    3) notify-send "RIGHT BUTTON" ;;
+    4) notify-send "UP SCROLL" ;;
+    5) notify-send "DOWN SCROLL" ;;
+esac
+
+echo TEST

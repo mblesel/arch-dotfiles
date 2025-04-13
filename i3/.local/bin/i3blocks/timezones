@@ -1,0 +1,12 @@
+#!/bin/sh
+
+case $BLOCK_BUTTON in
+    1)  UTC=$(date -u '+%H:%M:%S')
+        notify-send "UTC: $UTC" ;;
+    # 2) notify-send "MIDDLE BUTTON" ;;
+    # 3) notify-send "RIGHT BUTTON" ;;
+    # 4) notify-send "UP SCROLL" ;;
+    # 5) notify-send "DOWN SCROLL" ;;
+esac
+
+echo $(date '+%d-%m %H:%M:%S')

@@ -59,6 +59,9 @@ source /usr/share/doc/pkgfile/command-not-found.bash
 # secret ENVVARS
 . /home/michael/.secrets
 
+# Own Scripts
+export PATH="/home/michael/.local/bin/scripts:$PATH"
+
 #RUSTUP
 export PATH="/home/michael/.cargo/bin:$PATH"
 

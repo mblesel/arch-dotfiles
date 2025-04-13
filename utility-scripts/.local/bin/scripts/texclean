@@ -1,0 +1,5 @@
+#!/bin/bash
+
+rm ./*.aux ./*.log ./*.blg ./*.bbl ./*.toc ./*.toc.old ./*.out ./*.bak ./*.fls ./*.fdb_latexmk ./*.nav ./*.snm ./*.vrb ./*.bcf ./*.xdv ./*.rubbercache ./*.run.xml 2>/dev/null
+
+exit 0

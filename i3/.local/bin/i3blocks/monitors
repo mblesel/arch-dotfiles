@@ -1,0 +1,10 @@
+#!/bin/bash
+
+ACTIVE=$(xrandr --listactivemonitors | awk 'NR>1' | wc -l)
+TOTAL=$(xrandr --listmonitors | awk 'NR>1' | wc -l)
+
+case $BLOCK_BUTTON in
+    1) arandr
+esac
+
+echo -e "$ACTIVE/$TOTAL"

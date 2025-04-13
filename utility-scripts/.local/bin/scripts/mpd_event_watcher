@@ -1,0 +1,6 @@
+#!/bin/sh
+while true
+do
+    mpc idle player
+    pkill -SIGRTMIN+11 i3blocks
+done
