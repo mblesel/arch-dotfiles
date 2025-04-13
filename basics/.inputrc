@@ -1,0 +1,7 @@
+set completion-ignore-case On
+# bind zsh like history search to arrow up
+"\e[A": history-search-backward
+"\eOA": history-previous-history
+# also bind arrow down
+"\e[B": history-search-forward
+"\e0B": history-next-history
