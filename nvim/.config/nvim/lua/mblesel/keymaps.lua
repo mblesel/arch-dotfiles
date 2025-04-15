@@ -6,10 +6,10 @@ local M = {}
 vim.keymap.set("n", "L", "$", { desc = "Jump start of line" })
 vim.keymap.set("n", "H", "^", { desc = "Jump end of line" })
 
-vim.keymap.set("i", "<C-L>", "<right>", { desc = "Cursor right" })
+-- vim.keymap.set("i", "<C-L>", "<right>", { desc = "Cursor right" })
 -- vim.keymap.set("i", "<C-H>", "<left>") -- This causes problems with S-BS functionality
-vim.keymap.set("i", "<C-J>", "<C-o>gj", { desc = "Cursor down" })
-vim.keymap.set("i", "<C-K>", "<C-o>gk", { desc = "Cursor up" })
+-- vim.keymap.set("i", "<C-J>", "<C-o>gj", { desc = "Cursor down" })
+-- vim.keymap.set("i", "<C-K>", "<C-o>gk", { desc = "Cursor up" })
 
 vim.keymap.set("n", "<leader>oo", "o<ESC>k", { desc = "Add Empty Line Below" })
 vim.keymap.set("n", "<leader>OO", "O<ESC>j", { desc = "Add Empty Line Above" })

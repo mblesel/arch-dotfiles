@@ -24,7 +24,7 @@ clear_command = '~/.local/bin/hyprland/clear_wal'
 
 
 [scratchpads.dropdown_calc]
-macht_by = "class"
+match_by = "class"
 animation = "fromTop"
 command = "st -c dropdown_calc -e R"
 class = "dropdown_calc"
@@ -33,7 +33,7 @@ max_size = "1920px 100%"
 margin = 100
 
 [scratchpads.dropdown_st]
-macht_by = "class"
+match_by = "class"
 animation = "fromTop"
 command = "st -c dropdown_st"
 class = "dropdown_st"
@@ -42,7 +42,7 @@ max_size = "1920px 100%"
 margin = 50
 
 [scratchpads.dropdown_notes]
-macht_by = "class"
+match_by = "class"
 animation = "fromTop"
 command = "st -c dropdown_notes -e zk edit --interactive -W ~/Documents/cloud/ZK"
 class = "dropdown_notes"
@@ -51,7 +51,7 @@ max_size = "1920px 100%"
 margin = 50
 
 [scratchpads.dropdown_btop]
-macht_by = "class"
+match_by = "class"
 animation = "fromTop"
 command = "st -c dropdown_btop -e btop"
 class = "dropdown_btop"
@@ -60,7 +60,7 @@ max_size = "1920px 100%"
 margin = 50
 
 [scratchpads.dropdown_music]
-macht_by = "class"
+match_by = "class"
 animation = "fromTop"
 command = "st -c dropdown_music -e ncmpcpp"
 class = "dropdown_music"
