@@ -16,9 +16,9 @@ vim.keymap.set("n", "<leader>OO", "O<ESC>j", { desc = "Add Empty Line Above" })
 
 -- remaps for german keyboard layout
 vim.keymap.set("n", "ä", "@", { desc = "Execute Macro" })
-vim.keymap.set({"n", "v", "o", "x" }, "ö", ";", {desc = "Repeat Last Movement"})
-vim.keymap.set({"n", "v", "o", "x" }, "Ü", "{")
-vim.keymap.set({"n", "v", "o", "x" }, "*", "}")
+vim.keymap.set({ "n", "v", "o", "x" }, "ö", ";", { desc = "Repeat Last Movement" })
+vim.keymap.set({ "n", "v", "o", "x" }, "Ü", "{")
+vim.keymap.set({ "n", "v", "o", "x" }, "*", "}")
 
 local ts_repeat_move = require("nvim-treesitter.textobjects.repeatable_move")
 -- vim way: ; goes to the direction you were moving.
@@ -30,7 +30,6 @@ vim.keymap.set({ "n", "x", "o" }, "f", ts_repeat_move.builtin_f_expr, { expr = t
 vim.keymap.set({ "n", "x", "o" }, "F", ts_repeat_move.builtin_F_expr, { expr = true })
 vim.keymap.set({ "n", "x", "o" }, "t", ts_repeat_move.builtin_t_expr, { expr = true })
 vim.keymap.set({ "n", "x", "o" }, "T", ts_repeat_move.builtin_T_expr, { expr = true })
-
 
 --- vim functions ---
 --
@@ -67,13 +66,18 @@ vim.keymap.set("n", "<C-T>", ":FloatermToggle --cwd=<root><CR>", { desc = "Termi
 vim.keymap.set("n", "<C-A>", ":ChatGPT<CR>", { desc = "ChatGPT Toggle" })
 
 -- quickfix
-vim.keymap.set("n", "<leader>co", ":copen<CR>", { desc = "Quickfix open list" })
-vim.keymap.set("n", "<leader>cc", ":ccl<CR>", { desc = "Quickfix close list" })
-vim.keymap.set("n", "<leader>cw", ":cw<CR>", { desc = "Quickfix open if not empty" })
-vim.keymap.set("n", "<leader>cn", ":cn<CR>", { desc = "Quickfix next" })
-vim.keymap.set("n", "<leader>cp", ":cp<CR>", { desc = "Quickfix previous" })
-vim.keymap.set("n", "<leader>cf", ":cfirst<CR>", { desc = "Quickfix first" })
-vim.keymap.set("n", "<leader>cl", ":clast<CR>", { desc = "Quickfix last" })
+-- Additional keybinds in trouble.lua
+vim.keymap.set("n", "<leader>cc", ":Trouble qflist toggle<CR>", { desc = "Quickfix close list" })
+-- vim.keymap.set("n", "<leader>co", ":copen<CR>", { desc = "Quickfix open list" })
+-- vim.keymap.set("n", "<leader>cw", ":cw<CR>", { desc = "Quickfix open if not empty" })
+-- vim.keymap.set("n", "<leader>cc", Toggle_qf, { desc = "Quickfix close list" })
+-- vim.keymap.set("n", "<leader>cn", ":cn<CR>", { desc = "Quickfix next" })
+-- vim.keymap.set("n", "<leader>cp", ":cp<CR>", { desc = "Quickfix previous" })
+-- vim.keymap.set("n", "<M-n>", ":cn<CR>", { desc = "Quickfix next" })
+-- vim.keymap.set("n", "<M-p>", ":cp<CR>", { desc = "Quickfix previous" })
+-- vim.keymap.set("n", "<leader>cf", ":cfirst<CR>", { desc = "Quickfix first" })
+-- vim.keymap.set("n", "<leader>cl", ":clast<CR>", { desc = "Quickfix last" })
+
 
 --- spellchecking
 vim.keymap.set("n", "<leader>mst", ":setlocal spell!<cr>", { desc = "Spelling Toggle" })
@@ -99,8 +103,8 @@ vim.keymap.set("n", "<leader>msr", function()
     vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(":spellr\n", true, false, true), "m", true)
 end, { desc = "Spelling Repeat" })
 
-vim.keymap.set("n", "<leader>msf", "]s", {desc = "Spelling Next"})
-vim.keymap.set("n", "<leader>msb", "[s", {desc = "Spelling Previous"})
+vim.keymap.set("n", "<leader>msf", "]s", { desc = "Spelling Next" })
+vim.keymap.set("n", "<leader>msb", "[s", { desc = "Spelling Previous" })
 
 -- ocaml
 -- vim.keymap.set("n", "<leader>rr", OpenMlRepl, {})
@@ -146,7 +150,6 @@ vim.keymap.set("n", "<leader>RM", confirm_and_delete_buffer, { desc = "File Dele
 
 --- Plugins ---
 
-
 -- Open Spectre for global find/replace
 vim.keymap.set("n", "<leader>S", function()
     require("spectre").toggle()
@@ -161,20 +164,32 @@ vim.keymap.set("n", "<C-P>", ":SessionManager load_session<CR>", { desc = "Sessi
 vim.keymap.set("n", "<C-Y>", ":Telescope neoclip<CR>", { desc = "Telescope Neoclip" })
 vim.keymap.set("n", "<C-Q>", ":Telescope macroscope<CR>", { desc = "Telescope Neoclip Macros" })
 vim.keymap.set("n", "<C-W>", ":Telescope telescope-tabs list_tabs<CR>", { desc = "Telescope List Tabs" })
+vim.keymap.set("n", "<C-M>", require('telescope').extensions.markit.marks_list_buf, { desc = "Telescope List Marks" })
+vim.keymap.set("n", "<C-R>", builtin.lsp_document_symbols, { desc = "Telescope List Symbols" })
 vim.keymap.set("n", "<leader>mte", ":Telescope emoji<CR>", { desc = "Telescope Emoji" })
 vim.keymap.set("n", "<leader>mtg", ":Telescope glyph<CR>", { desc = "Telescope Glyph" })
 vim.keymap.set("n", "<leader>mtl", ":Telescope software-licenses find<CR>", { desc = "Telescope Software-Licenses" })
 vim.keymap.set("n", "?", builtin.keymaps, { desc = "Telescope Keymaps" })
 
--- harpoon 
+-- harpoon
 local harpoon = require("harpoon")
 
-vim.keymap.set("n", "<leader>ha", function() harpoon:list():add() end)
-vim.keymap.set("n", "<leader>hh", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
+vim.keymap.set("n", "<leader>ha", function()
+    harpoon:list():add()
+end)
+vim.keymap.set("n", "<leader>hh", function()
+    harpoon.ui:toggle_quick_menu(harpoon:list())
+end)
 
-vim.keymap.set("n", "<leader>jj", function() harpoon:list():select(1) end)
-vim.keymap.set("n", "<leader>kk", function() harpoon:list():select(2) end)
-vim.keymap.set("n", "<leader>ll", function() harpoon:list():select(3) end)
+vim.keymap.set("n", "<leader>jj", function()
+    harpoon:list():select(1)
+end)
+vim.keymap.set("n", "<leader>kk", function()
+    harpoon:list():select(2)
+end)
+vim.keymap.set("n", "<leader>ll", function()
+    harpoon:list():select(3)
+end)
 
 -- ufo
 -- Using ufo provider need remap `zR` and `zM`. If Neovim is 0.6.1, remap yourself
@@ -216,8 +231,8 @@ vim.keymap.set("n", "<leader>ä", ":Screenkey toggle<CR>", { desc = "Screenkey T
 --- LSP ---
 --
 M.map_lsp_keybinds = function(opts)
-    vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, { buffer = opts, desc = "LSP Rename" })
-    vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { buffer = opts, desc = "LSP Code Action" })
+    vim.keymap.set("n", "grn", vim.lsp.buf.rename, { buffer = opts, desc = "LSP Rename" })
+    vim.keymap.set({ "n", "v" }, "gra", vim.lsp.buf.code_action, { buffer = opts, desc = "LSP Code Action" })
     vim.keymap.set({ "n", "v" }, "<leader>F", function()
         require("conform").format({
             lsp_fallback = true,
@@ -233,13 +248,13 @@ M.map_lsp_keybinds = function(opts)
 
     vim.keymap.set(
         "n",
-        "gr",
+        "grr",
         require("telescope.builtin").lsp_references,
         { buffer = opts, desc = "LSP List References" }
     )
     vim.keymap.set(
         "n",
-        "gi",
+        "gri",
         require("telescope.builtin").lsp_implementations,
         { buffer = opts, desc = "LSP List Implementations" }
     )
@@ -249,26 +264,20 @@ M.map_lsp_keybinds = function(opts)
     vim.keymap.set("n", "<C-s>", vim.lsp.buf.signature_help, { buffer = opts, desc = "LSP Signature Help" })
 
     vim.keymap.set("n", "do", vim.diagnostic.open_float, { buffer = opts, desc = "Diagnostic Open Float" })
-    vim.keymap.set("n", "<leader>df", vim.diagnostic.get_next, { buffer = opts, desc = "Diagnostic Next" })
-    vim.keymap.set("n", "<leader>db", vim.diagnostic.get_prev, { buffer = opts, desc = "Diagnostic Previous" })
+    vim.keymap.set("n", "<leader>dn", function() vim.diagnostic.jump( { count = 1 }) end, { buffer = opts, desc = "Diagnostic Next" })
+    vim.keymap.set("n", "<leader>dp", function() vim.diagnostic.jump( { count = -1 }) end, { buffer = opts, desc = "Diagnostic Previous" })
     vim.keymap.set(
         "n",
         "<leader>dl",
         require("telescope.builtin").diagnostics,
         { buffer = opts, desc = "Diagnostics List" }
     )
-    vim.keymap.set("n", "<leader>Q", ":ToggleDiagnostics<CR>", { desc = "Diagnostics Toggle" })
+    vim.keymap.set("n", "<leader>dt", ":ToggleDiagnostics<CR>", { desc = "Diagnostics Toggle" })
 
     vim.keymap.set("n", "<leader>drs", ":LspRestart<CR>", { desc = "Restart LSP" })
 
-    vim.keymap.set("n", "<F5>", ":ClangdSwitchSourceHeader<CR>", {desc = "Switch Header/Source File"})
-
-    -- Lesser used LSP functionality
-    -- vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, {buffer = opts, desc = "TODO"})
-    -- vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, {buffer = opts, desc = "TODO"})
-    -- vim.keymap.set('n', '<leader>wl', function() print(vim.inspect(vim.lsp.buf.list_workspace_folders())) end, {buffer = opts, desc = "TODO"})
+    vim.keymap.set("n", "<F5>", ":ClangdSwitchSourceHeader<CR>", { desc = "Switch Header/Source File" })
 end
-
 
 --- autocomplete binds are in cmp plugin file ---
 
@@ -320,10 +329,8 @@ vim.keymap.set("v", "<leader>mlL", MdConvertToLink, { desc = "Markdown Convert t
 -- In visual mode, surround the selected url with markdown link syntax
 vim.keymap.set("n", "<leader>mll", MdConvertToLink2, { desc = "Markdown Convert to Link" })
 
-vim.keymap.set("n", "<leader>mc", MdCheckbox, {desc = "Markdown Tick Checkbox"})
-vim.keymap.set("n", "<leader>mC", MdCheckbox2, {desc = "Markdown Tick Checkbox"})
-
-
+vim.keymap.set("n", "<leader>mc", MdCheckbox, { desc = "Markdown Tick Checkbox" })
+vim.keymap.set("n", "<leader>mC", MdCheckbox2, { desc = "Markdown Tick Checkbox" })
 
 -- Increase/Decrease all headings above H1 in the file
 vim.keymap.set("n", "<leader>mhI", MdIncreaseHeadings, { desc = "Markdown Increase Headings" })

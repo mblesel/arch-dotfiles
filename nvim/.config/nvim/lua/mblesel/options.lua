@@ -66,6 +66,10 @@ vim.opt.splitright = true
 -- Enable the sign column to prevent the screen from jumping
 vim.opt.signcolumn = "yes"
 
+-- Diagnostic Settings
+vim.diagnostic.config({ virtual_text = true })
+-- vim.diagnostic.config({ virtual_text = { current_line = true } })
+
 -- Set fold settings
 -- These options were reccommended by nvim-ufo
 -- See: https://github.com/kevinhwang91/nvim-ufo#minimal-configuration

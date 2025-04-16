@@ -39,6 +39,7 @@ return {
 
                         ["ao"] = { query = "@class.outer", desc = "Select outer part of a class" },
                         ["io"] = { query = "@class.inner", desc = "Select inner part of a class" },
+                        ["as"] = { query = "@local.scope", query_group = "locals", desc = "Select language scope" },
                     },
                 },
                 move = {
@@ -51,7 +52,7 @@ return {
                         ["+i"] = { query = "@conditional.outer", desc = "Next conditional start" },
                         ["+l"] = { query = "@loop.outer", desc = "Next loop start" },
 
-                        ["+s"] = { query = "@scope", query_group = "locals", desc = "Next scope" },
+                        ["+s"] = { query = "@local.scope", query_group = "locals", desc = "Next scope" },
                         ["+a"] = { query = "@paramter.inner", desc = "Next parameter start" },
                     },
                     goto_next_end = {
@@ -60,6 +61,7 @@ return {
                         ["+O"] = { query = "@class.outer", desc = "Next class end" },
                         ["+I"] = { query = "@conditional.outer", desc = "Next conditional end" },
                         ["+L"] = { query = "@loop.outer", desc = "Next loop end" },
+                        ["+S"] = { query = "@local.scope", query_group = "locals", desc = "Next scope" },
                         ["+A"] = { query = "@paramter.inner", desc = "Next parameter start" },
                     },
                     goto_previous_start = {
@@ -68,6 +70,7 @@ return {
                         ["üo"] = { query = "@class.outer", desc = "Prev class start" },
                         ["üi"] = { query = "@conditional.outer", desc = "Prev conditional start" },
                         ["ül"] = { query = "@loop.outer", desc = "Prev loop start" },
+                        ["üs"] = { query = "@local.scope", query_group = "locals", desc = "Next scope" },
                         ["üa"] = { query = "@paramter.inner", desc = "Next parameter start" },
                     },
                     goto_previous_end = {
@@ -76,6 +79,7 @@ return {
                         ["üO"] = { query = "@class.outer", desc = "Prev class end" },
                         ["üI"] = { query = "@conditional.outer", desc = "Prev conditional end" },
                         ["üL"] = { query = "@loop.outer", desc = "Prev loop end" },
+                        ["üS"] = { query = "@local.scope", query_group = "locals", desc = "Next scope" },
                         ["üA"] = { query = "@paramter.inner", desc = "Next parameter start" },
                     },
                 },

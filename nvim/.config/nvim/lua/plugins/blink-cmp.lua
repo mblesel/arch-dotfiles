@@ -1,7 +1,21 @@
 return {
     "saghen/blink.cmp",
     -- optional: provides snippets for the snippet source
-    dependencies = { "rafamadriz/friendly-snippets" },
+    dependencies = {
+        -- { "rafamadriz/friendly-snippets" },
+        -- { "L3MON4D3/LuaSnip", version = "v2.*" },
+        "L3MON4D3/LuaSnip",
+        version = "v2.*",
+        build = "make install_jsregexp", -- if you're on windows remove this line
+        dependencies = {
+            "rafamadriz/friendly-snippets",
+            config = function()
+                require("luasnip.loaders.from_vscode").lazy_load()
+
+                require("luasnip.loaders.from_vscode").lazy_load({ paths = { vim.fn.stdpath("config") .. "/snippets" } })
+            end,
+        },
+    },
     -- use a release tag to download pre-built binaries
     version = "1.*",
 
@@ -23,7 +37,8 @@ return {
         keymap = {
             preset = "none",
             ["<C-H>"] = { "show", "show_documentation", "hide_documentation" },
-            ["<C-E>"] = { "hide" },
+            ["<C-V>"] = { function(cmp) cmp.show({ providers = { 'snippets' } }) end },
+            ["<C-E>"] = { "cancel" },
             ["<C-Z>"] = { "select_and_accept" },
             ["<C-S>"] = { "show_signature", "hide_signature", "fallback" },
 
@@ -52,7 +67,7 @@ return {
                 auto_show_delay_ms = 500,
             },
 
-            ghost_text = { enabled = true },
+            -- ghost_text = { enabled = true },
             -- menu = {
             --     -- nvim-cmp style menu
             --     draw = {
@@ -86,10 +101,14 @@ return {
             -- window = { show_documentation = true },
         },
 
+        snippets = {
+            preset = "luasnip",
+        },
+
         -- Default list of enabled providers defined so that you can extend it
         -- elsewhere in your config, without redefining it, due to `opts_extend`
         sources = {
-            default = { "lsp", "buffer", "snippets", "path" },
+            default = { "snippets",  "lsp", "buffer", "path" },
         },
 
         fuzzy = { implementation = "prefer_rust_with_warning" },

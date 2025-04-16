@@ -22,7 +22,7 @@ return {
                         i = {
                             ["<C-k>"] = actions.move_selection_previous,
                             ["<C-j>"] = actions.move_selection_next,
-                            ["<C-q>"] = actions.smart_send_to_qflist + actions.open_qflist,
+                            ["<C-q>"] = actions.smart_send_to_qflist,
                             ["<C-x>"] = actions.delete_buffer,
                         },
                     },
@@ -66,8 +66,17 @@ return {
                 },
                 pickers = {
                     find_files = {
-                        follow = true
-                    }
+                        follow = true,
+                    },
+                    -- Not yet supported in release branch
+                    -- marks = {
+                    --     attach_mappings = function(prompt_bufnr, map)
+                    --         map("i", "<C-d>", function()
+                    --             require("telescope.actions").delete_mark(prompt_bufnr)
+                    --         end)
+                    --         return true -- Keep default mappings as well as the custom ones
+                    --     end,
+                    -- },
                 },
             })
 
@@ -76,6 +85,7 @@ return {
             require("telescope").load_extension("software-licenses")
             require("telescope").load_extension("glyph")
             require("telescope").load_extension("emoji")
+            require("telescope").load_extension("markit")
         end,
     },
 }
