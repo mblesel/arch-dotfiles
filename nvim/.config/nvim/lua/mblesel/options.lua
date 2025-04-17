@@ -67,8 +67,8 @@ vim.opt.splitright = true
 vim.opt.signcolumn = "yes"
 
 -- Diagnostic Settings
-vim.diagnostic.config({ virtual_text = true })
--- vim.diagnostic.config({ virtual_text = { current_line = true } })
+-- vim.diagnostic.config({ virtual_text = true })
+vim.diagnostic.config({ virtual_text = { current_line = true } })
 
 -- Set fold settings
 -- These options were reccommended by nvim-ufo
