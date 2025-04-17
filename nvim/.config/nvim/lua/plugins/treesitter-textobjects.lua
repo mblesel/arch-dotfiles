@@ -28,18 +28,16 @@ return {
                         ["ac"] = { query = "@call.outer", desc = "Select outer part of a function call" },
                         ["ic"] = { query = "@call.inner", desc = "Select inner part of a function call" },
 
-                        ["af"] = {
-                            query = "@function.outer",
-                            desc = "Select outer part of a method/function definition",
-                        },
-                        ["if"] = {
-                            query = "@function.inner",
-                            desc = "Select inner part of a method/function definition",
-                        },
+                        ["af"] = { query = "@function.outer", desc = "Select outer part of a function definition" },
+                        ["if"] = { query = "@function.inner", desc = "Select inner part of a function definition" },
 
                         ["ao"] = { query = "@class.outer", desc = "Select outer part of a class" },
                         ["io"] = { query = "@class.inner", desc = "Select inner part of a class" },
-                        ["as"] = { query = "@local.scope", query_group = "locals", desc = "Select language scope" },
+
+                        ["at"] = { query = "@comment.outer", desc = "Select outer part of a comment" },
+                        ["it"] = { query = "@comment.inner", desc = "Select inner part of a comment" },
+
+                        ["as"] = { query = "@block.outer", query_group = "locals", desc = "Select language scope" },
                     },
                 },
                 move = {
@@ -49,38 +47,51 @@ return {
                         ["+c"] = { query = "@call.outer", desc = "Next function call start" },
                         ["+f"] = { query = "@function.outer", desc = "Next method/function def start" },
                         ["+o"] = { query = "@class.outer", desc = "Next class start" },
+                        ["+t"] = { query = "@comment.outer", desc = "Next comment start" },
                         ["+i"] = { query = "@conditional.outer", desc = "Next conditional start" },
                         ["+l"] = { query = "@loop.outer", desc = "Next loop start" },
 
-                        ["+s"] = { query = "@local.scope", query_group = "locals", desc = "Next scope" },
+                        ["+s"] = { query = "@block.outer", query_group = "locals", desc = "Next scope" },
                         ["+a"] = { query = "@paramter.inner", desc = "Next parameter start" },
                     },
                     goto_next_end = {
                         ["+C"] = { query = "@call.outer", desc = "Next function call end" },
                         ["+F"] = { query = "@function.outer", desc = "Next method/function def end" },
                         ["+O"] = { query = "@class.outer", desc = "Next class end" },
+                        ["+T"] = { query = "@comment.outer", desc = "Next comment end" },
                         ["+I"] = { query = "@conditional.outer", desc = "Next conditional end" },
                         ["+L"] = { query = "@loop.outer", desc = "Next loop end" },
-                        ["+S"] = { query = "@local.scope", query_group = "locals", desc = "Next scope" },
+                        ["+S"] = { query = "@block.outer", query_group = "locals", desc = "Next scope" },
                         ["+A"] = { query = "@paramter.inner", desc = "Next parameter start" },
                     },
                     goto_previous_start = {
                         ["üc"] = { query = "@call.outer", desc = "Prev function call start" },
                         ["üf"] = { query = "@function.outer", desc = "Prev method/function def start" },
                         ["üo"] = { query = "@class.outer", desc = "Prev class start" },
+                        ["üt"] = { query = "@comment.outer", desc = "Prev comment start" },
                         ["üi"] = { query = "@conditional.outer", desc = "Prev conditional start" },
                         ["ül"] = { query = "@loop.outer", desc = "Prev loop start" },
-                        ["üs"] = { query = "@local.scope", query_group = "locals", desc = "Next scope" },
+                        ["üs"] = { query = "@block.outer", query_group = "locals", desc = "Next scope" },
                         ["üa"] = { query = "@paramter.inner", desc = "Next parameter start" },
                     },
                     goto_previous_end = {
                         ["üC"] = { query = "@call.outer", desc = "Prev function call end" },
                         ["üF"] = { query = "@function.outer", desc = "Prev method/function def end" },
                         ["üO"] = { query = "@class.outer", desc = "Prev class end" },
+                        ["üT"] = { query = "@comment.outer", desc = "Prev comment end" },
                         ["üI"] = { query = "@conditional.outer", desc = "Prev conditional end" },
                         ["üL"] = { query = "@loop.outer", desc = "Prev loop end" },
-                        ["üS"] = { query = "@local.scope", query_group = "locals", desc = "Next scope" },
+                        ["üS"] = { query = "@block.outer", query_group = "locals", desc = "Next scope" },
                         ["üA"] = { query = "@paramter.inner", desc = "Next parameter start" },
+                    },
+                },
+                swap = {
+                    enable = true,
+                    swap_next = {
+                        ["<leader>a"] = "@parameter.inner",
+                    },
+                    swap_previous = {
+                        ["<leader>A"] = "@parameter.inner",
                     },
                 },
             },
