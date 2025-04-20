@@ -1,0 +1,61 @@
+/*
+* wofi style. Colors are from authors below.
+* Base16 Gruvbox dark, medium
+* Author: Dawid Kurek (dawikur@gmail.com), morhetz (https://github.com/morhetz/gruvbox)
+*
+*/
+
+@import "/home/michael/.cache/wal/colors-waybar.css";
+
+window {
+    opacity: 0.9;
+    border:  0px;
+    border-radius: 10px;
+    font-family: monospace;
+    font-size: 24px;
+}
+
+#input {
+	border-radius: 10px 10px 0px 0px;
+    border:  0px;
+    padding: 10px;
+    margin: 0px;
+    font-size: 28px;
+	/* color: @color13; */
+	color: @foreground;
+	/* background-color: #554444; */
+	background-color: @color8;
+}
+
+#inner-box {
+	margin: 0px;
+	color: @color6;
+	background-color: @background;
+}
+
+#outer-box {
+	margin: 0px;
+	background-color: @background;
+    border-radius: 10px;
+}
+
+#selected {
+	/* background-color: #608787; */
+	background-color: @color7;
+}
+
+#entry {
+	padding: 0px;
+    margin: 0px;
+	background-color: @background;
+}
+
+#scroll {
+	margin: 5px;
+	background-color: @background;
+}
+
+#text {
+	margin: 0px;
+	padding: 2px 2px 2px 10px;
+}

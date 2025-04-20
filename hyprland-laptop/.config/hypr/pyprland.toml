@@ -1,0 +1,72 @@
+[pyprland]
+
+plugins = [
+    "expose",
+    "fetch_client_menu",
+    "layout_center",
+    "toggle_special",
+    "wallpapers",
+    "scratchpads"
+]
+
+[layout_center]
+margin = 60
+offset = [0, 30]
+next = "movefocus r"
+prev = "movefocus l"
+
+[wallpapers]
+path = "~/Images/walls/"
+interval = 600
+recurse = true
+command = '~/.local/bin/hyprland/set_wal "[file]"' 
+clear_command = '~/.local/bin/hyprland/clear_wal'
+
+
+[scratchpads.dropdown_calc]
+match_by = "class"
+animation = "fromTop"
+command = "st -c dropdown_calc -e R"
+class = "dropdown_calc"
+size = "40% 30%"
+max_size = "1920px 100%"
+margin = 100
+
+[scratchpads.dropdown_st]
+match_by = "class"
+animation = "fromTop"
+command = "st -c dropdown_st"
+class = "dropdown_st"
+size = "75% 60%"
+max_size = "1920px 100%"
+margin = 50
+
+[scratchpads.dropdown_notes]
+match_by = "class"
+animation = "fromTop"
+command = "st -c dropdown_notes -e zk edit --interactive -W ~/Documents/cloud/ZK"
+class = "dropdown_notes"
+size = "75% 60%"
+max_size = "1920px 100%"
+margin = 50
+
+[scratchpads.dropdown_btop]
+match_by = "class"
+animation = "fromTop"
+command = "st -c dropdown_btop -e btop"
+class = "dropdown_btop"
+size = "75% 60%"
+max_size = "1920px 100%"
+margin = 50
+
+[scratchpads.dropdown_music]
+match_by = "class"
+animation = "fromTop"
+command = "st -c dropdown_music -e ncmpcpp"
+class = "dropdown_music"
+size = "75% 60%"
+max_size = "1920px 100%"
+margin = 50
+
+
+

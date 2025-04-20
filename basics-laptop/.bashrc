@@ -46,7 +46,7 @@ alias samedir='st -d "$(pwd)" &> /dev/null & disown'
 
 PS1='[\u@\h \W]\$ '
 
-source /usr/share/doc/pkgfile/command-not-found.bash
+# source /usr/share/doc/pkgfile/command-not-found.bash
 
 # load spack
 # . /etc/modules/init/bash
@@ -54,19 +54,10 @@ source /usr/share/doc/pkgfile/command-not-found.bash
 
 # load spackter
 . /home/michael/Projects/spackter/setup-env.sh
-#. $(spackter load main --only-env-script)
+# . $(spackter load main --only-env-script)
 
 # secret ENVVARS
 . /home/michael/.secrets
-
-#RUSTUP
-export PATH="/home/michael/.cargo/bin:$PATH"
-
-#InvokeAI
-export INVOKEAI_ROOT=/home/michael/Projects/invokeai
-
-# ruby gem
-export PATH="/home/michael/.local/share/gem/ruby/3.0.0/bin:$PATH"
 
 # opam configuration
 test -r /home/michael/.opam/opam-init/init.sh && . /home/michael/.opam/opam-init/init.sh >/dev/null 2>/dev/null || true
@@ -74,9 +65,5 @@ test -r /home/michael/.opam/opam-init/init.sh && . /home/michael/.opam/opam-init
 webmTOmp4() {
     ffmpeg -i "$1".webm -qscale 0 "$1".mp4
 }
-
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
 
 eval "$(starship init bash)"

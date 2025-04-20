@@ -1,0 +1,7 @@
+#!/bin/bash
+
+VAL=$(echo -e "0\n0.9\n1" | dmenu -p "Transparency [0-1]")
+
+sed -i "s/st.alpha: .*/st.alpha: $VAL/g" ~/.Xresources
+echo st.alpha: "${VAL}" >/tmp/transparency
+xrdb -merge /tmp/transparency

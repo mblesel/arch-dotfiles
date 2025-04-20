@@ -194,10 +194,10 @@ format = '\[[$symbol$environment]($style)\]'
 disabled = false
 
 [cmd_duration]
-format = '\[[⏱ $duration]($style)\]'
-min_time = 500
-show_notifications = true
-min_time_to_notify = 60_000
+# format = '\[[⏱ $duration]($style)\]'
+# min_time = 500
+# show_notifications = true
+# min_time_to_notify = 60_000
 disabled = true
 
 [directory]

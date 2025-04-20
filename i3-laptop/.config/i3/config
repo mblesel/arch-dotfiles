@@ -1,0 +1,285 @@
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+font pango:monospace 8
+
+# Needed for i3-gaps
+for_window [class="^.*"] border pixel 2
+default_border pixel 2
+default_floating_border pixel 2
+gaps inner 10
+gaps outer 10
+set $term --no-startup-id $TERMINAL
+set $mod Mod4
+
+
+# Set Xresources colors:
+set_from_resource $darkblack	color0  #000000
+set_from_resource $black        color8  #000000
+set_from_resource $darkred  	color1  #000000
+set_from_resource $red	    	color9  #000000
+set_from_resource $darkgreen	color2  #000000
+set_from_resource $green    	color10 #000000
+set_from_resource $darkyellow	color3  #000000
+set_from_resource $yellow    	color11 #000000
+set_from_resource $darkblue	    color4  #000000
+set_from_resource $blue		    color12 #000000
+set_from_resource $darkmagenta	color5  #000000
+set_from_resource $magenta	    color13 #000000
+set_from_resource $darkcyan	    color6  #000000
+set_from_resource $cyan		    color14 #000000
+set_from_resource $darkwhite	color7  #000000
+set_from_resource $white	    color15 #000000
+set $transparent		              #00000000
+
+#                       BORDER		BACKGROUND	TEXT		INDICATOR   CHILD_BORDER
+client.focused		$red		$red		$magenta	$darkmagenta		$darkblue
+client.unfocused	$transparent	$blue		$white		$darkblue		$darkblack
+client.focused_inactive	$transparent	$blue		$white		$darkblue		$darkblack
+client.urgent		$darkred	$darkred	$black		$darkred		$darkred
+client.background $black
+
+bar {
+	font pango:mono 14
+	colors {
+			background $darkblack
+			statusline $darkwhite
+			separator $cyan
+			focused_workspace  $blue      $darkblue  $darkblack
+            active_workspace   $blue      $blue      $darkwhite
+            inactive_workspace $darkblack $darkblack $white
+            urgent_workspace   $darkblack $darkblack $white
+		}
+	status_command i3blocks
+	position top
+	mode dock
+	modifier None
+    tray_output primary
+}
+
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+
+
+# #---Start External Stuff---# #
+
+# Set background
+exec --no-startup-id ~/.local/bin/fehbg
+# Dunst for notifications
+exec --no-startup-id dunst
+# Compton for transparent windows
+exec --no-startup-id picom -b
+# NetworkManager applet
+exec --no-startup-id nm-applet
+# screenlayout
+# exec --no-startup-id source ~/.screenlayout/office.sh
+# hidpi
+exec --no-startup-id xrandr --dpi 144
+#firefox
+# exec firefox move workspace $ws4 
+#thunderbird
+# exec thunderbird
+# mattermost
+# exec mattermost-desktop --force-device-scale-factor=1.5
+# nextcloud
+exec --no-startup-id nextcloud 
+
+
+# #---Dropdown Windows---# #
+#
+# General dropdown window traits. The order can matter.
+for_window [instance="dropdown_*"] floating enable
+for_window [instance="dropdown_*"] move scratchpad
+for_window [instance="dropdown_*"] sticky enable
+for_window [instance="dropdown_*"] scratchpad show
+for_window [instance="dropdown_*"] move position center
+for_window [instance="dropdown_tmuxdd"] resize set 800 450
+for_window [instance="dropdown_tmuxdd"] border pixel 3
+for_window [instance="dropdown_dropdowncalc"] resize set 800 300
+for_window [instance="dropdown_dropdowncalc"] border pixel 2
+for_window [instance="dropdown_dropdownnotes"] resize set 800 800 move position center
+for_window [instance="dropdown_dropdownnotes"] border pixel 2
+for_window [instance="dropdown_dropdownzk"] resize set 1200 1200 move position center
+for_window [instance="dropdown_dropdownzk"] border pixel 2
+for_window [instance="dropdown_dropdownzknotes"] resize set 1200 1200 move position center
+for_window [instance="dropdown_dropdownzknotes"] border pixel 2
+
+# Bind workspaces to monitors
+workspace $ws1 output DP3-3
+# workspace $ws2 output DVI-D-0
+workspace $ws3 output DP3-3
+workspace $ws4 output DP3-2
+workspace $ws5 output DP3-3
+workspace $ws7 output DP3-2
+
+# specific workspaces for apps
+workspace $ws4 gaps inner 0
+workspace $ws4 gaps outer 0
+workspace $ws3 gaps inner 0
+workspace $ws3 gaps outer 0
+
+for_window [class="Thunderbird"] move workspace $ws5
+
+# #---Basic Stuff---# #
+
+# start a terminal
+# split vertical
+bindsym $mod+Return split h exec i3-sensible-terminal
+# split horizontal
+bindsym $mod+Shift+Return split v exec i3-sensible-terminal
+# same dir vertical
+bindsym $mod+BackSpace split h exec ~/.local/bin/i3/samedir
+# same dir horizontal
+bindsym $mod+Shift+BackSpace split v exec ~/.local/bin/i3/samedir
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+#Tab through workspaces
+bindsym $mod+Tab workspace back_and_forth
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# Set transparency script
+bindsym $mod+b exec --no-startup-id ~/.local/bin/i3/transparency
+
+# Change background
+bindsym $mod+Shift+b exec --no-startup-id ~/.local/bin/fehbg
+
+# start dmenu 
+bindsym $mod+d exec dmenu_run
+
+# dmenu pass script
+bindsym $mod+p exec passmenu
+
+bindsym $mod+asciicircum exec --no-startup-id  ~/.local/bin/i3/dmenuunicode
+
+# start ranger
+bindsym $mod+r exec $term -e ranger
+
+# start ncmpcpp
+bindsym $mod+Shift+m exec $term -e ncmpcpp
+# Arrow keys for music player controls
+bindsym $mod+Left exec --no-startup-id mpc prev && pkill -SIGRTMIN+11 i3blocks
+bindsym $mod+Down exec --no-startup-id mpc stop && pkill -SIGRTMIN+11 i3blocks
+bindsym $mod+Up  exec --no-startup-id mpc toggle && pkill -SIGRTMIN+11 i3blocks
+bindsym $mod+Right exec --no-startup-id mpc next && pkill -SIGRTMIN+11 i3blocks
+# volume
+bindsym $mod+plus exec --no-startup-id mpc volume +10 && pkill -SIGRTMIN+11 i3blocks
+bindsym $mod+minus exec --no-startup-id mpc volume -10 && pkill -SIGRTMIN+11 i3blocks
+
+# Screenshot
+bindsym $mod+s exec ~/.local/bin/i3/screenshot
+
+# #---Dropdowns---# #
+bindsym $mod+t			exec --no-startup-id ~/.local/bin/i3/ddspawn ~/.local/bin/i3/tmuxdd
+bindsym $mod+c			exec --no-startup-id ~/.local/bin/i3/ddspawn ~/.local/bin/i3/dropdowncalc
+bindsym $mod+n			exec --no-startup-id ~/.local/bin/i3/ddspawn ~/.local/bin/i3/dropdownnotes
+# bindsym $mod+n			exec --no-startup-id ~/.local/bin/i3/ddspawn ~/.local/bin/i3/dropdownzknotes
+bindsym $mod+Shift+n	exec --no-startup-id ~/.local/bin/i3/ddspawn ~/.local/bin/i3/dropdownzk
+# bindsym $mod+Shift+n	exec --no-startup-id retext ~/Documents/NOTES.md
+#Hide scratchpad
+bindsym $mod+q		    move scratchpad
+bindsym $mod+w		    exec --no-startup-id rofi -show window
+bindsym $mod+m          move position center
+
+# Change gaps
+bindsym $mod+g gaps inner current set 0; gaps outer current set 0
+bindsym $mod+Shift+g gaps inner current set 10; gaps outer current set 10
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# resizing of windows
+bindsym $mod+z	exec --no-startup-id ~/.local/bin/i3/i3resize left
+bindsym $mod+u	exec --no-startup-id ~/.local/bin/i3/i3resize down
+bindsym $mod+i	exec --no-startup-id ~/.local/bin/i3/i3resize up
+bindsym $mod+o	exec --no-startup-id ~/.local/bin/i3/i3resize right
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen toggle
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec ~/.local/bin/i3/i3exit
+
+
+# special keys
+bindsym XF86AudioMute exec amixer set Master toggle; exec pkill -RTMIN+10 i3blocks
+bindsym XF86AudioRaiseVolume exec amixer set Master 5%+; exec pkill -RTMIN+10 i3blocks
+bindsym XF86AudioLowerVolume exec amixer set Master 5%-; exec pkill -RTMIN+10 i3blocks
+
+# TODO get package
+bindsym XF86MonBrightnessDown	exec --no-startup-id xbacklight -dec 15
+bindsym XF86MonBrightnessUp	exec --no-startup-id xbacklight -inc 15
+
+
+
+#
+# #-- Deactivated --# #
+# 
+
+# change container layout (stacked, tabbed, toggle split)
+#bindsym $mod+s layout stacking
+#bindsym $mod+w layout tabbed
+#bindsym $mod+e layout toggle split
+
+# focus the parent container
+#bindsym $mod+a focus parent
+
+# focus the child container
+#bindsym $mod+d focus child

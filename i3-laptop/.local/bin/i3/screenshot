@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# SAVE_PATH=$(deepin-screenshot --no-notification -s /home/michael/Images/Screenshots/ 2>&1 | grep "process savepath" | cut -d '"' -f2)
+deepin-screenshot
+
+# CHOICE=$(echo "No" | dmenu -i -p "Name screenshot?")
+#
+# if [ "$CHOICE" != "No" ] && [ "$CHOICE" != "" ]; then
+#     mv $SAVE_PATH /home/michael/Images/Screenshots/$CHOICE.png
+#     notify-send "Saved Screenshot at /home/michael/Images/Screenshots/$CHOICE.png"
+# else
+#     notify-send "Saved Screenshot at $SAVE_PATH"
+# fi
