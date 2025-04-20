@@ -72,6 +72,7 @@ vim.keymap.set("n", "<C-A>", ":ChatGPT<CR>", { desc = "ChatGPT Toggle" })
 -- quickfix
 -- Additional keybinds in trouble.lua
 vim.keymap.set("n", "<leader>cc", ":Trouble qflist toggle<CR>", { desc = "Quickfix close list" })
+-- Handled by Trouble.nvim now
 -- vim.keymap.set("n", "<leader>co", ":copen<CR>", { desc = "Quickfix open list" })
 -- vim.keymap.set("n", "<leader>cw", ":cw<CR>", { desc = "Quickfix open if not empty" })
 -- vim.keymap.set("n", "<leader>cc", Toggle_qf, { desc = "Quickfix close list" })
