@@ -153,6 +153,9 @@ local function confirm_and_delete_buffer()
 end
 vim.keymap.set("n", "<leader>RM", confirm_and_delete_buffer, { desc = "File Delete" })
 
+-- Comment and paste current line
+vim.keymap.set("n", "ycc", "yygccp", { remap = true, desc = "Comment and paste current line"})
+
 --- Plugins ---
 
 -- Open Spectre for global find/replace

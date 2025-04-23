@@ -1,0 +1,19 @@
+[opener]
+pdff = [
+    { run = 'okular "$@"', desc = "Okular", block = true, for = "unix" },
+]
+
+play = [
+	{ run = 'mpv "$@"', orphan = true, for = "unix" },
+]
+
+edit = [
+	{ run = 'nvim "$@"', block = true, for = "unix" },
+]
+
+[open]
+rules = [
+    { mime = "application/pdf", use = [ "pdff", "reveal" ] },
+    { mime = "video/*", use = "play" },
+    { mime = "text/*", use = "edit" },
+]
