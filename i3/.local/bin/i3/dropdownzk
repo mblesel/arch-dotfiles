@@ -1,3 +1,2 @@
 #!/bin/bash
 zk edit --interactive -W ~/Documents/cloud/ZK/
-
