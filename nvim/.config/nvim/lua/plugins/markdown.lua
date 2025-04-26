@@ -4,6 +4,9 @@ return {
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     config = function()
         require("render-markdown").setup({
+
+            file_types = { "markdown", "Avante" },
+            ft = { "markdown", "Avante" },
             heading = {
                 -- Turn on / off heading icon & background rendering
                 enabled = false,
