@@ -109,7 +109,7 @@ return {
                     close_from_input = nil, -- e.g., { normal = "<Esc>", insert = "<C-d>" }
                 },
             },
-            hints = { enabled = true },
+            hints = { enabled = false },
             windows = {
                 ---@type "right" | "left" | "top" | "bottom"
                 position = "right", -- the position of the sidebar

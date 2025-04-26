@@ -3,6 +3,7 @@
 ---
 
 vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 vim.o.background = "dark"
 vim.o.updatetime = 50
 vim.opt.termguicolors = true
@@ -13,7 +14,6 @@ vim.cmd("set spell spelllang=en_us,de_de")
 vim.cmd("set spell!")
 
 vim.cmd("let g:markdown_folding = 1")
-
 
 -- auto-reload files when modified externally
 -- https://unix.stackexchange.com/a/383044
@@ -71,13 +71,11 @@ vim.opt.signcolumn = "yes"
 vim.diagnostic.config({ virtual_text = { current_line = true } })
 
 -- Set fold settings
+vim.opt.foldmethod = "manual"
 -- These options were reccommended by nvim-ufo
 -- See: https://github.com/kevinhwang91/nvim-ufo#minimal-configuration
 vim.opt.foldcolumn = "0"
--- vim.opt.foldlevel = 99
--- vim.opt.foldlevelstart = 99
--- vim.opt.foldenable = true
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+-- vim.opt.foldmethod = "expr"
+-- vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.foldtext = ""
 vim.opt.foldlevel = 99
