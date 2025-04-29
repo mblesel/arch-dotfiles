@@ -97,7 +97,7 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 # #---Start External Stuff---# #
 
 # Set background
-exec --no-startup-id ~/.local/bin/fehbg
+exec --no-startup-id ~/.local/bin/scripts/fehbg
 # Dunst for notifications
 exec --no-startup-id dunst
 # Compton for transparent windows
@@ -178,7 +178,7 @@ floating_modifier $mod
 bindsym $mod+b exec --no-startup-id ~/.local/bin/i3/transparency
 
 # Change background
-bindsym $mod+Shift+b exec --no-startup-id ~/.local/bin/fehbg
+bindsym $mod+Shift+b exec --no-startup-id ~/.local/bin/scripts/fehbg
 
 # start dmenu 
 bindsym $mod+d exec dmenu_run
