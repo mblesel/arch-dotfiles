@@ -70,8 +70,8 @@ vim.keymap.set("n", "<leader>T", ":terminal<CR>", { desc = "Terminal Open" })
 vim.keymap.set("t", "<ESC>", "<C-Bslash><C-n>", { desc = "Terminal Exit Insert Mode" })
 vim.keymap.set("n", "<C-T>", ":FloatermToggle --cwd=<root><CR>", { desc = "Terminal Float" })
 
--- ChatGPT
-vim.keymap.set("n", "<C-A>", ":ChatGPT<CR>", { desc = "ChatGPT Toggle" })
+-- Avante
+vim.keymap.set("n", "<C-A>", ":AvanteAsk<CR>", { desc = "Avante Toggle" })
 
 -- quickfix
 -- Additional keybinds in trouble.lua
@@ -228,7 +228,7 @@ vim.keymap.set("n", "<C-N>", ":Neotree filesystem reveal left toggle<CR>", { des
 vim.keymap.set("n", "<leader>n", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 
 -- outline.nvim
-vim.keymap.set("n", "<leader>o", ":Outline<CR>", { desc = "Outline Toggle" })
+-- vim.keymap.set("n", "<leader>o", ":Outline<CR>", { desc = "Outline Toggle" })
 
 -- Transparent
 vim.keymap.set("n", "<leader>b", ":TransparentToggle<CR>")
@@ -335,7 +335,7 @@ vim.keymap.set("n", "<leader>zz", '<Cmd>ZkNotes { tags = { "ROOT" } }<CR>', { de
 
 --- Latex ---
 
-vim.keymap.set("n", "<leader>ll", ":VimtexCompile<CR>", { desc = "Vimtex Compile"})
+vim.keymap.set("n", "<leader>lc", ":VimtexCompile<CR>", { desc = "Vimtex Compile"})
 
 --- Markdown ---
 require("mblesel.markdown_funcs")
@@ -541,18 +541,18 @@ end, { desc = "[P]Fold all headings level 3 or above" })
 --
 -- Use <CR> to fold when in normal mode
 -- To see help about folds use `:help fold`
-vim.keymap.set("n", "<CR>", function()
-    -- Get the current line number
-    local line = vim.fn.line(".")
-    -- Get the fold level of the current line
-    local foldlevel = vim.fn.foldlevel(line)
-    if foldlevel == 0 then
-        vim.notify("No fold found", vim.log.levels.INFO)
-    else
-        vim.cmd("normal! za")
-        vim.cmd("normal! zz") -- center the cursor line on screen
-    end
-end, { desc = "[P]Toggle fold" })
+-- vim.keymap.set("n", "<CR>", function()
+--     -- Get the current line number
+--     local line = vim.fn.line(".")
+--     -- Get the fold level of the current line
+--     local foldlevel = vim.fn.foldlevel(line)
+--     if foldlevel == 0 then
+--         vim.notify("No fold found", vim.log.levels.INFO)
+--     else
+--         vim.cmd("normal! za")
+--         vim.cmd("normal! zz") -- center the cursor line on screen
+--     end
+-- end, { desc = "[P]Toggle fold" })
 
 -- HACK: Fold markdown headings in Neovim with a keymap
 -- https://youtu.be/EYczZLNEnIY
