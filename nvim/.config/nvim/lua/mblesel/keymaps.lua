@@ -107,7 +107,7 @@ vim.keymap.set("n", "<leader>msb", "[s", { desc = "Spelling Previous" })
 --- buffers and splits ---
 
 -- Swap between last two buffers
-vim.keymap.set("n", "<leader>^", "<C-`>", { desc = "Buffer Tab" })
+vim.keymap.set("n", "<leader>`", "<C-^>", { desc = "Buffer Tab" })
 
 -- Buffer stuff
 vim.keymap.set("n", "<leader>t", ":tabe<CR>", { desc = "Tab New" })

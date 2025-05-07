@@ -39,7 +39,7 @@ return {
             ["<C-H>"] = { "show", "show_documentation", "hide_documentation" },
             ["<C-V>"] = { function(cmp) cmp.show({ providers = { 'snippets' } }) end },
             ["<C-E>"] = { "cancel" },
-            ["<C-Z>"] = { "select_and_accept" },
+            ["<C-Y>"] = { "select_and_accept" },
             ["<C-S>"] = { "show_signature", "hide_signature", "fallback" },
 
             ["<C-K>"] = { "select_prev", "fallback" },
