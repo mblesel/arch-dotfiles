@@ -156,10 +156,10 @@ vim.keymap.set("n", "<C-F>", ":Telescope find_files hidden=true<CR>", { desc = "
 vim.keymap.set("n", "<C-G>", ":Telescope live_grep<CR>", { desc = "Telescope Live Grep" })
 vim.keymap.set("n", "<C-B>", builtin.buffers, { desc = "Telescope Buffers" })
 vim.keymap.set("n", "<C-P>", ":SessionManager load_session<CR>", { desc = "Session Load" })
-vim.keymap.set("n", "<M-Y>", ":Telescope neoclip<CR>", { desc = "Telescope Neoclip" })
+vim.keymap.set("n", "<M-y>", ":Telescope neoclip<CR>", { desc = "Telescope Neoclip" })
 vim.keymap.set("n", "<C-Q>", ":Telescope macroscope<CR>", { desc = "Telescope Neoclip Macros" })
-vim.keymap.set("n", "<C-M>", require("telescope").extensions.markit.marks_list_buf, { desc = "Telescope List Marks" })
 vim.keymap.set("n", "<C-W>", builtin.lsp_document_symbols, { desc = "Telescope List Symbols" })
+vim.keymap.set("n", "<leader>'", require("telescope").extensions.markit.marks_list_buf, { desc = "Telescope List Marks" })
 vim.keymap.set("n", "<leader>mte", ":Telescope emoji<CR>", { desc = "Telescope Emoji" })
 vim.keymap.set("n", "<leader>mtg", ":Telescope glyph<CR>", { desc = "Telescope Glyph" })
 vim.keymap.set("n", "<leader>mtl", ":Telescope software-licenses find<CR>", { desc = "Telescope Software-Licenses" })
@@ -257,7 +257,7 @@ M.map_lsp_keybinds = function(opts)
 
     vim.keymap.set("n", "<leader>drs", ":LspRestart<CR>", { desc = "Restart LSP" })
 
-    vim.keymap.set("n", "<F5>", ":ClangdSwitchSourceHeader<CR>", { desc = "Switch Header/Source File" })
+    vim.keymap.set("n", "<F5>", ":LspClangdSwitchSourceHeader<CR>", { desc = "Switch Header/Source File" })
 end
 
 --- autocomplete binds are in cmp plugin file ---
