@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-wal -i "$1" -nq
+# wal -i "$1" -nq
 
 ln -sf ~/.cache/wal/dunstrc ~/.config/dunst/dunstrc
 killall dunst

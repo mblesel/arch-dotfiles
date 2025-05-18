@@ -330,12 +330,14 @@
 
 
 [urgency_low]
+    # background = "{background}"
     background = "#2b2b2b"
     foreground = "{foreground}"
     timeout = 10
     default_icon = ~/.config/dunst/normal.png
 
 [urgency_normal]
+    # background = "{background}"
     background = "#2b2b2b"
     foreground = "{foreground}"
     timeout = 10
@@ -343,6 +345,7 @@
     default_icon = ~/.config/dunst/normal.png
 
 [urgency_critical]
+    # background = "{background}"
     background = "#2b2b2b"
     foreground = "{foreground}"
     timeout = 0
