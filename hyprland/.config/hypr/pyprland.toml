@@ -17,7 +17,7 @@ prev = "movefocus l"
 
 [wallpapers]
 path = "~/Images/walls/"
-interval = 600
+interval = 60
 recurse = true
 command = '~/.local/bin/hyprland/set_wal "[file]"' 
 clear_command = '~/.local/bin/hyprland/clear_wal'

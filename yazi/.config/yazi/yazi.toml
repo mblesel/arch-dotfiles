@@ -11,9 +11,14 @@ edit = [
 	{ run = 'nvim "$@"', block = true, for = "unix" },
 ]
 
+display = [
+    { run = 'sxiv "$@"', block = false, for = "unix" },
+]
+
 [open]
 rules = [
     { mime = "application/pdf", use = [ "pdff", "reveal" ] },
     { mime = "video/*", use = "play" },
     { mime = "text/*", use = "edit" },
+    { mime = "image/*", use = "display" },
 ]
