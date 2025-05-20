@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
 
-mv "$(cat ~/.cache/wal/wal)" ~/Images/walls-trash/
+# mv "$(cat ~/.cache/wal/wal)" ~/Images/walls-trash/
+mv "$(cat ~/.wallpaper)" ~/Images/walls-trash/
 pypr wall next

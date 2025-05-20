@@ -2,6 +2,7 @@ return {
     "yetone/avante.nvim",
     event = "VeryLazy",
     version = false, -- Never set this value to "*"! Never!
+    -- version = "v0.0.23",
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
     build = "make",
     -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
@@ -48,6 +49,7 @@ return {
             ---@diagnostic disable-next-line: duplicate-doc-alias
             ---@alias Provider "claude" | "openai" | "azure" | "gemini" | "cohere" | "copilot" | string
             provider = "openai",
+            mode = "legacy",
             openai = {
                 endpoint = "https://api.openai.com/v1",
                 model = "gpt-4o-mini", -- your desired model (or use gpt-4o, etc.)
@@ -55,6 +57,7 @@ return {
                 temperature = 0,
                 max_completion_tokens = 8192, -- Increase this to include reasoning tokens (for reasoning models)
                 --reasoning_effort = "medium", -- low|medium|high, only used for reasoning models
+                disable_tools = true,
             },
             behaviour = {
                 auto_suggestions = false, -- Experimental stage
@@ -85,8 +88,8 @@ return {
                     dismiss = "<C-]>",
                 },
                 jump = {
-                    next = "n",
-                    prev = "p",
+                    next = "]]",
+                    prev = "[[",
                 },
                 submit = {
                     normal = "<CR>",
