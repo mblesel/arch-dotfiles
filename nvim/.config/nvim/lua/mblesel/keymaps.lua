@@ -203,7 +203,22 @@ vim.keymap.set("n", "<leader>n", "<CMD>Oil<CR>", { desc = "Open parent directory
 -- Cellular Automaton
 vim.keymap.set("n", "<leader>fml", "<cmd>CellularAutomaton make_it_rain<CR>", { desc = "CellularAutomaton" })
 
+-- Hardtime
+vim.keymap.set("n", "<leader>H", ":Hardtime toggle<CR>", { desc = "Hardtime Toggle" })
+
 -- vim.keymap.set("n", "<leader>ä", ":Screenkey toggle<CR>", { desc = "Screenkey Toggle" })
+
+--- Treewalker
+-- movement
+vim.keymap.set({ 'n', 'v' }, '<M-k>', '<cmd>Treewalker Up<cr>zz', { silent = true })
+vim.keymap.set({ 'n', 'v' }, '<M-j>', '<cmd>Treewalker Down<cr>zz', { silent = true })
+vim.keymap.set({ 'n', 'v' }, '<M-h>', '<cmd>Treewalker Left<cr>zz', { silent = true })
+vim.keymap.set({ 'n', 'v' }, '<M-l>', '<cmd>Treewalker Right<cr>zz', { silent = true })
+-- swapping
+vim.keymap.set('n', '<M-S-k>', '<cmd>Treewalker SwapUp<cr>', { silent = true })
+vim.keymap.set('n', '<M-S-j>', '<cmd>Treewalker SwapDown<cr>', { silent = true })
+vim.keymap.set('n', '<M-S-h>', '<cmd>Treewalker SwapLeft<cr>', { silent = true })
+vim.keymap.set('n', '<M-S-l>', '<cmd>Treewalker SwapRight<cr>', { silent = true })
 
 --- LSP ---
 --

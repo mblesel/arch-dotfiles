@@ -2,6 +2,8 @@ stty -ixon # Disabe ctrl-s and ctrl-q
 HISTSIZE=
 HISTFILESIZE= # Infinite history
 
+export MANPAGER='nvim +Man!' 
+
 # ls aliases
 alias ls='ls --color=auto'
 alias ll='ls -l --color=auto'
