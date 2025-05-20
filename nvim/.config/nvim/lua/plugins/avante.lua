@@ -57,7 +57,11 @@ return {
                 temperature = 0,
                 max_completion_tokens = 8192, -- Increase this to include reasoning tokens (for reasoning models)
                 --reasoning_effort = "medium", -- low|medium|high, only used for reasoning models
-                disable_tools = true,
+                disable_tools = false,
+            },
+            web_search_engine = {
+                provider = "brave", -- tavily, serpapi, searchapi, google, kagi, brave, or searxng
+                proxy = nil, -- proxy support, e.g., http://127.0.0.1:7890
             },
             behaviour = {
                 auto_suggestions = false, -- Experimental stage
@@ -71,6 +75,18 @@ return {
                 enable_claude_text_editor_tool_mode = false, -- Whether to enable Claude Text Editor Tool Mode.
             },
             mappings = {
+                ask = "<leader>aa",
+                new_ask = "<leader>an",
+                edit = "<leader>ae",
+                refresh = "<leader>ar",
+                focus = "<leader>af",
+                stop = "<leader>as",
+                toggle = {
+                    default = "<leader>at",
+                    debug = "<leader>ad",
+                    hint = "<leader>ah",
+                    repomap = "<leader>aR",
+                },
                 --- @class AvanteConflictMappings
                 diff = {
                     ours = "co",
@@ -80,12 +96,6 @@ return {
                     cursor = "cc",
                     next = "cn",
                     prev = "cp",
-                },
-                suggestion = {
-                    accept = "<M-l>",
-                    next = "<M-]>",
-                    prev = "<M-[>",
-                    dismiss = "<C-]>",
                 },
                 jump = {
                     next = "]]",
@@ -111,6 +121,12 @@ return {
                     close = { "<Esc>", "q" },
                     close_from_input = nil, -- e.g., { normal = "<Esc>", insert = "<C-d>" }
                 },
+                files = {
+                    add_current = "<leader>ac", -- Add current buffer to selected files
+                    add_all_buffers = "<leader>aB", -- Add all buffer files to selected files
+                },
+                select_model = "<leader>a?", -- Select model command
+                select_history = "<leader>ah", -- Select history command
             },
             hints = { enabled = false },
             windows = {
