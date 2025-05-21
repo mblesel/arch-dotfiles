@@ -1,6 +1,13 @@
 stty -ixon # Disabe ctrl-s and ctrl-q
-HISTSIZE=
-HISTFILESIZE= # Infinite history
+
+# Eternal bash history.
+export HISTFILESIZE=
+export HISTSIZE=
+export HISTTIMEFORMAT="[%F %T] "
+# Change the file location because certain bash sessions truncate .bash_history file upon close.
+export HISTFILE=~/.bash_eternal_history
+# Force prompt to write history after every command.
+PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 
 export MANPAGER='nvim +Man!' 
 
