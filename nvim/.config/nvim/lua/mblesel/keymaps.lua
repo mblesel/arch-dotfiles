@@ -57,7 +57,7 @@ vim.keymap.set("t", "<ESC>", "<C-Bslash><C-n>", { desc = "Terminal Exit Insert M
 vim.keymap.set("n", "<C-T>", ":FloatermToggle --cwd=<root><CR>", { desc = "Terminal Float" })
 
 -- Avante
-vim.keymap.set("n", "<C-A>", ":AvanteAsk<CR>", { desc = "Avante Toggle" })
+-- vim.keymap.set("n", "<C-A>", ":AvanteAsk<CR>", { desc = "Avante Toggle" })
 
 -- quickfix
 -- Additional keybinds in trouble.lua

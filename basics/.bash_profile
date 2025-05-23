@@ -11,7 +11,7 @@ export READER="okular"
 
 [ -f ~/.bashrc ] && source ~/.bashrc
 
-if [[ "$(tty)" = "/dev/tty1" ]]; then
+# if [[ "$(tty)" = "/dev/tty1" ]]; then
 	# pgrep -x i3 || exec startx
-fi
+# fi
 
