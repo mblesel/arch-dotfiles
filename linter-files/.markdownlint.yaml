@@ -41,7 +41,9 @@
 # so it's not necessary, also if I have a really long markdown link with {:target="\_blank"}
 # at the end, it will trigger it, and haven't looked into how to fix that
 # https://github.com/DavidAnson/markdownlint/blob/main/doc/md013.md
-MD013: false
+{
+  "MD013": false
+}
 # MD013:
 #   code_blocks: false
 #   headings: false
