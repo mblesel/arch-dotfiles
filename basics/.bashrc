@@ -21,6 +21,7 @@ alias grep='grep --color=auto'
 # Shortcuts
 alias open='xdg-open'
 alias g='grep'
+alias f='cd $(fd --type d --hidden --exclude Downloads --exclude .git --exclude node_module --exclude .cache --exclude .npm --exclude .mozilla | fzf)'
 
 # rsync
 alias rs='rsync -avHAXW --numeric-ids --info=progress2'
@@ -52,6 +53,9 @@ export ZK_NOTEBOOK_DIR='/home/michael/Documents/cloud/ZK/'
 
 # samedir
 alias samedir='st -d "$(pwd)" &> /dev/null & disown'
+
+# tmux-sessionizer
+bind '"\ef":"tmux-sessionizer\n"'
 
 PS1='[\u@\h \W]\$ '
 

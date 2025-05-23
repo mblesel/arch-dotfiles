@@ -300,7 +300,7 @@ vim.keymap.set(
     { desc = "ZK New Note With Selected Content" }
 )
 
-vim.keymap.set("n", "<leader>zf", "<Cmd>ZkNotes<CR>", { desc = "ZK Find Notes" })
+vim.keymap.set("n", "<leader>zz", "<Cmd>ZkNotes<CR>", { desc = "ZK Find Notes" })
 vim.keymap.set("n", "<leader>zt", "<Cmd>ZkTags<CR>", { desc = "ZK Browse Tags" })
 vim.keymap.set(
     "n",
@@ -312,7 +312,7 @@ vim.keymap.set(
 vim.keymap.set("n", "<leader>zll", "<Cmd>ZkLinks<CR>", { desc = "ZK Links List" })
 vim.keymap.set("n", "<leader>zli", "<Cmd>ZkInsertLink<CR>", { desc = "ZK Link Insert" })
 -- Open main note
-vim.keymap.set("n", "<leader>zz", '<Cmd>ZkNotes { tags = { "ROOT" } }<CR>', { desc = "ZK Open Root Note" })
+-- vim.keymap.set("n", "<leader>zz", '<Cmd>ZkNotes { tags = { "ROOT" } }<CR>', { desc = "ZK Open Root Note" })
 
 
 --- Latex ---
