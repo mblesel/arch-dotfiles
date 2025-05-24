@@ -59,7 +59,7 @@ bind '"\ef":"tmux-sessionizer\n"'
 
 PS1='[\u@\h \W]\$ '
 
-source /usr/share/doc/pkgfile/command-not-found.bash
+# source /usr/share/doc/pkgfile/command-not-found.bash
 
 # load spack
 # . /etc/modules/init/bash
@@ -67,7 +67,7 @@ source /usr/share/doc/pkgfile/command-not-found.bash
 
 # load spackter
 . /home/michael/Projects/spackter/setup-env.sh
-#. $(spackter load main --only-env-script)
+# . $(spackter load main --only-env-script)
 
 # secret ENVVARS
 . /home/michael/.secrets
