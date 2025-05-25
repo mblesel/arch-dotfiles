@@ -12,6 +12,7 @@
         "hyprland/window"
     ],
     "modules-center": [
+        "custom/server"
     ],
     "modules-right": [
         "custom/separator",
@@ -266,9 +267,17 @@
         "icon": true
     },
     "custom/separator": {
-    "format": "|",
-    "interval": "once",
-    "tooltip": false
-},
-}
+        "format": "|",
+        "interval": "once",
+        "tooltip": false
+    },
+    "custom/server": {
+        "format": "{icon}",
+        "interval": 10,
+        "return-type": "json",
+        "format-icons": ["󱃓 ", "󰪥 "],
+        "exec": "$HOME/.local/bin/waybar/server_status.sh 2> /dev/null",
+        "on-click": "$HOME/.local/bin/waybar/server_start.sh 2> /dev/null"
+
+    }
 }
