@@ -33,6 +33,7 @@ return {
                 "bashls",
                 "pyright",
                 "texlab",
+                "rust_analyzer",
             },
         })
 

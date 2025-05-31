@@ -58,7 +58,7 @@ return {
                 timeout = 30000, -- Timeout in milliseconds, increase this for reasoning models
                 temperature = 0,
                 max_completion_tokens = 8192, -- Increase this to include reasoning tokens (for reasoning models)
-                disable_tools = false,
+                disable_tools = true,
             },
             web_search_engine = {
                 provider = "brave", -- tavily, serpapi, searchapi, google, kagi, brave, or searxng
