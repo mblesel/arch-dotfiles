@@ -60,12 +60,13 @@ vim.keymap.set("n", "<C-T>", ":FloatermToggle --cwd=<root><CR>", { desc = "Termi
 -- vim.keymap.set("n", "<C-A>", ":AvanteAsk<CR>", { desc = "Avante Toggle" })
 
 -- quickfix
+require("mblesel.qf_toggle")
 -- Additional keybinds in trouble.lua
 vim.keymap.set("n", "<leader>cc", ":Trouble qflist toggle<CR>", { desc = "Quickfix close list" })
+vim.keymap.set("n", "<leader>CC", Toggle_qf, { desc = "Quickfix close list" })
 -- Handled by Trouble.nvim now
 -- vim.keymap.set("n", "<leader>co", ":copen<CR>", { desc = "Quickfix open list" })
 -- vim.keymap.set("n", "<leader>cw", ":cw<CR>", { desc = "Quickfix open if not empty" })
--- vim.keymap.set("n", "<leader>cc", Toggle_qf, { desc = "Quickfix close list" })
 -- vim.keymap.set("n", "<leader>cn", ":cn<CR>", { desc = "Quickfix next" })
 -- vim.keymap.set("n", "<leader>cp", ":cp<CR>", { desc = "Quickfix previous" })
 -- vim.keymap.set("n", "<M-n>", ":cn<CR>", { desc = "Quickfix next" })
