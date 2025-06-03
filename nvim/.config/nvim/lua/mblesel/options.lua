@@ -76,13 +76,13 @@ vim.opt.signcolumn = "yes"
 vim.diagnostic.config({ virtual_text = { current_line = true } })
 
 -- Set fold settings
-vim.opt.foldmethod = "manual"
+-- vim.opt.foldmethod = "manual"
 -- These options were reccommended by nvim-ufo
 -- See: https://github.com/kevinhwang91/nvim-ufo#minimal-configuration
-vim.opt.foldcolumn = "0"
+vim.opt.foldcolumn = "1"
+vim.opt.foldtext = ""
 -- vim.opt.foldmethod = "expr"
 -- vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-vim.opt.foldtext = ""
-vim.opt.foldlevel = 99
+-- vim.opt.foldlevel = 99
 
 vim.lsp.enable('marksman')

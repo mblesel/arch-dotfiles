@@ -371,20 +371,16 @@ vim.keymap.set("n", "<leader>mll", MdConvertToLink2, { desc = "Markdown Convert 
 -- vim.keymap.set("n", "<leader>mc", MdCheckbox, { desc = "Markdown Tick Checkbox" })
 -- vim.keymap.set("n", "<leader>mC", MdCheckbox2, { desc = "Markdown Tick Checkbox" })
 
--- Increase/Decrease all headings above H1 in the file
-vim.keymap.set("n", "<leader>mhI", MdIncreaseHeadings, { desc = "Markdown Increase Headings" })
-vim.keymap.set("n", "<leader>mhD", MdDecreaseHeadings, { desc = "Markdown Decrease Headings" })
+vim.keymap.set("n", "zj", MdFoldlevel2, { desc = "Markdown Fold Level 2+ Headings" })
+vim.keymap.set("n", "zk", MdFoldlevel3, { desc = "Markdown Fold Level 3+ Headings" })
+vim.keymap.set("n", "zl", MdFoldlevel4, { desc = "Markdown Fold Level 4+ Headings" })
+vim.keymap.set("n", "z;", MdFoldlevel5, { desc = "Markdown Fold Level 5+ Headings" })
+vim.keymap.set("n", "zo", MarkdownToggleFold, { desc = "Markdown Toggle Fold" })
+vim.keymap.set("n", "zu", MdUnfoldAll, { desc = "Markdown Unfold all headings level 2 or above" })
+vim.keymap.set("n", "zi", MarkdownToggleParentFold, { desc = "Markdown Toggle Parent Fold" })
 
--- Keymap for folding markdown headings of different levels
--- vim.keymap.set("n", "<leader>mfj", MdFoldLevel2, { desc = "Markdown Fold Level 2+ Headings" })
--- vim.keymap.set("n", "<leader>mfk", MdFoldLevel3, { desc = "Markdown Fold Level 3+ Headings" })
--- vim.keymap.set("n", "<leader>mfl", MdFoldLevel4, { desc = "Markdown Fold Level 4+ Headings" })
--- vim.keymap.set("n", "<leader>mfö", MdFoldLevel5, { desc = "Markdown Fold Level 5+ Headings" })
--- vim.keymap.set("n", "<leader>mfu", function()
---     -- Reloads the file to reflect the changes
---     vim.cmd("edit!")
---     vim.cmd("normal! zR") -- Unfold all headings
--- end, { desc = "Markdown Unfold 2+ Headings" })
+-- Keymap for English TOC
+vim.keymap.set("n", "<leader>mtt", ":Mtoc<CR>", { desc = "Markdown Insert/update Markdown TOC" })
 
 vim.keymap.set("v", "<leader>mb", function()
     -- Get the selected text range

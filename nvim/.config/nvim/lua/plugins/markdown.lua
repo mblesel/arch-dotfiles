@@ -3,13 +3,39 @@ return {
     name = "render-markdown",
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     config = function()
+        vim.cmd([[highlight Headline1 guibg=#f1fc79 guifg=#323449]])
+        vim.cmd([[highlight Headline2 guibg=#37f499 guifg=#323449]])
+        vim.cmd([[highlight Headline3 guibg=#04d1f9 guifg=#323449]])
+        vim.cmd([[highlight Headline4 guibg=#a48cf2 guifg=#323449]])
+        vim.cmd([[highlight Headline5 guibg=#f1fc79 guifg=#323449]])
+        vim.cmd([[highlight Headline6 guibg=#f7c67f guifg=#323449]])
         require("render-markdown").setup({
 
             file_types = { "markdown", "Avante" },
+            render_modes = true,
+            anti_conceal = {
+                enabled = true,
+                -- Which elements to always show, ignoring anti conceal behavior. Values can either be
+                -- booleans to fix the behavior or string lists representing modes where anti conceal
+                -- behavior will be ignored. Valid values are:
+                --   head_icon, head_background, head_border, code_language, code_background, code_border,
+                --   dash, bullet, check_icon, check_scope, quote, table_border, callout, link, sign
+                ignore = {
+                    head_background = true,
+                    head_border = true,
+                    sign = true,
+                    code_background = true,
+                    code_language = true,
+                    code_border = true,
+                },
+                above = 0,
+                below = 0,
+            },
             ft = { "markdown", "Avante" },
             heading = {
                 -- Turn on / off heading icon & background rendering
-                enabled = false,
+                enabled = true,
+                sign = false,
                 -- -- Replaces '#+' of 'atx_h._marker'
                 -- -- The number of '#' in the heading determines the 'level'
                 -- -- The 'level' is used to index into the array using a cycle
@@ -23,6 +49,7 @@ return {
                 -- backgrounds = { 'DiffAdd', 'DiffChange', 'DiffDelete' },
                 -- -- The 'level' is used to index into the array using a clamp
                 -- -- Highlight for the heading and sign icons
+
                 foregrounds = {
                     "@markup.heading.1.markdown",
                     "@markup.heading.2.markdown",
@@ -30,6 +57,14 @@ return {
                     "@markup.heading.4.markdown",
                     "@markup.heading.5.markdown",
                     "@markup.heading.6.markdown",
+                },
+                backgrounds = {
+                    "Headline1",
+                    "Headline2",
+                    "Headline3",
+                    "Headline4",
+                    "Headline5",
+                    "Headline6",
                 },
             },
             code = {
@@ -40,13 +75,13 @@ return {
                 --  normal: adds highlight group to code blocks & inline code
                 --  language: adds language icon to sign column and icon + name above code blocks
                 --  full: normal + language
-                style = "language",
+                style = "full",
                 -- Highlight for code blocks & inline code
                 highlight = "ColorColumn",
             },
             dash = {
                 -- Turn on / off thematic break rendering
-                enabled = false,
+                enabled = true,
                 -- Replaces '---'|'***'|'___'|'* * *' of 'thematic_break'
                 -- The icon gets repeated across the window's width
                 icon = "─",
