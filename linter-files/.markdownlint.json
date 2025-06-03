@@ -2,7 +2,7 @@
     "ul-style": {
         "style": "asterisk"
     },
-    "line-lenght": {
+    "line-length": {
         "line_length": 120,
         "stern": true
     },

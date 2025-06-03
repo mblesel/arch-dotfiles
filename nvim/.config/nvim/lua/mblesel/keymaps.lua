@@ -252,15 +252,23 @@ M.map_lsp_keybinds = function(opts)
     -- hack solution to fix an error with the zk-nvim lsp when followin in document links
     local function on_list(options)
         vim.fn.setqflist({}, " ", options)
-        vim.cmd.clast()
+        local qf = vim.fn.getqflist()
+        if vim.fn.len(qf) == 2 then
+            print(vim.fn.get(qf, 0)["bufnr"])
+            if vim.fn.get(qf,0)["bufnr"] == vim.api.nvim_get_current_buf() then
+                vim.cmd.cfirst()
+            elseif vim.fn.get(qf,1)["bufnr"] == vim.api.nvim_get_current_buf() then
+                vim.cmd.clast()
+            end
+        else
+            vim.cmd.clast()
+        end
     end
     local function tfun()
         if vim.bo.filetype == "markdown" then
             vim.lsp.buf.definition({ on_list = on_list })
-            print("markdown")
         else
             vim.lsp.buf.definition()
-            print("not markdown")
         end
     end
     vim.keymap.set("n", "gd", tfun, { buffer = opts, desc = "LSP Goto Definition" })
