@@ -13,11 +13,16 @@ vim.keymap.set("n", "n", ":keepjumps normal! nzz<cr>")
 vim.keymap.set("n", "<leader>oo", "o<ESC>k", { desc = "Add Empty Line Below" })
 vim.keymap.set("n", "<leader>OO", "O<ESC>j", { desc = "Add Empty Line Above" })
 
-
 local ts_repeat_move = require("nvim-treesitter.textobjects.repeatable_move")
 -- vim way: ; goes to the direction you were moving.
-vim.keymap.set({ "n", "x", "o" }, ";", function () ts_repeat_move.repeat_last_move() vim.cmd("normal! zz") end)
-vim.keymap.set({ "n", "x", "o" }, ",", function () ts_repeat_move.repeat_last_move_opposite() vim.cmd("normal! zz") end)
+vim.keymap.set({ "n", "x", "o" }, ";", function()
+    ts_repeat_move.repeat_last_move()
+    vim.cmd("normal! zz")
+end)
+vim.keymap.set({ "n", "x", "o" }, ",", function()
+    ts_repeat_move.repeat_last_move_opposite()
+    vim.cmd("normal! zz")
+end)
 
 -- Optionally, make builtin f, F, t, T also repeatable with ; and ,
 vim.keymap.set({ "n", "x", "o" }, "f", ts_repeat_move.builtin_f_expr, { expr = true })
@@ -159,8 +164,18 @@ vim.keymap.set("n", "<C-B>", builtin.buffers, { desc = "Telescope Buffers" })
 vim.keymap.set("n", "<C-P>", ":SessionManager load_session<CR>", { desc = "Session Load" })
 vim.keymap.set("n", "<M-y>", ":Telescope neoclip<CR>", { desc = "Telescope Neoclip" })
 vim.keymap.set("n", "<C-Q>", ":Telescope macroscope<CR>", { desc = "Telescope Neoclip Macros" })
-vim.keymap.set("n", "<C-W>", ":Telescope lsp_document_symbols symbol_width=160<cr>", { desc = "Telescope List Symbols" })
-vim.keymap.set("n", "<leader>'", require("telescope").extensions.markit.marks_list_buf, { desc = "Telescope List Marks" })
+vim.keymap.set(
+    "n",
+    "<C-W>",
+    ":Telescope lsp_document_symbols symbol_width=160<cr>",
+    { desc = "Telescope List Symbols" }
+)
+vim.keymap.set(
+    "n",
+    "<leader>'",
+    require("telescope").extensions.markit.marks_list_buf,
+    { desc = "Telescope List Marks" }
+)
 vim.keymap.set("n", "<leader>mte", ":Telescope emoji<CR>", { desc = "Telescope Emoji" })
 vim.keymap.set("n", "<leader>mtg", ":Telescope glyph<CR>", { desc = "Telescope Glyph" })
 vim.keymap.set("n", "<leader>mtl", ":Telescope software-licenses find<CR>", { desc = "Telescope Software-Licenses" })
@@ -211,15 +226,15 @@ vim.keymap.set("n", "<leader>H", ":Hardtime toggle<CR>", { desc = "Hardtime Togg
 
 --- Treewalker
 -- movement
-vim.keymap.set({ 'n', 'v' }, '<M-k>', '<cmd>Treewalker Up<cr>zz', { silent = true })
-vim.keymap.set({ 'n', 'v' }, '<M-j>', '<cmd>Treewalker Down<cr>zz', { silent = true })
-vim.keymap.set({ 'n', 'v' }, '<M-h>', '<cmd>Treewalker Left<cr>zz', { silent = true })
-vim.keymap.set({ 'n', 'v' }, '<M-l>', '<cmd>Treewalker Right<cr>zz', { silent = true })
+vim.keymap.set({ "n", "v" }, "<M-k>", "<cmd>Treewalker Up<cr>zz", { silent = true })
+vim.keymap.set({ "n", "v" }, "<M-j>", "<cmd>Treewalker Down<cr>zz", { silent = true })
+vim.keymap.set({ "n", "v" }, "<M-h>", "<cmd>Treewalker Left<cr>zz", { silent = true })
+vim.keymap.set({ "n", "v" }, "<M-l>", "<cmd>Treewalker Right<cr>zz", { silent = true })
 -- swapping
-vim.keymap.set('n', '<M-S-k>', '<cmd>Treewalker SwapUp<cr>', { silent = true })
-vim.keymap.set('n', '<M-S-j>', '<cmd>Treewalker SwapDown<cr>', { silent = true })
-vim.keymap.set('n', '<M-S-h>', '<cmd>Treewalker SwapLeft<cr>', { silent = true })
-vim.keymap.set('n', '<M-S-l>', '<cmd>Treewalker SwapRight<cr>', { silent = true })
+vim.keymap.set("n", "<M-S-k>", "<cmd>Treewalker SwapUp<cr>", { silent = true })
+vim.keymap.set("n", "<M-S-j>", "<cmd>Treewalker SwapDown<cr>", { silent = true })
+vim.keymap.set("n", "<M-S-h>", "<cmd>Treewalker SwapLeft<cr>", { silent = true })
+vim.keymap.set("n", "<M-S-l>", "<cmd>Treewalker SwapRight<cr>", { silent = true })
 
 --- LSP ---
 --
@@ -234,8 +249,23 @@ M.map_lsp_keybinds = function(opts)
         })
     end, { desc = "Format File or Selection" })
 
-    -- Telescope LSP keybinds --
-    vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = opts, desc = "LSP Goto Definition" })
+    -- hack solution to fix an error with the zk-nvim lsp when followin in document links
+    local function on_list(options)
+        vim.fn.setqflist({}, " ", options)
+        vim.cmd.clast()
+    end
+    local function tfun()
+        if vim.bo.filetype == "markdown" then
+            vim.lsp.buf.definition({ on_list = on_list })
+            print("markdown")
+        else
+            vim.lsp.buf.definition()
+            print("not markdown")
+        end
+    end
+    vim.keymap.set("n", "gd", tfun, { buffer = opts, desc = "LSP Goto Definition" })
+
+    -- vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = opts, desc = "LSP Goto Definition" })
     vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = opts, desc = "LSP Goto Declaration" })
     vim.keymap.set("n", "gT", vim.lsp.buf.type_definition, { buffer = opts, desc = "LSP Goto Type Definition" })
 
@@ -276,7 +306,7 @@ M.map_lsp_keybinds = function(opts)
     vim.keymap.set("n", "<F5>", ":LspClangdSwitchSourceHeader<CR>", { desc = "Switch Header/Source File" })
 end
 
---- autocomplete binds are in cmp plugin file ---
+--- autocomplete binds are in blink plugin file ---
 
 --- zk ---
 -- This overrides the global `<leader>zn` mapping to create the note in the same directory as the current buffer.
@@ -315,10 +345,9 @@ vim.keymap.set("n", "<leader>zli", "<Cmd>ZkInsertLink<CR>", { desc = "ZK Link In
 -- Open main note
 -- vim.keymap.set("n", "<leader>zz", '<Cmd>ZkNotes { tags = { "ROOT" } }<CR>', { desc = "ZK Open Root Note" })
 
-
 --- Latex ---
 
-vim.keymap.set("n", "<leader>lc", ":VimtexCompile<CR>", { desc = "Vimtex Compile"})
+vim.keymap.set("n", "<leader>lc", ":VimtexCompile<CR>", { desc = "Vimtex Compile" })
 
 --- Markdown ---
 require("mblesel.markdown_funcs")
@@ -368,7 +397,6 @@ end, { desc = "Markdown Bold Selection" })
 -- vim.keymap.set({ "n", "v" }, "üm", MdPrevHeading, { desc = "Markdown Previous Header" })
 -- vim.keymap.set({ "n", "v" }, "+m", MdNextHeading, { desc = "Markdown Next Header" })
 
-
 --- generic settings that don't need to be remembered ---
 
 -- Center buffer while navigating
@@ -411,7 +439,6 @@ vim.keymap.set("x", ">>", function()
     vim.cmd("normal! >>")
     vim.cmd("normal! gv")
 end, { desc = "TODO" })
-
 
 --- German keymaps
 -- vim.keymap.set("n", "ä", "@", { desc = "Execute Macro" })
