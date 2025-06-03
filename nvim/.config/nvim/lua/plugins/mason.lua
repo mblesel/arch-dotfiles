@@ -28,7 +28,7 @@ return {
             -- list of servers for mason to install
             ensure_installed = {
                 "clangd",
-                "marksman",
+                -- "marksman",
                 "lua_ls",
                 "bashls",
                 "pyright",
