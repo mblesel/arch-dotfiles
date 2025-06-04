@@ -3,12 +3,13 @@ return {
     name = "render-markdown",
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     config = function()
-        vim.cmd([[highlight Headline1 guibg=#f1fc79 guifg=#323449]])
-        vim.cmd([[highlight Headline2 guibg=#37f499 guifg=#323449]])
-        vim.cmd([[highlight Headline3 guibg=#04d1f9 guifg=#323449]])
-        vim.cmd([[highlight Headline4 guibg=#a48cf2 guifg=#323449]])
-        vim.cmd([[highlight Headline5 guibg=#f1fc79 guifg=#323449]])
-        vim.cmd([[highlight Headline6 guibg=#f7c67f guifg=#323449]])
+        vim.cmd([[highlight Headline1 guibg=#f1fc79 gui=bold guifg=#323449]])
+        vim.cmd([[highlight Headline2 guibg=#37f499 gui=bold guifg=#323449]])
+        vim.cmd([[highlight Headline3 guibg=#04d1f9 gui=bold guifg=#323449]])
+        vim.cmd([[highlight Headline4 guibg=#a48cf2 gui=bold guifg=#323449]])
+        vim.cmd([[highlight Headline5 guibg=#f1fc79 gui=bold guifg=#323449]])
+        vim.cmd([[highlight Headline6 guibg=#f7c67f gui=bold guifg=#323449]])
+
         require("render-markdown").setup({
 
             file_types = { "markdown", "Avante" },
@@ -50,14 +51,14 @@ return {
                 -- -- The 'level' is used to index into the array using a clamp
                 -- -- Highlight for the heading and sign icons
 
-                foregrounds = {
-                    "@markup.heading.1.markdown",
-                    "@markup.heading.2.markdown",
-                    "@markup.heading.3.markdown",
-                    "@markup.heading.4.markdown",
-                    "@markup.heading.5.markdown",
-                    "@markup.heading.6.markdown",
-                },
+                -- foregrounds = {
+                --     "@markup.heading.1.markdown",
+                --     "@markup.heading.2.markdown",
+                --     "@markup.heading.3.markdown",
+                --     "@markup.heading.4.markdown",
+                --     "@markup.heading.5.markdown",
+                --     "@markup.heading.6.markdown",
+                -- },
                 backgrounds = {
                     "Headline1",
                     "Headline2",
