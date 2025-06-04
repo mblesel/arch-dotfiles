@@ -70,12 +70,10 @@ function _G.markdown_foldexpr()
     -- can't figure out how this could be accomplished for other foldlevels as well
     local line2 = vim.fn.getline(lnum + 1)
     local empty = line:match("^$")
-    local dashes = line2:match("^(-+)")
+    local dashes = line2:match("^---")
     local heading2 = line2:match("^(#+)%s")
-    if empty and heading2 then
-        if #heading == 2 then
+    if empty and heading2 and #heading2 == 2 then
             return ">0"
-        end
     elseif empty and dashes then
         return ">0"
     else
