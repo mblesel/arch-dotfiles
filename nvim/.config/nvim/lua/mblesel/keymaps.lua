@@ -254,11 +254,12 @@ M.map_lsp_keybinds = function(opts)
         vim.fn.setqflist({}, " ", options)
         local qf = vim.fn.getqflist()
         if vim.fn.len(qf) == 2 then
-            print(vim.fn.get(qf, 0)["bufnr"])
             if vim.fn.get(qf,0)["bufnr"] == vim.api.nvim_get_current_buf() then
                 vim.cmd.cfirst()
             elseif vim.fn.get(qf,1)["bufnr"] == vim.api.nvim_get_current_buf() then
                 vim.cmd.clast()
+            else
+                vim.cmd.cfirst()
             end
         else
             vim.cmd.clast()
