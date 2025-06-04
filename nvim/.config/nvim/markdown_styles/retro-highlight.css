@@ -1,0 +1,83 @@
+/* Retro Dark Highlight Styles */
+
+:root {
+  /* primary text color */
+  --color-text-primary: #fafafa;
+}
+[data-theme="dark"] {
+  --color-text-primary: #fafafa;
+}
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  color: var(--color-text-primary);
+  background: #333;
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: #888;
+  font-style: italic;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-meta {
+  color: #01ff70;
+  font-weight: bold;
+}
+
+.hljs-string,
+.hljs-title,
+.hljs-name,
+.hljs-type {
+  color: #2ecc40;
+}
+
+.hljs-number,
+.hljs-literal {
+  color: #ffdc00;
+}
+
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag .hljs-attr,
+.hljs-attribute {
+  color: #7fdbff;
+}
+
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-symbol,
+.hljs-bullet {
+  color: #ff851b;
+}
+
+.hljs-regexp,
+.hljs-link {
+  color: #ff4136;
+}
+
+.hljs-selector-class,
+.hljs-selector-pseudo {
+  color: #f012be;
+}
+
+.hljs-addition {
+  background: #002b36;
+}
+
+.hljs-deletion {
+  background: #3c1414;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+
