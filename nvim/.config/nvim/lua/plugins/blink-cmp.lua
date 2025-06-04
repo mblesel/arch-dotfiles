@@ -6,12 +6,18 @@ return {
         version = "v2.*",
         build = "make install_jsregexp", -- if you're on windows remove this line
         dependencies = {
-            "rafamadriz/friendly-snippets",
-            config = function()
-                require("luasnip.loaders.from_vscode").lazy_load()
-
-                require("luasnip.loaders.from_vscode").lazy_load({ paths = { vim.fn.stdpath("config") .. "/snippets" } })
-            end,
+            {
+                "rafamadriz/friendly-snippets",
+                config = function()
+                    require("luasnip.loaders.from_vscode").lazy_load()
+                    require("luasnip.loaders.from_vscode").lazy_load({
+                        paths = { vim.fn.stdpath("config") .. "/snippets" },
+                    })
+                end,
+            },
+            "Kaiser-Yang/blink-cmp-avante",
+            "moyiz/blink-emoji.nvim",
+            "MahanRahmati/blink-nerdfont.nvim",
         },
     },
     -- use a release tag to download pre-built binaries
@@ -23,7 +29,11 @@ return {
         keymap = {
             preset = "none",
             ["<C-H>"] = { "show", "show_documentation", "hide_documentation" },
-            ["<C-V>"] = { function(cmp) cmp.show({ providers = { 'snippets' } }) end },
+            ["<C-V>"] = {
+                function(cmp)
+                    cmp.show({ providers = { "snippets" } })
+                end,
+            },
             ["<C-E>"] = { "cancel" },
             ["<C-Y>"] = { "select_and_accept" },
             ["<C-S>"] = { "show_signature", "hide_signature", "fallback" },
@@ -33,8 +43,8 @@ return {
             ["<C-p>"] = { "select_prev", "fallback_to_mappings" },
             ["<C-n>"] = { "select_next", "fallback_to_mappings" },
 
-            ["<C-b>"] = { "scroll_documentation_up", "fallback" },
-            ["<C-f>"] = { "scroll_documentation_down", "fallback" },
+            ["<S-k>"] = { "scroll_documentation_up", "fallback" },
+            ["<S-j>"] = { "scroll_documentation_down", "fallback" },
 
             ["<Tab>"] = { "snippet_forward", "fallback" },
             ["<S-Tab>"] = { "snippet_backward", "fallback" },
@@ -94,7 +104,40 @@ return {
         -- Default list of enabled providers defined so that you can extend it
         -- elsewhere in your config, without redefining it, due to `opts_extend`
         sources = {
-            default = { "snippets",  "lsp", "buffer", "path" },
+            default = { "avante", "snippets", "lsp", "buffer", "path", "emoji", "nerdfont" },
+            providers = {
+                avante = {
+                    module = "blink-cmp-avante",
+                    name = "Avante",
+                    opts = {},
+                },
+                emoji = {
+                    module = "blink-emoji",
+                    name = "Emoji",
+                    score_offset = -15, -- Tune by preference
+                    opts = {
+                        insert = true, -- Insert emoji (default) or complete its name
+                        ---@type string|table|fun():table
+                        trigger = function()
+                            return { ":" }
+                        end,
+                    },
+                    should_show_items = function()
+                        return vim.tbl_contains(
+                            -- Enable emoji completion only for git commits and markdown.
+                            -- By default, enabled for all file-types.
+                            { "gitcommit", "markdown" },
+                            vim.o.filetype
+                        )
+                    end,
+                },
+                nerdfont = {
+                    module = "blink-nerdfont",
+                    name = "Nerd Fonts",
+                    score_offset = -15, -- Tune by preference
+                    opts = { insert = true }, -- Insert nerdfont icon (default) or complete its name
+                },
+            },
         },
 
         fuzzy = { implementation = "prefer_rust_with_warning" },

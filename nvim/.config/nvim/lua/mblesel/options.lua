@@ -79,7 +79,7 @@ vim.diagnostic.config({ virtual_text = { current_line = true } })
 -- vim.opt.foldmethod = "manual"
 -- These options were reccommended by nvim-ufo
 -- See: https://github.com/kevinhwang91/nvim-ufo#minimal-configuration
-vim.opt.foldcolumn = "1"
+vim.opt.foldcolumn = "0"
 vim.opt.foldtext = ""
 -- vim.opt.foldmethod = "expr"
 -- vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
