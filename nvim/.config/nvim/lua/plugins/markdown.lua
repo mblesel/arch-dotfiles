@@ -12,7 +12,7 @@ return {
 
         require("render-markdown").setup({
 
-            file_types = { "markdown", "Avante" },
+            file_types = { "markdown", "Avante", "codecompanion" },
             render_modes = true,
             anti_conceal = {
                 enabled = true,
@@ -32,7 +32,7 @@ return {
                 above = 0,
                 below = 0,
             },
-            ft = { "markdown", "Avante" },
+            ft = { "markdown", "Avante", "codecompanion" },
             heading = {
                 -- Turn on / off heading icon & background rendering
                 enabled = true,

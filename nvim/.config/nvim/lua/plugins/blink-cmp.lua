@@ -105,6 +105,9 @@ return {
         -- elsewhere in your config, without redefining it, due to `opts_extend`
         sources = {
             default = { "avante", "snippets", "lsp", "buffer", "path", "emoji", "nerdfont" },
+            -- per_filetype = {
+            --     codecompanion = { "codecompanion " },
+            -- },
             providers = {
                 avante = {
                     module = "blink-cmp-avante",
