@@ -57,6 +57,15 @@ return {
                         },
                     })
                 end,
+                tavily = function()
+                    return require("codecompanion.adapters").extend("tavily", {
+                        schema = {
+                            model = {
+                                default = "tavily",
+                            },
+                        },
+                    })
+                end,
             },
             strategies = {
                 chat = {
