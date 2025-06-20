@@ -3,16 +3,25 @@ return {
     opts = {},
     dependencies = {
         { "nvim-lua/plenary.nvim", branch = "master" },
+        "j-hui/fidget.nvim",
         "nvim-treesitter/nvim-treesitter",
         "ravitemer/codecompanion-history.nvim",
+        {
+            "ravitemer/mcphub.nvim", -- Manage MCP servers
+            cmd = "MCPHub",
+            build = "npm install -g mcp-hub@latest",
+            config = true,
+        },
     },
     config = function()
+        local spinner = require("plugins.plugins.spinner")
+        spinner:init()
         require("codecompanion").setup({
             adapters = {
                 opts = {
                     show_defaults = false,
                 },
-                openai = function()
+                openai_o3_mini = function()
                     return require("codecompanion.adapters").extend("openai", {
                         schema = {
                             model = {
@@ -21,16 +30,57 @@ return {
                         },
                     })
                 end,
+                openai_o3 = function()
+                    return require("codecompanion.adapters").extend("openai", {
+                        schema = {
+                            model = {
+                                default = "o3-2025-04-16",
+                            },
+                        },
+                    })
+                end,
+                openai_o4_mini = function()
+                    return require("codecompanion.adapters").extend("openai", {
+                        schema = {
+                            model = {
+                                default = "o4-mini-2025-04-16",
+                            },
+                        },
+                    })
+                end,
+                anthropic = function()
+                    return require("codecompanion.adapters").extend("anthropic", {
+                        schema = {
+                            model = {
+                                default = "claude-3-7-sonnet-20250219",
+                            },
+                        },
+                    })
+                end,
             },
             strategies = {
                 chat = {
-                    adapter = "openai",
+                    -- adapter = "openai",
+                    adapter = "anthropic",
+                    keymaps = {
+                        send = {
+                            callback = function(chat)
+                                vim.cmd("stopinsert")
+                                chat:submit()
+                                chat:add_buf_message({ role = "llm", content = "" })
+                            end,
+                            index = 1,
+                            description = "Send",
+                        },
+                    },
                 },
                 inline = {
-                    adapter = "openai",
+                    -- adapter = "openai",
+                    adapter = "anthropic",
                 },
                 cmd = {
-                    adapter = "openai",
+                    -- adapter = "openai",
+                    adapter = "anthropic",
                 },
             },
             display = {
