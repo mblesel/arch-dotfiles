@@ -66,10 +66,11 @@ vim.keymap.set("n", "<C-T>", ":FloatermToggle --cwd=<root><CR>", { desc = "Termi
 vim.keymap.set({ "n", "v" }, "<leader>al", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
 vim.keymap.set({ "n", "v" }, "<leader>aa", "<cmd>CodeCompanionChat Toggle<cr>", { noremap = true, silent = true })
 vim.keymap.set("v", "ag", "<cmd>CodeCompanionChat Add<cr>", { noremap = true, silent = true })
-
 -- Expand 'cc' into 'CodeCompanion' in the command line
 vim.cmd([[cab cc CodeCompanion]])
 vim.cmd([[cab ccc CodeCompanionChat]])
+
+vim.keymap.set("n", "<leader>at", ":SupermavenToggle<CR>", { desc = "SuperMaven Toggle" })
 
 -- quickfix
 require("mblesel.qf_toggle")

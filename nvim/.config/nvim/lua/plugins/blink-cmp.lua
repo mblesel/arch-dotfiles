@@ -18,6 +18,21 @@ return {
             "Kaiser-Yang/blink-cmp-avante",
             "moyiz/blink-emoji.nvim",
             "MahanRahmati/blink-nerdfont.nvim",
+            {
+                "supermaven-inc/supermaven-nvim",
+                opts = {
+                    keymaps = {
+                        accept_suggestion = "<C-]>",
+                        clear_suggestion = "<C-u>",
+                        accept_word = "<C-l>",
+                    },
+                    disable_inline_completion = false, -- disables inline completion for use with cmp
+                    disable_keymaps = false, -- disables built in keymaps for more manual control
+                },
+            },
+            {
+                "huijiro/blink-cmp-supermaven",
+            },
         },
     },
     -- use a release tag to download pre-built binaries
@@ -104,7 +119,7 @@ return {
         -- Default list of enabled providers defined so that you can extend it
         -- elsewhere in your config, without redefining it, due to `opts_extend`
         sources = {
-            default = { "avante", "snippets", "lsp", "buffer", "path", "emoji", "nerdfont" },
+            default = { "lsp", "supermaven", "snippets", "buffer", "path", "emoji", "nerdfont" },
             -- per_filetype = {
             --     codecompanion = { "codecompanion " },
             -- },
@@ -113,6 +128,11 @@ return {
                     module = "blink-cmp-avante",
                     name = "Avante",
                     opts = {},
+                },
+                supermaven = {
+                    name = "supermaven",
+                    module = "blink-cmp-supermaven",
+                    async = true,
                 },
                 emoji = {
                     module = "blink-emoji",
