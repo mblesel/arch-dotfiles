@@ -5,6 +5,9 @@ return {
         "L3MON4D3/LuaSnip",
         version = "v2.*",
         build = "make install_jsregexp", -- if you're on windows remove this line
+        opts = {
+            histoy = false,
+        },
         dependencies = {
             {
                 "rafamadriz/friendly-snippets",
@@ -119,7 +122,7 @@ return {
         -- Default list of enabled providers defined so that you can extend it
         -- elsewhere in your config, without redefining it, due to `opts_extend`
         sources = {
-            default = { "lsp", "supermaven", "snippets", "buffer", "path", "emoji", "nerdfont" },
+            default = { "snippets", "lsp", "buffer", "path", "emoji", "nerdfont" },
             -- per_filetype = {
             --     codecompanion = { "codecompanion " },
             -- },
