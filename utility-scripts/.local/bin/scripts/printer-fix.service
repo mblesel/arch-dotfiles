@@ -1,0 +1,12 @@
+[Unit]
+Description=Fix the cups ppd file for the 325 office printer
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/home/michael/.local/bin/scripts/printer-fix-service.sh /etc/cups/ppd/325-Drucker.ppd sudo /home/michael/.local/bin/scripts/fix-printer.sh
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target
