@@ -178,12 +178,12 @@ vim.keymap.set(
     ":Telescope lsp_document_symbols symbol_width=160<cr>",
     { desc = "Telescope List Symbols" }
 )
-vim.keymap.set(
-    "n",
-    "<leader>'",
-    require("telescope").extensions.markit.marks_list_buf,
-    { desc = "Telescope List Marks" }
-)
+-- vim.keymap.set(
+--     "n",
+--     "<leader>'",
+--     require("telescope").extensions.markit.marks_list_buf,
+--     { desc = "Telescope List Marks" }
+-- )
 vim.keymap.set("n", "<leader>mte", ":Telescope emoji<CR>", { desc = "Telescope Emoji" })
 vim.keymap.set("n", "<leader>mtg", ":Telescope glyph<CR>", { desc = "Telescope Glyph" })
 vim.keymap.set("n", "<leader>mtl", ":Telescope software-licenses find<CR>", { desc = "Telescope Software-Licenses" })

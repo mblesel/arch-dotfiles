@@ -85,7 +85,7 @@ return {
             require("telescope").load_extension("software-licenses")
             require("telescope").load_extension("glyph")
             require("telescope").load_extension("emoji")
-            require("telescope").load_extension("markit")
+            -- require("telescope").load_extension("markit")
         end,
     },
 }

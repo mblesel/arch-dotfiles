@@ -6,66 +6,91 @@ return {
         "j-hui/fidget.nvim",
         "nvim-treesitter/nvim-treesitter",
         "ravitemer/codecompanion-history.nvim",
-        -- {
-        --     "ravitemer/mcphub.nvim", -- Manage MCP servers
-        --     cmd = "MCPHub",
-        --     build = "npm install -g mcp-hub@latest",
-        --     config = true,
-        -- },
     },
     config = function()
         local spinner = require("plugins.plugins.spinner")
         spinner:init()
         require("codecompanion").setup({
             adapters = {
-                opts = {
-                    show_defaults = false,
+                http = {
+                    opts = {
+                        show_defaults = false,
+                    },
+                    openai_o3_mini = function()
+                        return require("codecompanion.adapters").extend("openai", {
+                            schema = {
+                                model = {
+                                    default = "o3-mini",
+                                },
+                            },
+                        })
+                    end,
+                    openai_o3 = function()
+                        return require("codecompanion.adapters").extend("openai", {
+                            schema = {
+                                model = {
+                                    default = "o3",
+                                },
+                            },
+                        })
+                    end,
+                    openai_o4_mini = function()
+                        return require("codecompanion.adapters").extend("openai", {
+                            schema = {
+                                model = {
+                                    default = "o4-mini",
+                                },
+                            },
+                        })
+                    end,
+                    anthropic = function()
+                        return require("codecompanion.adapters").extend("anthropic", {
+                            schema = {
+                                model = {
+                                    default = "claude-3-7-sonnet-20250219",
+                                },
+                            },
+                        })
+                    end,
+                    xai = function()
+                        return require("codecompanion.adapters").extend("xai", {
+                            schema = {
+                                model = {
+                                    default = "grok-4-latest",
+                                },
+                            },
+                        })
+                    end,
+                    tavily = function()
+                        return require("codecompanion.adapters").extend("tavily", {
+                            schema = {
+                                model = {
+                                    default = "tavily",
+                                },
+                            },
+                        })
+                    end,
                 },
-                openai_o3_mini = function()
-                    return require("codecompanion.adapters").extend("openai", {
-                        schema = {
-                            model = {
-                                default = "o3-mini-2025-01-31",
-                            },
+            },
+            prompt_library = {
+                ["writing"] = {
+                    strategy = "chat",
+                    description = "Writing prompt",
+                    opts = {
+                        adapter = {
+                            name = "xai",
+                            model = "grok-4-latest",
                         },
-                    })
-                end,
-                openai_o3 = function()
-                    return require("codecompanion.adapters").extend("openai", {
-                        schema = {
-                            model = {
-                                default = "o3-2025-04-16",
-                            },
+                        ignore_system_prompt = true,
+                        intro_message = "This is a Grok4 chat without system prompt",
+                    },
+                    prompts = {
+                        {
+                            role = "system",
+                            content = [[You are a writing assistant]],
                         },
-                    })
-                end,
-                openai_o4_mini = function()
-                    return require("codecompanion.adapters").extend("openai", {
-                        schema = {
-                            model = {
-                                default = "o4-mini-2025-04-16",
-                            },
-                        },
-                    })
-                end,
-                anthropic = function()
-                    return require("codecompanion.adapters").extend("anthropic", {
-                        schema = {
-                            model = {
-                                default = "claude-3-7-sonnet-20250219",
-                            },
-                        },
-                    })
-                end,
-                tavily = function()
-                    return require("codecompanion.adapters").extend("tavily", {
-                        schema = {
-                            model = {
-                                default = "tavily",
-                            },
-                        },
-                    })
-                end,
+                    },
+                },
             },
             strategies = {
                 chat = {
@@ -156,14 +181,6 @@ return {
                         end,
                     },
                 },
-                -- mcphub = {
-                --     callback = "mcphub.extensions.codecompanion",
-                --     opts = {
-                --         show_result_in_chat = true, -- Show mcp tool results in chat
-                --         make_vars = true, -- Convert resources to #variables
-                --         make_slash_commands = true, -- Add prompts as /slash commands
-                --     },
-                -- },
             },
         })
     end,
