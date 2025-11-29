@@ -18,7 +18,6 @@ return {
                     })
                 end,
             },
-            "Kaiser-Yang/blink-cmp-avante",
             "moyiz/blink-emoji.nvim",
             "MahanRahmati/blink-nerdfont.nvim",
             {
@@ -35,6 +34,15 @@ return {
             },
             {
                 "huijiro/blink-cmp-supermaven",
+            },
+            {
+                "folke/lazydev.nvim",
+                ft = "lua",
+                opts = {
+                    library = {
+                        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+                    },
+                },
             },
         },
     },
@@ -122,16 +130,11 @@ return {
         -- Default list of enabled providers defined so that you can extend it
         -- elsewhere in your config, without redefining it, due to `opts_extend`
         sources = {
-            default = { "snippets", "lsp", "buffer", "path", "emoji", "nerdfont" },
+            default = { "lazydev", "snippets", "lsp", "buffer", "path", "emoji", "nerdfont" },
             -- per_filetype = {
             --     codecompanion = { "codecompanion " },
             -- },
             providers = {
-                avante = {
-                    module = "blink-cmp-avante",
-                    name = "Avante",
-                    opts = {},
-                },
                 supermaven = {
                     name = "supermaven",
                     module = "blink-cmp-supermaven",
@@ -162,6 +165,12 @@ return {
                     name = "Nerd Fonts",
                     score_offset = -15, -- Tune by preference
                     opts = { insert = true }, -- Insert nerdfont icon (default) or complete its name
+                },
+                lazydev = {
+                    name = "LazyDev",
+                    module = "lazydev.integrations.blink",
+                    -- make lazydev completions top priority (see `:h blink.cmp`)
+                    score_offset = 100,
                 },
             },
         },

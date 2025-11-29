@@ -159,11 +159,6 @@ vim.keymap.set("n", "ycc", "yygccp", { remap = true, desc = "Comment and paste c
 
 --- Plugins ---
 
--- Open Spectre for global find/replace
-vim.keymap.set("n", "<leader>S", function()
-    require("spectre").toggle()
-end, { desc = "Spectre Open" })
-
 -- telescope binds
 local builtin = require("telescope.builtin")
 vim.keymap.set("n", "<C-F>", ":Telescope find_files hidden=true<CR>", { desc = "Telescope Find Files" })

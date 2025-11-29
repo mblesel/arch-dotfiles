@@ -24,9 +24,6 @@ return {
                 end
                 return notify(message, level, merged_opts)
             end
-
-            -- Update colors
-            -- TODO
         end,
     },
 }

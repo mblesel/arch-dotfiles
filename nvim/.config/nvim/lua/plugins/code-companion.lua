@@ -3,7 +3,6 @@ return {
     opts = {},
     dependencies = {
         { "nvim-lua/plenary.nvim", branch = "master" },
-        "j-hui/fidget.nvim",
         "nvim-treesitter/nvim-treesitter",
         "ravitemer/codecompanion-history.nvim",
     },
