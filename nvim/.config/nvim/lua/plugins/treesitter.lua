@@ -10,6 +10,7 @@ return {
         ---@diagnostic disable-next-line: missing-fields
         config.setup({
             ensure_installed = "all",
+            ignore_install = { "ipkg" },
             highlight = {
                 enable = true,
                 -- disable = { "markdown"}

@@ -1,17 +1,19 @@
 return {
     "iamcco/markdown-preview.nvim",
     ft = "markdown",
-    build = function()
-        vim.fn["mkdp#util#install"]()
+    -- build = function()
+    --     vim.fn["mkdp#util#install"]()
+    -- end,
+    init = function()
+        vim.g.mkdp_filetypes = { "markdown" }
     end,
     cmd = {
         "MarkdownPreviewToggle",
         "MarkdownPreview",
         "MarkdownPreviewStop",
     },
-    config = function ()
+    config = function()
         vim.g.mkdp_markdown_css = os.getenv("HOME") .. "/.config/nvim/markdown_styles/retro.css"
         vim.g.mkdp_highlight_css = os.getenv("HOME") .. "/.config/nvim/markdown_styles/retro-highlight.css"
-
     end,
 }

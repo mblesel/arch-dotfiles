@@ -54,12 +54,17 @@ export ZK_NOTEBOOK_DIR='/home/michael/Documents/cloud/ZK/'
 # samedir
 alias samedir='st -d "$(pwd)" &> /dev/null & disown'
 
+# Kitty image viewer
+alias icat='kitty icat'
+
 # tmux-sessionizer
 bind '"\ef":"tmux-sessionizer\n"'
 
 PS1='[\u@\h \W]\$ '
 
 # source /usr/share/doc/pkgfile/command-not-found.bash
+#
+. /usr/local/Modules/init/bash
 
 # load spack
 # . /etc/modules/init/bash
@@ -88,8 +93,11 @@ webmTOmp4() {
     ffmpeg -i "$1".webm -qscale 0 "$1".mp4
 }
 
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+# export PYENV_ROOT="$HOME/.pyenv"
+# [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+# eval "$(pyenv init -)"
+
+# wal --theme kanagawa-dragon -q
+# (cat ~/.cache/wal/sequences &)
 
 eval "$(starship init bash)"
