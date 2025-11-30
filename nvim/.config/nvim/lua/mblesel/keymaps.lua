@@ -225,6 +225,11 @@ end, { desc = "Format File or Selection" })
 
 --- autocomplete binds are in blink plugin file ---
 
+-- LuaSnip snippet jumps
+local ls = require("luasnip")
+vim.keymap.set({"i", "s"}, "<M-Tab>", function() ls.jump( 1) end, {silent = true})
+vim.keymap.set({"i", "s"}, "<M-S-Tab>", function() ls.jump(-1) end, {silent = true})
+
 --- zk ---
 -- This overrides the global `<leader>zn` mapping to create the note in the same directory as the current buffer.
 vim.keymap.set(
