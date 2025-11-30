@@ -102,9 +102,6 @@ end, { desc = "Spelling Repeat" })
 vim.keymap.set("n", "<leader>msf", "]s", { desc = "Spelling Next" })
 vim.keymap.set("n", "<leader>msb", "[s", { desc = "Spelling Previous" })
 
--- ocaml
--- vim.keymap.set("n", "<leader>rr", OpenMlRepl, {})
--- vim.keymap.set("n", "<leader>ri", GetMlId, {})
 
 --- buffers and splits ---
 
@@ -176,7 +173,6 @@ vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "Undotree" })
 
 -- vim-fugitive
 -- vim.keymap.set("n", "<leader>g", vim.cmd.Git)
-
 
 -- oil.nvim
 vim.keymap.set("n", "<leader>n", "<CMD>Oil<CR>", { desc = "Open parent directory" })
@@ -318,6 +314,7 @@ vim.keymap.set("n", "<leader>st", strudel.toggle, { desc = "Strudel Toggle Play/
 vim.keymap.set("n", "<leader>sb", strudel.set_buffer, { desc = "Strudel set current buffer" })
 vim.keymap.set("n", "<leader>sx", strudel.execute, { desc = "Strudel set current buffer and update" })
 
+
 --- generic settings that don't need to be remembered ---
 
 -- Center buffer while navigating
@@ -361,16 +358,5 @@ vim.keymap.set("x", ">>", function()
     vim.cmd("normal! gv")
 end, { desc = "TODO" })
 
---- German keymaps
--- vim.keymap.set("n", "ä", "@", { desc = "Execute Macro" })
--- vim.keymap.set({ "n", "v", "o", "x" }, "ö", ";", { desc = "Repeat Last Movement" })
--- vim.keymap.set({ "n", "v", "o", "x" }, "Ü", "{")
--- vim.keymap.set({ "n", "v", "o", "x" }, "*", "}")
--- vim.keymap.set({ "n", "v", "o", "x" }, "ü", "[", { remap = true })
--- vim.keymap.set({ "n", "v", "o", "x" }, "+", "]", { remap = true })
--- vim.keymap.set({ "n", "v", "o", "x" }, "üü", "[[", { remap = true })
--- vim.keymap.set({ "n", "v", "o", "x" }, "++", "]]", { remap = true })
--- vim.keymap.set({ "n", "x", "o" }, "ö", ts_repeat_move.repeat_last_move)
--- vim.keymap.set("n", "<leader>^", "<C-^>", { desc = "Buffer Tab" })
 
 return M
