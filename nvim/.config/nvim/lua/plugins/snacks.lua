@@ -6,7 +6,10 @@ return {
         picker = {
             enabled = true,
             ui_select = true, -- replace `vim.ui.select` with the snacks picker
-            matcher = { frecency = true },
+            matcher = {
+                frecency = true,
+                cwd_bonus = true,
+            },
             hidden = true,
             follow = true,
             sources = {

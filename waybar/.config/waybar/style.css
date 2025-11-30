@@ -43,3 +43,12 @@ tooltip {
 tooltip label {
   color: @foreground;
 }
+
+#custom-hyprflow-indicator {
+  min-width: 12px;
+  margin: 0 8px;
+}
+
+#custom-hyprflow-indicator.active {
+  color: #f38ba8; /* or your preferred recording color */
+}

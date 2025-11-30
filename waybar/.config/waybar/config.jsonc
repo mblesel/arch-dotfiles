@@ -16,6 +16,8 @@
     ],
     "modules-right": [
         "custom/separator",
+        "custom/hyprflow-indicator",
+        "custom/separator",
         "mpd",
         "custom/separator",
         "pulseaudio",
@@ -279,5 +281,12 @@
         "exec": "$HOME/.local/bin/waybar/server_status.sh 2> /dev/null",
         "on-click": "$HOME/.local/bin/waybar/server_start.sh 2> /dev/null"
 
+    },
+    "custom/hyprflow-indicator": {
+        "exec": "$HOME/.local/bin/waybar/hyrpflow-indicator.sh",
+        "on-click": "hyprflow",
+        "signal": 9,
+        "return-type": "json"
+        }
     }
 }
