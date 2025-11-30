@@ -57,9 +57,7 @@ vim.keymap.set("n", "gm", follow_link, { desc = "Markdown Open Link" })
 -- Macros
 
 -- Terminal
-vim.keymap.set("n", "<leader>T", ":terminal<CR>", { desc = "Terminal Open" })
-vim.keymap.set("t", "<ESC>", "<C-Bslash><C-n>", { desc = "Terminal Exit Insert Mode" })
-vim.keymap.set("n", "<C-T>", ":FloatermToggle --cwd=<root><CR>", { desc = "Terminal Float" })
+vim.keymap.set({"n", "t"}, "<C-T>", Snacks.terminal.toggle, { desc = "Snacks Terminal Toggle" })
 
 -- AI
 vim.keymap.set({ "n", "v" }, "<leader>al", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
@@ -160,7 +158,8 @@ vim.keymap.set("n", "?", Picker.keymaps, { desc = "Snacks Picker Keymaps" })
 vim.keymap.set("n", "<C-/>", Picker.pickers, { desc = "Snacks Picker Pickers" })
 vim.keymap.set("n", "<C-C>", Picker.icons, { desc = "Snacks Picker Icons" })
 vim.keymap.set("n", "<C-N>", Picker.explorer, { desc = "Snacks Picker Explorer" })
--- vim.keymap.set("n", "<M-y>", Picker.cliphist, { desc = "Snacks Picker Cliphist" })
+-- yanky plugin is loaded before snacks and will auto register this function
+vim.keymap.set("n", "<M-y>", Picker.yanky, { desc = "Snacks Picker Cliphist" }) 
 
 
 -- harpoon

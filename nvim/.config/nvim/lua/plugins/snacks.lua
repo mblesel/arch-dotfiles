@@ -43,6 +43,9 @@ return {
             timeout = 5000,
             style = "fancy",
         },
+        terminal = {
+            enabled = true,
+        },
     },
 
     -- NOTE not sure if this is placed well here in the init function, but seems to work
@@ -53,6 +56,11 @@ return {
             callback = function()
                 vim.api.nvim_set_hl(0, "SnacksPicker", { bg = "none", nocombine = true })
                 vim.api.nvim_set_hl(0, "SnacksPickerBorder", { fg = "#316c71", bg = "none", nocombine = true })
+                --- Background for Terminal and Layy/Mason etc.
+                vim.api.nvim_set_hl(0, "NormalFloat", {  bg = "none", nocombine = true })
+                --- Wilder
+                vim.api.nvim_set_hl(0, "Pmenu", {  bg = "none", fg = "#E6C384" })
+                vim.api.nvim_set_hl(0, "PmenuSel", {  bg = "#737C73" })
             end,
         })
     end,
