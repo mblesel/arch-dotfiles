@@ -22,7 +22,7 @@ return {
         mason_lspconfig.setup({
             ensure_installed = {
                 "clangd",
-                -- "marksman",
+                "marksman",
                 "lua_ls",
                 "bashls",
                 "pyright",

@@ -62,7 +62,6 @@ vim.keymap.set("t", "<ESC>", "<C-Bslash><C-n>", { desc = "Terminal Exit Insert M
 vim.keymap.set("n", "<C-T>", ":FloatermToggle --cwd=<root><CR>", { desc = "Terminal Float" })
 
 -- AI
--- vim.keymap.set("n", "<C-A>", ":AvanteAsk<CR>", { desc = "Avante Toggle" })
 vim.keymap.set({ "n", "v" }, "<leader>al", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
 vim.keymap.set({ "n", "v" }, "<leader>aa", "<cmd>CodeCompanionChat Toggle<cr>", { noremap = true, silent = true })
 vim.keymap.set("v", "ag", "<cmd>CodeCompanionChat Add<cr>", { noremap = true, silent = true })
@@ -77,15 +76,6 @@ require("mblesel.qf_toggle")
 -- Additional keybinds in trouble.lua
 vim.keymap.set("n", "<leader>cc", ":Trouble qflist toggle<CR>", { desc = "Quickfix close list" })
 vim.keymap.set("n", "<leader>CC", Toggle_qf, { desc = "Quickfix close list" })
--- Handled by Trouble.nvim now
--- vim.keymap.set("n", "<leader>co", ":copen<CR>", { desc = "Quickfix open list" })
--- vim.keymap.set("n", "<leader>cw", ":cw<CR>", { desc = "Quickfix open if not empty" })
--- vim.keymap.set("n", "<leader>cn", ":cn<CR>", { desc = "Quickfix next" })
--- vim.keymap.set("n", "<leader>cp", ":cp<CR>", { desc = "Quickfix previous" })
--- vim.keymap.set("n", "<M-n>", ":cn<CR>", { desc = "Quickfix next" })
--- vim.keymap.set("n", "<M-p>", ":cp<CR>", { desc = "Quickfix previous" })
--- vim.keymap.set("n", "<leader>cf", ":cfirst<CR>", { desc = "Quickfix first" })
--- vim.keymap.set("n", "<leader>cl", ":clast<CR>", { desc = "Quickfix last" })
 
 --- spellchecking
 vim.keymap.set("n", "<leader>mst", ":setlocal spell!<cr>", { desc = "Spelling Toggle" })
@@ -159,50 +149,28 @@ vim.keymap.set("n", "ycc", "yygccp", { remap = true, desc = "Comment and paste c
 
 --- Plugins ---
 
--- telescope binds
-local builtin = require("telescope.builtin")
-vim.keymap.set("n", "<C-F>", ":Telescope find_files hidden=true<CR>", { desc = "Telescope Find Files" })
-vim.keymap.set("n", "<C-G>", ":Telescope live_grep<CR>", { desc = "Telescope Live Grep" })
-vim.keymap.set("n", "<C-B>", builtin.buffers, { desc = "Telescope Buffers" })
+-- Snacks.picker
+local Picker = require("snacks").picker
+vim.keymap.set("n", "<C-F>", Picker.files, { desc = "Snacks Picker Files" })
+vim.keymap.set("n", "<C-G>", Picker.grep, { desc = "Snacks Picker Grep" })
+vim.keymap.set("n", "<C-B>", Picker.buffers, { desc = "Snacks Picker Buffers" })
 vim.keymap.set("n", "<C-P>", ":SessionManager load_session<CR>", { desc = "Session Load" })
-vim.keymap.set("n", "<M-y>", ":Telescope neoclip<CR>", { desc = "Telescope Neoclip" })
-vim.keymap.set("n", "<C-Q>", ":Telescope macroscope<CR>", { desc = "Telescope Neoclip Macros" })
-vim.keymap.set(
-    "n",
-    "<C-W>",
-    ":Telescope lsp_document_symbols symbol_width=160<cr>",
-    { desc = "Telescope List Symbols" }
-)
--- vim.keymap.set(
---     "n",
---     "<leader>'",
---     require("telescope").extensions.markit.marks_list_buf,
---     { desc = "Telescope List Marks" }
--- )
-vim.keymap.set("n", "<leader>mte", ":Telescope emoji<CR>", { desc = "Telescope Emoji" })
-vim.keymap.set("n", "<leader>mtg", ":Telescope glyph<CR>", { desc = "Telescope Glyph" })
-vim.keymap.set("n", "<leader>mtl", ":Telescope software-licenses find<CR>", { desc = "Telescope Software-Licenses" })
-vim.keymap.set("n", "?", builtin.keymaps, { desc = "Telescope Keymaps" })
+vim.keymap.set("n", "<C-W>", Picker.lsp_symbols, { desc = "Snacks Picker LSP Symbols" })
+vim.keymap.set("n", "?", Picker.keymaps, { desc = "Snacks Picker Keymaps" })
+vim.keymap.set("n", "<C-/>", Picker.pickers, { desc = "Snacks Picker Pickers" })
+vim.keymap.set("n", "<C-C>", Picker.icons, { desc = "Snacks Picker Icons" })
+vim.keymap.set("n", "<C-N>", Picker.explorer, { desc = "Snacks Picker Explorer" })
+-- vim.keymap.set("n", "<M-y>", Picker.cliphist, { desc = "Snacks Picker Cliphist" })
+
 
 -- harpoon
 local harpoon = require("harpoon")
 
-vim.keymap.set("n", "<leader>ha", function()
-    harpoon:list():add()
-end)
-vim.keymap.set("n", "<leader>hh", function()
-    harpoon.ui:toggle_quick_menu(harpoon:list())
-end)
-
-vim.keymap.set("n", "<leader>jj", function()
-    harpoon:list():select(1)
-end)
-vim.keymap.set("n", "<leader>kk", function()
-    harpoon:list():select(2)
-end)
-vim.keymap.set("n", "<leader>ll", function()
-    harpoon:list():select(3)
-end)
+vim.keymap.set("n", "<leader>ha", function() harpoon:list():add() end)
+vim.keymap.set("n", "<leader>hh", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
+vim.keymap.set("n", "<leader>jj", function() harpoon:list():select(1) end)
+vim.keymap.set("n", "<leader>kk", function() harpoon:list():select(2) end)
+vim.keymap.set("n", "<leader>ll", function() harpoon:list():select(3) end)
 
 -- undotree
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "Undotree" })
@@ -210,22 +178,15 @@ vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "Undotree" })
 -- vim-fugitive
 -- vim.keymap.set("n", "<leader>g", vim.cmd.Git)
 
--- neotree
-vim.keymap.set("n", "<C-N>", ":Neotree filesystem reveal left toggle<CR>", { desc = "Neotree" })
 
 -- oil.nvim
 vim.keymap.set("n", "<leader>n", "<CMD>Oil<CR>", { desc = "Open parent directory" })
-
--- outline.nvim
--- vim.keymap.set("n", "<leader>o", ":Outline<CR>", { desc = "Outline Toggle" })
 
 -- Cellular Automaton
 vim.keymap.set("n", "<leader>fml", "<cmd>CellularAutomaton make_it_rain<CR>", { desc = "CellularAutomaton" })
 
 -- Hardtime
 vim.keymap.set("n", "<leader>H", ":Hardtime toggle<CR>", { desc = "Hardtime Toggle" })
-
--- vim.keymap.set("n", "<leader>ä", ":Screenkey toggle<CR>", { desc = "Screenkey Toggle" })
 
 --- Treewalker
 -- movement
@@ -240,83 +201,32 @@ vim.keymap.set("n", "<M-S-h>", "<cmd>Treewalker SwapLeft<cr>", { silent = true }
 vim.keymap.set("n", "<M-S-l>", "<cmd>Treewalker SwapRight<cr>", { silent = true })
 
 --- LSP ---
---
-M.map_lsp_keybinds = function(opts)
-    vim.keymap.set("n", "grn", vim.lsp.buf.rename, { buffer = opts, desc = "LSP Rename" })
-    vim.keymap.set({ "n", "v" }, "gra", vim.lsp.buf.code_action, { buffer = opts, desc = "LSP Code Action" })
-    vim.keymap.set({ "n", "v" }, "<leader>F", function()
-        require("conform").format({
-            lsp_fallback = true,
-            async = false,
-            timeout_ms = 1000,
-        })
-    end, { desc = "Format File or Selection" })
+vim.keymap.set("n", "gn", vim.lsp.buf.rename, { desc = "LSP Rename" })
+vim.keymap.set({ "n", "v" }, "gra", vim.lsp.buf.code_action, { desc = "LSP Code Action" })
+vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "LSP Hover" })
+vim.keymap.set({ "n", "i" }, "<C-s>", vim.lsp.buf.signature_help, { desc = "LSP Signature Help" })
 
-    -- hack solution to fix an error with the zk-nvim lsp when followin in document links
-    local function on_list(options)
-        vim.fn.setqflist({}, " ", options)
-        local qf = vim.fn.getqflist()
-        if vim.fn.len(qf) == 2 then
-            if vim.fn.get(qf,0)["bufnr"] == vim.api.nvim_get_current_buf() then
-                vim.cmd.cfirst()
-            elseif vim.fn.get(qf,1)["bufnr"] == vim.api.nvim_get_current_buf() then
-                vim.cmd.clast()
-            else
-                vim.cmd.cfirst()
-            end
-        else
-            vim.cmd.clast()
-        end
-    end
-    local function tfun()
-        if vim.bo.filetype == "markdown" then
-            vim.lsp.buf.definition({ on_list = on_list })
-        else
-            vim.lsp.buf.definition()
-        end
-    end
-    vim.keymap.set("n", "gd", tfun, { buffer = opts, desc = "LSP Goto Definition" })
+vim.keymap.set("n", "<leader>do", vim.diagnostic.open_float, { desc = "Diagnostic Open Float" })
+vim.keymap.set("n", "<leader>dl", Picker.diagnostics, { desc = "Snacks Picker Diagnostics" })
+vim.keymap.set("n", "<leader>dt", ":ToggleDiagnostics<CR>", { desc = "Diagnostics Toggle" })
+vim.keymap.set("n", "<leader>drs", ":LspRestart<CR>", { desc = "Restart LSP" })
 
-    -- vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = opts, desc = "LSP Goto Definition" })
-    vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = opts, desc = "LSP Goto Declaration" })
-    vim.keymap.set("n", "gT", vim.lsp.buf.type_definition, { buffer = opts, desc = "LSP Goto Type Definition" })
+vim.keymap.set("n", "gd", Picker.lsp_definitions, { desc = "LSP Goto Definition" })
+vim.keymap.set("n", "gD", Picker.lsp_declarations, { desc = "LSP Goto Declaration" })
+vim.keymap.set("n", "gT", Picker.lsp_type_definitions, { desc = "LSP Goto Type Definition" })
+vim.keymap.set("n", "gr", Picker.lsp_references, { nowait = true, desc = "Snacks Picker LSP References" })
+vim.keymap.set("n", "gi", Picker.lsp_implementations, { desc = "Snacks Picker LSP Implementations" })
+vim.keymap.set("n", "gai", Picker.lsp_incoming_calls, { desc = "Snacks Picker LSP Implementations" })
+vim.keymap.set("n", "gao", Picker.lsp_outgoing_calls, { desc = "Snacks Picker LSP Implementations" })
 
-    vim.keymap.set(
-        "n",
-        "grr",
-        require("telescope.builtin").lsp_references,
-        { buffer = opts, desc = "LSP List References" }
-    )
-    vim.keymap.set(
-        "n",
-        "gri",
-        require("telescope.builtin").lsp_implementations,
-        { buffer = opts, desc = "LSP List Implementations" }
-    )
-
-    vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = opts, desc = "LSP Hover" })
-    vim.keymap.set("i", "<C-s>", vim.lsp.buf.signature_help, { buffer = opts, desc = "LSP Signature Help" })
-    vim.keymap.set("n", "<C-s>", vim.lsp.buf.signature_help, { buffer = opts, desc = "LSP Signature Help" })
-
-    vim.keymap.set("n", "<leader>do", vim.diagnostic.open_float, { buffer = opts, desc = "Diagnostic Open Float" })
-    vim.keymap.set("n", "<leader>dn", function()
-        vim.diagnostic.jump({ count = 1 })
-    end, { buffer = opts, desc = "Diagnostic Next" })
-    vim.keymap.set("n", "<leader>dp", function()
-        vim.diagnostic.jump({ count = -1 })
-    end, { buffer = opts, desc = "Diagnostic Previous" })
-    vim.keymap.set(
-        "n",
-        "<leader>dl",
-        require("telescope.builtin").diagnostics,
-        { buffer = opts, desc = "Diagnostics List" }
-    )
-    vim.keymap.set("n", "<leader>dt", ":ToggleDiagnostics<CR>", { desc = "Diagnostics Toggle" })
-
-    vim.keymap.set("n", "<leader>drs", ":LspRestart<CR>", { desc = "Restart LSP" })
-
-    vim.keymap.set("n", "<F5>", ":LspClangdSwitchSourceHeader<CR>", { desc = "Switch Header/Source File" })
-end
+vim.keymap.set("n", "<F5>", ":LspClangdSwitchSourceHeader<CR>", { desc = "Switch Header/Source File" })
+vim.keymap.set({ "n", "v" }, "<leader>F", function()
+    require("conform").format({
+        lsp_fallback = true,
+        async = false,
+        timeout_ms = 1000,
+    })
+end, { desc = "Format File or Selection" })
 
 --- autocomplete binds are in blink plugin file ---
 
@@ -345,17 +255,10 @@ vim.keymap.set(
 
 vim.keymap.set("n", "<leader>zz", "<Cmd>ZkNotes<CR>", { desc = "ZK Find Notes" })
 vim.keymap.set("n", "<leader>zt", "<Cmd>ZkTags<CR>", { desc = "ZK Browse Tags" })
-vim.keymap.set(
-    "n",
-    "<leader>zg",
-    ":lua require('telescope.builtin').live_grep{search_dirs={vim.fn.expand('%:p:h')}}<CR>",
-    { desc = "ZK Grep Notes" }
-)
+vim.keymap.set("n", "<leader>zg", function() Picker.grep({ dirs = { vim.fn.expand("%:p:h") } }) end, { desc = "ZK Grep Notes" })
 
 vim.keymap.set("n", "<leader>zll", "<Cmd>ZkLinks<CR>", { desc = "ZK Links List" })
 vim.keymap.set("n", "<leader>zli", "<Cmd>ZkInsertLink<CR>", { desc = "ZK Link Insert" })
--- Open main note
--- vim.keymap.set("n", "<leader>zz", '<Cmd>ZkNotes { tags = { "ROOT" } }<CR>', { desc = "ZK Open Root Note" })
 
 --- Latex ---
 
@@ -404,7 +307,6 @@ end, { desc = "Markdown Bold Selection" })
 -- Make sure to follow proper markdown convention, and you have a single H1 Heading at the top
 -- vim.keymap.set({ "n", "v" }, "üm", MdPrevHeading, { desc = "Markdown Previous Header" })
 -- vim.keymap.set({ "n", "v" }, "+m", MdNextHeading, { desc = "Markdown Next Header" })
-
 
 --- Strudel ---
 local strudel = require("strudel")

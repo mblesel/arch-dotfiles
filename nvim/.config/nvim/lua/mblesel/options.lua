@@ -13,13 +13,6 @@ vim.cmd("set rtp^='home/michael/.opam/default/share/ocp-indent/vim/'")
 vim.cmd("set spell spelllang=en_us,de_de")
 vim.cmd("set spell!")
 
--- vim.cmd("let g:markdown_folding = 1")
--- Telescope fix for folding error messages
-vim.api.nvim_create_autocmd("FileType", {
-    pattern = "TelescopeResults",
-    command = "setlocal nofoldenable"
-})
-
 -- auto-reload files when modified externally
 -- https://unix.stackexchange.com/a/383044
 vim.o.autoread = true
@@ -85,4 +78,4 @@ vim.opt.foldtext = ""
 -- vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 -- vim.opt.foldlevel = 99
 
-vim.lsp.enable('marksman')
+-- vim.lsp.enable('marksman')
