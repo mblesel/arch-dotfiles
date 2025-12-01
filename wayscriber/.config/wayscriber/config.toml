@@ -1,19 +1,19 @@
 [drawing]
 default_color = [
-    255,
+    152,
     0,
-    0,
+    181,
 ]
-default_thickness = 12.064516129032258
+default_thickness = 9.298387096774192
 default_eraser_size = 12.0
 marker_opacity = 0.32
 default_fill_enabled = false
-default_font_size = 32.0
+default_font_size = 56.0
 hit_test_tolerance = 6.0
 hit_test_linear_threshold = 400
 undo_stack_limit = 100
-font_family = "Monaspace Neon Regular"
-font_weight = "bold"
+font_family = "Monospace"
+font_weight = "normal"
 font_style = "normal"
 text_background_enabled = false
 
@@ -171,9 +171,9 @@ decrease_thickness = [
 ]
 increase_marker_opacity = ["Ctrl+Alt+ArrowUp"]
 decrease_marker_opacity = ["Ctrl+Alt+ArrowDown"]
-select_marker_tool = ["H"]
-select_eraser_tool = ["D"]
-select_pen_tool = ["F"]
+select_marker_tool = ["2"]
+select_eraser_tool = ["3"]
+select_pen_tool = ["1"]
 select_line_tool = []
 select_rect_tool = []
 select_ellipse_tool = []
@@ -218,15 +218,15 @@ set_color_orange = ["O"]
 set_color_pink = ["P"]
 set_color_white = ["W"]
 set_color_black = ["K"]
-capture_full_screen = ["Ctrl+Shift+P"]
-capture_active_window = ["Ctrl+Shift+O"]
-capture_selection = ["Ctrl+Shift+I"]
-capture_clipboard_full = ["Ctrl+C"]
-capture_file_full = ["Ctrl+S"]
-capture_clipboard_selection = ["Ctrl+Shift+C"]
-capture_file_selection = ["Ctrl+Shift+S"]
-capture_clipboard_region = ["Ctrl+6"]
-capture_file_region = ["Ctrl+Shift+6"]
+capture_full_screen = []
+capture_active_window = []
+capture_selection = []
+capture_clipboard_full = []
+capture_file_full = []
+capture_clipboard_selection = []
+capture_file_selection = ["Ctrl+S"]
+capture_clipboard_region = []
+capture_file_region = []
 toggle_frozen_mode = ["Ctrl+Shift+F"]
 
 [capture]
@@ -243,9 +243,9 @@ min_thickness = 1.0
 max_thickness = 8.0
 
 [session]
-persist_transparent = false
-persist_whiteboard = false
-persist_blackboard = false
+persist_transparent = true
+persist_whiteboard = true
+persist_blackboard = true
 persist_history = true
 restore_tool_state = true
 storage = "auto"
