@@ -57,7 +57,7 @@ margin = 50
 match_by = "class"
 animation = "fromTop"
 # command = "st -c dropdown.btop -e btop"
-command = "kittty --app-id=dropdown.btop -e btop"
+command = "kitty --app-id=dropdown.btop -e btop"
 class = "dropdown.btop"
 size = "75% 60%"
 max_size = "1920px 100%"
