@@ -5,7 +5,8 @@
 export PATH="/home/michael/.local/bin:$PATH"
 export PATH="/home/michael/.local/bin/scripts:$PATH"
 export EDITOR="nvim"
-export TERMINAL="st"
+# export TERMINAL="st"
+export TERMINAL="kitty"
 export BROWSER="firefox"
 export READER="okular"
 

@@ -54,6 +54,9 @@ export ZK_NOTEBOOK_DIR='/home/michael/Documents/cloud/ZK/'
 # samedir
 alias samedir='st -d "$(pwd)" &> /dev/null & disown'
 
+# Kitty image viewer
+alias icat='kitty icat'
+
 # tmux-sessionizer
 bind '"\ef":"tmux-sessionizer\n"'
 

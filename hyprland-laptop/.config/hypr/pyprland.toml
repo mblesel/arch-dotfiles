@@ -26,17 +26,19 @@ clear_command = '~/.local/bin/hyprland/clear_wal'
 [scratchpads.dropdown_calc]
 match_by = "class"
 animation = "fromTop"
-command = "st -c dropdown_calc -e R"
-class = "dropdown_calc"
+# command = "st -c dropdown.calc -e R"
+command = "kitty --app-id=dropdown.calc -e R"
+class = "dropdown.calc"
 size = "40% 30%"
 max_size = "1920px 100%"
 margin = 100
 
-[scratchpads.dropdown_st]
+[scratchpads.dropdown_term]
 match_by = "class"
 animation = "fromTop"
-command = "st -c dropdown_st"
-class = "dropdown_st"
+# command = "st -c dropdown.st"
+command = "kitty --app-id=dropdown.term"
+class = "dropdown.term"
 size = "75% 60%"
 max_size = "1920px 100%"
 margin = 50
@@ -44,8 +46,9 @@ margin = 50
 [scratchpads.dropdown_notes]
 match_by = "class"
 animation = "fromTop"
-command = "st -c dropdown_notes -e zk edit --interactive -W ~/Documents/cloud/ZK"
-class = "dropdown_notes"
+# command = "st -c dropdown.notes -e zk edit --interactive -W ~/Documents/cloud/ZK"
+command = "kitty --app-id=dropdown.notes -e zk edit --interactive -W ~/Documents/cloud/ZK"
+class = "dropdown.notes"
 size = "75% 60%"
 max_size = "1920px 100%"
 margin = 50
@@ -53,8 +56,9 @@ margin = 50
 [scratchpads.dropdown_btop]
 match_by = "class"
 animation = "fromTop"
-command = "st -c dropdown_btop -e btop"
-class = "dropdown_btop"
+# command = "st -c dropdown.btop -e btop"
+command = "kittty --app-id=dropdown.btop -e btop"
+class = "dropdown.btop"
 size = "75% 60%"
 max_size = "1920px 100%"
 margin = 50
@@ -62,11 +66,9 @@ margin = 50
 [scratchpads.dropdown_music]
 match_by = "class"
 animation = "fromTop"
-command = "st -c dropdown_music -e ncmpcpp"
-class = "dropdown_music"
+# command = "st -c dropdown.music -e ncmpcpp"
+command = "kitty --app-id=dropdown.music -e ncmpcpp"
+class = "dropdown.music"
 size = "75% 60%"
 max_size = "1920px 100%"
 margin = 50
-
-
-
