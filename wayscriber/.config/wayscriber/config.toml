@@ -1,14 +1,14 @@
 [drawing]
 default_color = [
-    152,
     0,
-    181,
+    0,
+    255,
 ]
-default_thickness = 9.298387096774192
+default_thickness = 6.298387096774192
 default_eraser_size = 12.0
 marker_opacity = 0.32
-default_fill_enabled = false
-default_font_size = 56.0
+default_fill_enabled = true
+default_font_size = 52.0
 hit_test_tolerance = 6.0
 hit_test_linear_threshold = 400
 undo_stack_limit = 100
