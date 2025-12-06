@@ -46,7 +46,7 @@ return {
                         return require("codecompanion.adapters").extend("anthropic", {
                             schema = {
                                 model = {
-                                    default = "claude-3-7-sonnet-20250219",
+                                    default = "claude-sonnet-4-5",
                                 },
                             },
                         })
@@ -55,8 +55,12 @@ return {
                         return require("codecompanion.adapters").extend("xai", {
                             schema = {
                                 model = {
-                                    default = "grok-4-latest",
+                                    default = "grok-4-0709",
                                 },
+                            },
+                            opts = {
+                                vision = true,
+                                stream = true,
                             },
                         })
                     end,
@@ -120,8 +124,8 @@ return {
                 action_palette = {
                     -- width = 95,
                     -- height = 10,
-                    prompt = "Prompt ", 
-                    provider = "snacks", 
+                    prompt = "Prompt ",
+                    provider = "snacks",
                     opts = {
                         show_default_actions = true, -- Show the default actions in the action palette?
                         show_default_prompt_library = true, -- Show the default prompt library in the action palette?

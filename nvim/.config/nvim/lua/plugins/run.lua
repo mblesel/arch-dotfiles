@@ -12,11 +12,11 @@ return {
                 -- corresponding to its index. Note: F25-F36 is for ctrl+F1-F12, if your
                 -- terminal or shell does not recognize those you must change them here,
                 -- you can press them while in insert to see what they are sent as.
-                run = { "<F25>", "<F26>", "<F27>", "<F28>" },
+                run = { "<F1>" },
 
                 -- Open the buffer with the command corresponding to its index without
                 -- running it.
-                open = { "<F1>", "<F2>", "<F3>", "<F4>" },
+                open = { "<F2>" },
 
                 -- Edit the command corresponding to the buffer currently focused.
                 edit = "<leader>re",
