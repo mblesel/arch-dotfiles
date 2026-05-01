@@ -347,5 +347,9 @@ vim.keymap.set("x", ">>", function()
     vim.cmd("normal! gv")
 end, { desc = "TODO" })
 
+--- Disabling overlapping default keymaps ---
+vim.keymap.del("n", "<C-W><C-D>")
+vim.keymap.del("n", "<C-W>d")
+
 
 return M
