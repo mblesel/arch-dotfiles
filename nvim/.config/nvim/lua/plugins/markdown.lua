@@ -28,7 +28,6 @@ return {
                 above = 0,
                 below = 0,
             },
-            ft = { "markdown", "codecompanion" },
             heading = {
                 enabled = true,
                 sign = false,
@@ -88,7 +87,10 @@ return {
                 },
                 head = "@markup.heading",
                 row = "Normal",
-                filler = "Conceal",
+                -- filler = "Conceal",
+            },
+            latex = {
+                enabled = false,
             },
         })
     end,

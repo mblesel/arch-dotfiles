@@ -13,23 +13,6 @@ vim.keymap.set("n", "n", ":keepjumps normal! nzz<cr>")
 vim.keymap.set("n", "<leader>oo", "o<ESC>k", { desc = "Add Empty Line Below" })
 vim.keymap.set("n", "<leader>OO", "O<ESC>j", { desc = "Add Empty Line Above" })
 
-local ts_repeat_move = require("nvim-treesitter.textobjects.repeatable_move")
--- vim way: ; goes to the direction you were moving.
-vim.keymap.set({ "n", "x", "o" }, ";", function()
-    ts_repeat_move.repeat_last_move()
-    vim.cmd("normal! zz")
-end)
-vim.keymap.set({ "n", "x", "o" }, ",", function()
-    ts_repeat_move.repeat_last_move_opposite()
-    vim.cmd("normal! zz")
-end)
-
--- Optionally, make builtin f, F, t, T also repeatable with ; and ,
-vim.keymap.set({ "n", "x", "o" }, "f", ts_repeat_move.builtin_f_expr, { expr = true })
-vim.keymap.set({ "n", "x", "o" }, "F", ts_repeat_move.builtin_F_expr, { expr = true })
-vim.keymap.set({ "n", "x", "o" }, "t", ts_repeat_move.builtin_t_expr, { expr = true })
-vim.keymap.set({ "n", "x", "o" }, "T", ts_repeat_move.builtin_T_expr, { expr = true })
-
 --- vim functions ---
 --
 -- Clear search highlighting
@@ -51,6 +34,7 @@ vim.keymap.set(
     { desc = "Open Link" }
 )
 
+-- TODO FIX
 require("mblesel.markdown_follow_links")
 vim.keymap.set("n", "gm", follow_link, { desc = "Markdown Open Link" })
 
@@ -196,8 +180,8 @@ vim.keymap.set("n", "<M-S-h>", "<cmd>Treewalker SwapLeft<cr>", { silent = true }
 vim.keymap.set("n", "<M-S-l>", "<cmd>Treewalker SwapRight<cr>", { silent = true })
 
 --- LSP ---
-vim.keymap.set("n", "gn", vim.lsp.buf.rename, { desc = "LSP Rename" })
-vim.keymap.set({ "n", "v" }, "gaa", vim.lsp.buf.code_action, { desc = "LSP Code Action" })
+vim.keymap.set("n", "grn", vim.lsp.buf.rename, { desc = "LSP Rename" })
+vim.keymap.set({ "n", "v" }, "gra", vim.lsp.buf.code_action, { desc = "LSP Code Action" })
 vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "LSP Hover" })
 vim.keymap.set({ "n", "i" }, "<C-s>", vim.lsp.buf.signature_help, { desc = "LSP Signature Help" })
 
@@ -209,8 +193,8 @@ vim.keymap.set("n", "<leader>drs", ":LspRestart<CR>", { desc = "Restart LSP" })
 vim.keymap.set("n", "gd", Picker.lsp_definitions, { desc = "LSP Goto Definition" })
 vim.keymap.set("n", "gD", Picker.lsp_declarations, { desc = "LSP Goto Declaration" })
 vim.keymap.set("n", "gT", Picker.lsp_type_definitions, { desc = "LSP Goto Type Definition" })
-vim.keymap.set("n", "gr", Picker.lsp_references, { nowait = true, desc = "Snacks Picker LSP References" })
-vim.keymap.set("n", "gi", Picker.lsp_implementations, { desc = "Snacks Picker LSP Implementations" })
+vim.keymap.set("n", "grr", Picker.lsp_references, { nowait = true, desc = "Snacks Picker LSP References" })
+vim.keymap.set("n", "gri", Picker.lsp_implementations, { desc = "Snacks Picker LSP Implementations" })
 vim.keymap.set("n", "gai", Picker.lsp_incoming_calls, { desc = "Snacks Picker LSP Implementations" })
 vim.keymap.set("n", "gao", Picker.lsp_outgoing_calls, { desc = "Snacks Picker LSP Implementations" })
 
