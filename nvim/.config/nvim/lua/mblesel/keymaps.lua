@@ -153,7 +153,12 @@ vim.keymap.set("n", "<leader>kk", function() harpoon:list():select(2) end)
 vim.keymap.set("n", "<leader>ll", function() harpoon:list():select(3) end)
 
 -- undotree
-vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "Undotree" })
+vim.cmd("packadd nvim.undotree")
+vim.keymap.set("n", "<leader>u", function()
+	require("undotree").open({
+		command = math.floor(vim.api.nvim_win_get_width(0) / 3) .. "vnew",
+	})
+end, { desc = "[U]ndotree toggle" })
 
 -- vim-fugitive
 -- vim.keymap.set("n", "<leader>g", vim.cmd.Git)
