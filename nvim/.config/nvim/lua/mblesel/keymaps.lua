@@ -34,7 +34,6 @@ vim.keymap.set(
     { desc = "Open Link" }
 )
 
--- TODO FIX
 require("mblesel.markdown_follow_links")
 vim.keymap.set("n", "gm", follow_link, { desc = "Markdown Open Link" })
 
@@ -46,10 +45,10 @@ vim.keymap.set({"n", "t"}, "<C-T>", Snacks.terminal.toggle, { desc = "Snacks Ter
 -- AI
 vim.keymap.set({ "n", "v" }, "<leader>al", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
 vim.keymap.set({ "n", "v" }, "<leader>aa", "<cmd>CodeCompanionChat Toggle<cr>", { noremap = true, silent = true })
-vim.keymap.set("v", "ag", "<cmd>CodeCompanionChat Add<cr>", { noremap = true, silent = true })
+vim.keymap.set("v", "<leader>ag", "<cmd>CodeCompanionChat Add<cr>", { noremap = true, silent = true })
 -- Expand 'cc' into 'CodeCompanion' in the command line
 vim.cmd([[cab cc CodeCompanion]])
-vim.cmd([[cab ccc CodeCompanionChat]])
+vim.cmd([[cab ccc CodeCompanionChat adapter=]])
 
 vim.keymap.set("n", "<leader>at", ":SupermavenToggle<CR>", { desc = "SuperMaven Toggle" })
 
@@ -135,7 +134,7 @@ vim.keymap.set("n", "<C-G>", Picker.grep, { desc = "Snacks Picker Grep" })
 vim.keymap.set("n", "<C-B>", Picker.buffers, { desc = "Snacks Picker Buffers" })
 vim.keymap.set("n", "<C-P>", ":SessionManager load_session<CR>", { desc = "Session Load" })
 vim.keymap.set("n", "<C-W>", Picker.lsp_symbols, { desc = "Snacks Picker LSP Symbols" })
-vim.keymap.set("n", "?", Picker.keymaps, { desc = "Snacks Picker Keymaps" })
+vim.keymap.set("n", "<leader>?", Picker.keymaps, { desc = "Snacks Picker Keymaps" })
 vim.keymap.set("n", "<C-/>", Picker.pickers, { desc = "Snacks Picker Pickers" })
 vim.keymap.set("n", "<C-C>", Picker.icons, { desc = "Snacks Picker Icons" })
 vim.keymap.set("n", "<C-N>", Picker.explorer, { desc = "Snacks Picker Explorer" })
@@ -197,11 +196,11 @@ vim.keymap.set("n", "<leader>drs", ":LspRestart<CR>", { desc = "Restart LSP" })
 
 vim.keymap.set("n", "gd", Picker.lsp_definitions, { desc = "LSP Goto Definition" })
 vim.keymap.set("n", "gD", Picker.lsp_declarations, { desc = "LSP Goto Declaration" })
-vim.keymap.set("n", "gT", Picker.lsp_type_definitions, { desc = "LSP Goto Type Definition" })
+vim.keymap.set("n", "grt", Picker.lsp_type_definitions, { desc = "LSP Goto Type Definition" })
 vim.keymap.set("n", "grr", Picker.lsp_references, { nowait = true, desc = "Snacks Picker LSP References" })
 vim.keymap.set("n", "gri", Picker.lsp_implementations, { desc = "Snacks Picker LSP Implementations" })
-vim.keymap.set("n", "gai", Picker.lsp_incoming_calls, { desc = "Snacks Picker LSP Implementations" })
-vim.keymap.set("n", "gao", Picker.lsp_outgoing_calls, { desc = "Snacks Picker LSP Implementations" })
+vim.keymap.set("n", "grci", Picker.lsp_incoming_calls, { desc = "Snacks Picker LSP Implementations" })
+vim.keymap.set("n", "grco", Picker.lsp_outgoing_calls, { desc = "Snacks Picker LSP Implementations" })
 
 vim.keymap.set("n", "<F5>", ":LspClangdSwitchSourceHeader<CR>", { desc = "Switch Header/Source File" })
 vim.keymap.set({ "n", "v" }, "<leader>F", function()

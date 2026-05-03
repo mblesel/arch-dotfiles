@@ -10,43 +10,35 @@ return {
         local spinner = require("plugins.plugins.spinner")
         spinner:init()
         require("codecompanion").setup({
+            interactions = {
+                chat = {
+                    name = "anthropic",
+                    -- model = "TODO",
+                    opts = {
+                        completion_provider = "blink", -- blink|cmp|coc|default
+                    },
+                    cons = {
+                        chat_context = "📎️", -- You can also apply an icon to the fold
+                    },
+                    fold_context = true,
+                },
+            },
             adapters = {
                 http = {
-                    opts = {
-                        show_defaults = false,
-                    },
-                    openai_o3_mini = function()
-                        return require("codecompanion.adapters").extend("openai", {
-                            schema = {
-                                model = {
-                                    default = "o3-mini",
-                                },
-                            },
-                        })
-                    end,
-                    openai_o3 = function()
-                        return require("codecompanion.adapters").extend("openai", {
-                            schema = {
-                                model = {
-                                    default = "o3",
-                                },
-                            },
-                        })
-                    end,
-                    openai_o4_mini = function()
-                        return require("codecompanion.adapters").extend("openai", {
-                            schema = {
-                                model = {
-                                    default = "o4-mini",
-                                },
-                            },
-                        })
-                    end,
                     anthropic = function()
                         return require("codecompanion.adapters").extend("anthropic", {
                             schema = {
                                 model = {
-                                    default = "claude-sonnet-4-5",
+                                    default = "claude-opus-4-7",
+                                },
+                            },
+                        })
+                    end,
+                    openai = function()
+                        return require("codecompanion.adapters").extend("openai", {
+                            schema = {
+                                model = {
+                                    default = "gpt-5.5",
                                 },
                             },
                         })
@@ -55,7 +47,7 @@ return {
                         return require("codecompanion.adapters").extend("xai", {
                             schema = {
                                 model = {
-                                    default = "grok-4-0709",
+                                    default = "grok-4.3",
                                 },
                             },
                             opts = {
@@ -64,34 +56,13 @@ return {
                             },
                         })
                     end,
-                    tavily = function()
-                        return require("codecompanion.adapters").extend("tavily", {
-                            schema = {
-                                model = {
-                                    default = "tavily",
-                                },
-                            },
-                        })
-                    end,
                 },
             },
             prompt_library = {
-                ["writing"] = {
-                    strategy = "chat",
-                    description = "Writing prompt",
-                    opts = {
-                        adapter = {
-                            name = "xai",
-                            model = "grok-4-latest",
-                        },
-                        ignore_system_prompt = true,
-                        intro_message = "This is a Grok4 chat without system prompt",
-                    },
-                    prompts = {
-                        {
-                            role = "system",
-                            content = [[You are a writing assistant]],
-                        },
+                markdown = {
+                    dirs = {
+                        vim.fn.getcwd() .. "/.prompts", -- Can be relative
+                        "~/.config/nvim/prompts", -- Or absolute paths
                     },
                 },
             },
