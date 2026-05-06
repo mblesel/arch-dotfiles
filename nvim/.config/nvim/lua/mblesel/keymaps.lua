@@ -5,6 +5,8 @@ local M = {}
 -- Press 'H', 'L' to jump to start/end of a line (first/last char)
 vim.keymap.set("n", "L", "$", { desc = "Jump start of line" })
 vim.keymap.set("n", "H", "^", { desc = "Jump end of line" })
+vim.keymap.set("v", "L", "$<left>", { desc = "Jump Line Start" })
+vim.keymap.set("v", "H", "^", { desc = "Jump Line End" })
 
 -- Don't add search movements to jumplist
 vim.keymap.set("n", "N", ":keepjumps normal! Nzz<cr>")
@@ -338,9 +340,6 @@ vim.keymap.set("n", "q:", "<nop>")
 
 -- Visual --
 
--- Press 'H', 'L' to jump to start/end of a line (first/last char)
-vim.keymap.set("v", "L", "$<left>", { desc = "Jump Line Start" })
-vim.keymap.set("v", "H", "^", { desc = "Jump Line End" })
 
 -- Reselect the last visual selection
 vim.keymap.set("x", "<<", function()
