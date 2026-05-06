@@ -37,7 +37,7 @@ vim.o.nu = true
 vim.o.rnu = true
 
 -- Start scrolling when we're getting close to margins
-vim.o.scrolloff = 10
+vim.o.scrolloff = 999
 vim.o.sidescrolloff = 15
 vim.o.sidescroll = 1
 
@@ -79,3 +79,4 @@ vim.opt.foldtext = ""
 -- vim.opt.foldlevel = 99
 
 -- vim.lsp.enable('marksman')
+--

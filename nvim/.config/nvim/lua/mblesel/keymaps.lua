@@ -10,8 +10,9 @@ vim.keymap.set("n", "H", "^", { desc = "Jump end of line" })
 vim.keymap.set("n", "N", ":keepjumps normal! Nzz<cr>")
 vim.keymap.set("n", "n", ":keepjumps normal! nzz<cr>")
 
-vim.keymap.set("n", "<leader>oo", "o<ESC>k", { desc = "Add Empty Line Below" })
-vim.keymap.set("n", "<leader>OO", "O<ESC>j", { desc = "Add Empty Line Above" })
+-- official binds for this are ]<space> and [<space>
+-- vim.keymap.set("n", "<leader>oo", "o<ESC>k", { desc = "Add Empty Line Below" })
+-- vim.keymap.set("n", "<leader>OO", "O<ESC>j", { desc = "Add Empty Line Above" })
 
 --- vim functions ---
 --
@@ -25,6 +26,7 @@ vim.keymap.set("n", "<leader>p", '"+p', { desc = "paste from clipboard" })
 -- Move selected lines in visual mode
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move lines down" })
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move lines up" })
+
 
 -- Press gx to open the link under the cursor
 vim.keymap.set(
@@ -319,12 +321,14 @@ vim.keymap.set("n", "G", "Gzz")
 vim.keymap.set("n", "gg", "ggzz")
 vim.keymap.set("n", "<C-i>", "<C-i>zz")
 vim.keymap.set("n", "<C-o>", "<C-o>zz")
-vim.keymap.set("n", "<M-o>", "g;zz")
-vim.keymap.set("n", "<M-i>", "g,zz")
+-- vim.keymap.set("n", "<M-o>", "g;zz")
+-- vim.keymap.set("n", "<M-i>", "g,zz")
+vim.keymap.set("n", "g,", "g,zz")
+vim.keymap.set("n", "g;", "g;zz")
 vim.keymap.set("n", "%", "%zz")
 vim.keymap.set("n", "#", "#zz")
--- vim.keymap.set("n", "j", "jzz")
--- vim.keymap.set("n", "k", "jzz")
+vim.keymap.set("n", "j", "jzz")
+vim.keymap.set("n", "k", "kzz")
 
 -- keep cursor postiton when joining lines
 vim.keymap.set("n", "J", "mzJ`z")

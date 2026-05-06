@@ -33,7 +33,7 @@ return {
         vim.keymap.set({ "x", "o" }, "l=", function() select.select_textobject("@assignment.lhs",   "textobjects") end)
         vim.keymap.set({ "x", "o" }, "r=", function() select.select_textobject("@assignment.rhs",   "textobjects") end)
 
-        vim.keymap.set({ "x", "o" }, "as", function() select.select_textobject("@block.outer",   "textobjects") end)
+        -- vim.keymap.set({ "x", "o" }, "as", function() select.select_textobject("@block.outer",   "textobjects") end)
 
         vim.keymap.set({ "x", "o" }, "ic", function() select.select_textobject("@call.inner",   "textobjects") end)
         vim.keymap.set({ "x", "o" }, "ac", function() select.select_textobject("@call.outer",   "textobjects") end)
@@ -70,7 +70,7 @@ return {
         vim.keymap.set({ "n", "x", "o" }, "]f", function() move.goto_next_start("@function.outer", "textobjects") end)
         vim.keymap.set({ "n", "x", "o" }, "]o", function() move.goto_next_start("@class.outer", "textobjects") end)
         vim.keymap.set({ "n", "x", "o" }, "]/", function() move.goto_next_start("@comment.outer", "textobjects") end)
-        vim.keymap.set({ "n", "x", "o" }, "]s", function() move.goto_next_start("@block.outer", "textobjects") end)
+        -- vim.keymap.set({ "n", "x", "o" }, "]s", function() move.goto_next_start("@block.outer", "textobjects") end)
 
         vim.keymap.set({ "n", "x", "o" }, "]A", function() move.goto_next_end("@parameter.inner", "textobjects") end)
         vim.keymap.set({ "n", "x", "o" }, "]I", function() move.goto_next_end("@conditional.outer","textobjects") end)
@@ -78,7 +78,7 @@ return {
         vim.keymap.set({ "n", "x", "o" }, "]C", function() move.goto_next_end("@call.outer", "textobjects") end)
         vim.keymap.set({ "n", "x", "o" }, "]F", function() move.goto_next_end("@function.outer", "textobjects") end)
         vim.keymap.set({ "n", "x", "o" }, "]O", function() move.goto_next_end("@class.outer", "textobjects") end)
-        vim.keymap.set({ "n", "x", "o" }, "]S", function() move.goto_next_end("@block.outer", "textobjects") end)
+        -- vim.keymap.set({ "n", "x", "o" }, "]S", function() move.goto_next_end("@block.outer", "textobjects") end)
 
         vim.keymap.set({ "n", "x", "o" }, "[=", function() move.goto_previous_start("@assignment.inner", "textobjects") end)
         vim.keymap.set({ "n", "x", "o" }, "[a", function() move.goto_previous_start("@parameter.inner", "textobjects") end)
@@ -88,7 +88,7 @@ return {
         vim.keymap.set({ "n", "x", "o" }, "[f", function() move.goto_previous_start("@function.outer", "textobjects") end)
         vim.keymap.set({ "n", "x", "o" }, "[o", function() move.goto_previous_start("@class.outer", "textobjects") end)
         vim.keymap.set({ "n", "x", "o" }, "[/", function() move.goto_previous_start("@comment.outer", "textobjects") end)
-        vim.keymap.set({ "n", "x", "o" }, "[s", function() move.goto_previous_start("@block.outer", "textobjects") end)
+        -- vim.keymap.set({ "n", "x", "o" }, "[s", function() move.goto_previous_start("@block.outer", "textobjects") end)
 
         vim.keymap.set({ "n", "x", "o" }, "[A", function() move.goto_previous_end("@parameter.inner", "textobjects") end)
         vim.keymap.set({ "n", "x", "o" }, "[I", function() move.goto_previous_end("@conditional.outer","textobjects") end)
@@ -96,7 +96,7 @@ return {
         vim.keymap.set({ "n", "x", "o" }, "[C", function() move.goto_previous_end("@call.outer", "textobjects") end)
         vim.keymap.set({ "n", "x", "o" }, "[F", function() move.goto_previous_end("@function.outer", "textobjects") end)
         vim.keymap.set({ "n", "x", "o" }, "[O", function() move.goto_previous_end("@class.outer", "textobjects") end)
-        vim.keymap.set({ "n", "x", "o" }, "[S", function() move.goto_previous_end("@block.outer", "textobjects") end)
+        -- vim.keymap.set({ "n", "x", "o" }, "[S", function() move.goto_previous_end("@block.outer", "textobjects") end)
 
         -- Swaps
         -- TODO activate this?
@@ -119,102 +119,3 @@ return {
     end,
 }
 
---- old config from master branch version
---     config = function()
---         ---@diagnostic disable-next-line: missing-fields
---         require("nvim-treesitter.configs").setup({
---             textobjects = {
---                 select = {
---                     enable = true,
---                     -- Automatically jump forward to textobj, similar to targets.vim
---                     lookahead = true,
---
---                     keymaps = {
---                         -- You can use the capture groups defined in textobjects.scm
---                         ["a="] = { query = "@assignment.outer", desc = "Select outer part of an assignment" },
---                         ["i="] = { query = "@assignment.inner", desc = "Select inner part of an assignment" },
---                         ["l="] = { query = "@assignment.lhs", desc = "Select left hand side of an assignment" },
---                         ["r="] = { query = "@assignment.rhs", desc = "Select right hand side of an assignment" },
---
---                         ["aa"] = { query = "@parameter.outer", desc = "Select outer part of a parameter/argument" },
---                         ["ia"] = { query = "@parameter.inner", desc = "Select inner part of a parameter/argument" },
---
---                         ["ai"] = { query = "@conditional.outer", desc = "Select outer part of a conditional" },
---                         ["ii"] = { query = "@conditional.inner", desc = "Select inner part of a conditional" },
---
---                         ["al"] = { query = "@loop.outer", desc = "Select outer part of a loop" },
---                         ["il"] = { query = "@loop.inner", desc = "Select inner part of a loop" },
---
---                         ["ac"] = { query = "@call.outer", desc = "Select outer part of a function call" },
---                         ["ic"] = { query = "@call.inner", desc = "Select inner part of a function call" },
---
---                         ["af"] = { query = "@function.outer", desc = "Select outer part of a function definition" },
---                         ["if"] = { query = "@function.inner", desc = "Select inner part of a function definition" },
---
---                         ["ao"] = { query = "@class.outer", desc = "Select outer part of a class" },
---                         ["io"] = { query = "@class.inner", desc = "Select inner part of a class" },
---
---                         ["at"] = { query = "@comment.outer", desc = "Select outer part of a comment" },
---                         ["it"] = { query = "@comment.inner", desc = "Select inner part of a comment" },
---
---                         ["as"] = { query = "@block.outer", query_group = "locals", desc = "Select language scope" },
---                     },
---                 },
---                 move = {
---                     enable = true,
---                     set_jumps = true, -- whether to set jumps in the jumplist
---                     goto_next_start = {
---                         ["]c"] = { query = "@call.outer", desc = "Next function call start" },
---                         ["]f"] = { query = "@function.outer", desc = "Next method/function def start" },
---                         ["]o"] = { query = "@class.outer", desc = "Next class start" },
---                         ["]t"] = { query = "@comment.outer", desc = "Next comment start" },
---                         ["]i"] = { query = "@conditional.outer", desc = "Next conditional start" },
---                         ["]l"] = { query = "@loop.outer", desc = "Next loop start" },
---
---                         ["]s"] = { query = "@block.outer", query_group = "locals", desc = "Next scope" },
---                         ["]a"] = { query = "@paramter.inner", desc = "Next parameter start" },
---                     },
---                     goto_next_end = {
---                         ["]C"] = { query = "@call.outer", desc = "Next function call end" },
---                         ["]F"] = { query = "@function.outer", desc = "Next method/function def end" },
---                         ["]O"] = { query = "@class.outer", desc = "Next class end" },
---                         ["]T"] = { query = "@comment.outer", desc = "Next comment end" },
---                         ["]I"] = { query = "@conditional.outer", desc = "Next conditional end" },
---                         ["]L"] = { query = "@loop.outer", desc = "Next loop end" },
---                         ["]S"] = { query = "@block.outer", query_group = "locals", desc = "Next scope" },
---                         ["]A"] = { query = "@paramter.inner", desc = "Next parameter start" },
---                     },
---                     goto_previous_start = {
---                         ["[c"] = { query = "@call.outer", desc = "Prev function call start" },
---                         ["[f"] = { query = "@function.outer", desc = "Prev method/function def start" },
---                         ["[o"] = { query = "@class.outer", desc = "Prev class start" },
---                         ["[t"] = { query = "@comment.outer", desc = "Prev comment start" },
---                         ["[i"] = { query = "@conditional.outer", desc = "Prev conditional start" },
---                         ["[l"] = { query = "@loop.outer", desc = "Prev loop start" },
---                         ["[s"] = { query = "@block.outer", query_group = "locals", desc = "Next scope" },
---                         ["[a"] = { query = "@paramter.inner", desc = "Next parameter start" },
---                     },
---                     goto_previous_end = {
---                         ["[C"] = { query = "@call.outer", desc = "Prev function call end" },
---                         ["[F"] = { query = "@function.outer", desc = "Prev method/function def end" },
---                         ["[O"] = { query = "@class.outer", desc = "Prev class end" },
---                         ["[T"] = { query = "@comment.outer", desc = "Prev comment end" },
---                         ["[I"] = { query = "@conditional.outer", desc = "Prev conditional end" },
---                         ["[L"] = { query = "@loop.outer", desc = "Prev loop end" },
---                         ["[S"] = { query = "@block.outer", query_group = "locals", desc = "Next scope" },
---                         ["[A"] = { query = "@paramter.inner", desc = "Next parameter start" },
---                     },
---                 },
---                 swap = {
---                     enable = true,
---                     swap_next = {
---                         ["<leader>a"] = "@parameter.inner",
---                     },
---                     swap_previous = {
---                         ["<leader>A"] = "@parameter.inner",
---                     },
---                 },
---             },
---         })
---     end,
--- }
