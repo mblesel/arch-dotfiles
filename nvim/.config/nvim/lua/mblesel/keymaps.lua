@@ -189,7 +189,8 @@ vim.keymap.set("n", "<M-S-l>", "<cmd>Treewalker SwapRight<cr>", { silent = true 
 
 --- LSP ---
 vim.keymap.set("n", "grn", vim.lsp.buf.rename, { desc = "LSP Rename" })
-vim.keymap.set({ "n", "v" }, "gra", vim.lsp.buf.code_action, { desc = "LSP Code Action" })
+-- vim.keymap.set({ "n", "v" }, "gra", vim.lsp.buf.code_action, { desc = "LSP Code Action" })
+vim.keymap.set({ "n", "v" }, "gra", require("actions-preview").code_actions, { desc = "LSP Code Action" }) 
 vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "LSP Hover" })
 vim.keymap.set({ "n", "i" }, "<C-s>", vim.lsp.buf.signature_help, { desc = "LSP Signature Help" })
 
