@@ -38,7 +38,7 @@ vim.keymap.set(
     { desc = "Open Link" }
 )
 
-require("mblesel.markdown_follow_links")
+require("config.markdown_follow_links")
 vim.keymap.set("n", "gm", follow_link, { desc = "Markdown Open Link" })
 
 -- Macros
@@ -57,39 +57,39 @@ vim.cmd([[cab ccc CodeCompanionChat adapter=]])
 vim.keymap.set("n", "<leader>at", ":SupermavenToggle<CR>", { desc = "SuperMaven Toggle" })
 
 -- quickfix
-require("mblesel.qf_toggle")
+require("config.qf_toggle")
 -- Additional keybinds in trouble.lua
 vim.keymap.set("n", "<leader>cc", ":Trouble qflist toggle<CR>", { desc = "Quickfix close list" })
 vim.keymap.set("n", "<leader>CC", Toggle_qf, { desc = "Quickfix close list" })
 
 --- spellchecking
-vim.keymap.set("n", "<leader>mst", ":setlocal spell!<cr>", { desc = "Spelling Toggle" })
+vim.keymap.set("n", "<leader>st", ":setlocal spell!<cr>", { desc = "Spelling Toggle" })
 -- Show spelling suggestions / spell suggestions
 -- vim.keymap.set("n", "<leader>mss", function()
 --     vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("z=", true, false, true), "m", true)
 -- end, { desc = "Spelling Suggestions" })
 local Picker = require("snacks").picker
-vim.keymap.set("n", "<leader>mss", Picker.spelling, { desc = "Spelling Suggestions" })
+vim.keymap.set("n", "<leader>ss", Picker.spelling, { desc = "Spelling Suggestions" })
 
 -- Add word under the cursor as a good word
-vim.keymap.set("n", "<leader>msg", function()
+vim.keymap.set("n", "<leader>sg", function()
     vim.cmd("normal! zg")
 end, { desc = "Spelling Add Word" })
 
 -- Undo zw, remove the word from the entry in 'spellfile'.
-vim.keymap.set("n", "<leader>msu", function()
+vim.keymap.set("n", "<leader>su", function()
     vim.cmd("normal! zug")
 end, { desc = "Spelling Remove Word" })
 
 -- Repeat the replacement done by |z=| for all matches with the replaced word
 -- in the current window.
-vim.keymap.set("n", "<leader>msr", function()
+vim.keymap.set("n", "<leader>sr", function()
     -- vim.cmd(":spellr")
     vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(":spellr\n", true, false, true), "m", true)
 end, { desc = "Spelling Repeat" })
 
-vim.keymap.set("n", "<leader>msf", "]s", { desc = "Spelling Next" })
-vim.keymap.set("n", "<leader>msb", "[s", { desc = "Spelling Previous" })
+-- vim.keymap.set("n", "<leader>msf", "]s", { desc = "Spelling Next" })
+-- vim.keymap.set("n", "<leader>msb", "[s", { desc = "Spelling Previous" })
 
 
 --- buffers and splits ---
@@ -106,7 +106,7 @@ vim.keymap.set("n", "<C-J>", "<C-W><C-J>", { noremap = true, desc = "Split go do
 vim.keymap.set("n", "<C-K>", "<C-W><C-K>", { noremap = true, desc = "Split go up" })
 vim.keymap.set("n", "<C-L>", "<C-W><C-L>", { noremap = true, desc = "Split go right" })
 vim.keymap.set("n", "<leader>v", ":vsplit<CR>", { noremap = true, desc = "Split Vertical" })
-vim.keymap.set("n", "<leader>s", ":split<CR>", { noremap = true, desc = "Split Horizontal" })
+-- vim.keymap.set("n", "<leader>s", ":split<CR>", { noremap = true, desc = "Split Horizontal" })
 
 -- Resize split windows to be equal size
 vim.keymap.set("n", "<leader>=", "<C-w>=", { desc = "Splits Equal Size" })
@@ -192,13 +192,13 @@ vim.keymap.set("n", "<M-S-l>", "<cmd>Treewalker SwapRight<cr>", { silent = true 
 --- LSP ---
 vim.keymap.set("n", "grn", vim.lsp.buf.rename, { desc = "LSP Rename" })
 -- vim.keymap.set({ "n", "v" }, "gra", vim.lsp.buf.code_action, { desc = "LSP Code Action" })
-vim.keymap.set({ "n", "v" }, "gra", require("actions-preview").code_actions, { desc = "LSP Code Action" }) 
+vim.keymap.set({ "n", "v" }, "gra", require("actions-preview").code_actions, { desc = "LSP Code Action" })
 vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "LSP Hover" })
 vim.keymap.set({ "n", "i" }, "<C-s>", vim.lsp.buf.signature_help, { desc = "LSP Signature Help" })
 
 vim.keymap.set("n", "<leader>do", vim.diagnostic.open_float, { desc = "Diagnostic Open Float" })
 vim.keymap.set("n", "<leader>dl", Picker.diagnostics, { desc = "Snacks Picker Diagnostics" })
-vim.keymap.set("n", "<leader>dt", ":ToggleDiagnostics<CR>", { desc = "Diagnostics Toggle" })
+vim.keymap.set('n', '<leader>dt', function() vim.diagnostic.enable(not vim.diagnostic.is_enabled()) end, { desc = "Diagnostics Toggle" })
 vim.keymap.set("n", "<leader>drs", ":LspRestart<CR>", { desc = "Restart LSP" })
 
 vim.keymap.set("n", "gd", Picker.lsp_definitions, { desc = "LSP Goto Definition" })
@@ -260,7 +260,7 @@ vim.keymap.set("n", "<leader>zli", "<Cmd>ZkInsertLink<CR>", { desc = "ZK Link In
 vim.keymap.set("n", "<leader>lc", ":VimtexCompile<CR>", { desc = "Vimtex Compile" })
 
 --- Markdown ---
-require("mblesel.markdown_funcs")
+require("config.markdown_funcs")
 
 vim.keymap.set("n", "<leader>mp", ":MarkdownPreview<CR>", { desc = "Markdown Preview" })
 vim.keymap.set("n", "<leader>P", ":PasteImage<CR>", { desc = "Markdown Paste Image" })
@@ -305,14 +305,14 @@ end, { desc = "Markdown Bold Selection" })
 
 --- Strudel ---
 local strudel = require("strudel")
-
-vim.keymap.set("n", "<leader>sl", strudel.launch, { desc = "Launch Strudel" })
-vim.keymap.set("n", "<leader>sq", strudel.quit, { desc = "Quit Strudel" })
-vim.keymap.set("n", "<leader>st", strudel.toggle, { desc = "Strudel Toggle Play/Stop" })
--- vim.keymap.set("n", "<leader>su", strudel.update, { desc = "Strudel Update" })
--- vim.keymap.set("n", "<leader>ss", strudel.stop, { desc = "Strudel Stop Playback" })
-vim.keymap.set("n", "<leader>sb", strudel.set_buffer, { desc = "Strudel set current buffer" })
-vim.keymap.set("n", "<leader>sx", strudel.execute, { desc = "Strudel set current buffer and update" })
+-- TODO redo keybind because they might overlap with spell keybinds
+-- vim.keymap.set("n", "<leader>sl", strudel.launch, { desc = "Launch Strudel" })
+-- vim.keymap.set("n", "<leader>sq", strudel.quit, { desc = "Quit Strudel" })
+-- vim.keymap.set("n", "<leader>st", strudel.toggle, { desc = "Strudel Toggle Play/Stop" })
+-- -- vim.keymap.set("n", "<leader>su", strudel.update, { desc = "Strudel Update" })
+-- -- vim.keymap.set("n", "<leader>ss", strudel.stop, { desc = "Strudel Stop Playback" })
+-- vim.keymap.set("n", "<leader>sb", strudel.set_buffer, { desc = "Strudel set current buffer" })
+-- vim.keymap.set("n", "<leader>sx", strudel.execute, { desc = "Strudel set current buffer and update" })
 
 
 --- generic settings that don't need to be remembered ---

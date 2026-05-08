@@ -3,11 +3,10 @@ return {
     dependencies = {
         "williamboman/mason-lspconfig.nvim",
         "WhoIsSethDaniel/mason-tool-installer.nvim",
+        "neovim/nvim-lspconfig",
     },
     config = function()
         local mason = require("mason")
-        local mason_lspconfig = require("mason-lspconfig")
-        local mason_tool_installer = require("mason-tool-installer")
 
         mason.setup({
             ui = {
@@ -16,34 +15,6 @@ return {
                     package_pending = "➜",
                     package_uninstalled = "✗",
                 },
-            },
-        })
-
-        mason_lspconfig.setup({
-            ensure_installed = {
-                "clangd",
-                "marksman",
-                "lua_ls",
-                "bashls",
-                "pyright",
-                "texlab",
-                "rust_analyzer",
-                "harper_ls",
-            },
-        })
-
-        mason_tool_installer.setup({
-            ensure_installed = {
-                -- TODO
-                "clang-format",
-                "cpplint",
-                "markdownlint",
-                "stylua",
-                "isort",
-                "black",
-                "shellcheck",
-                "shfmt",
-                -- "pylint",
             },
         })
     end,

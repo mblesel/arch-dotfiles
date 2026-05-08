@@ -10,8 +10,10 @@ vim.opt.termguicolors = true
 
 vim.cmd("set rtp^='home/michael/.opam/default/share/ocp-indent/vim/'")
 
-vim.cmd("set spell spelllang=en_us,de_de")
-vim.cmd("set spell!")
+-- vim.cmd("set spell spelllang=en_us,de_de")
+-- vim.cmd("set spell!")
+vim.o.spelllang = "en_us,de_de"
+vim.o.spell = false
 
 -- auto-reload files when modified externally
 -- https://unix.stackexchange.com/a/383044
@@ -66,7 +68,7 @@ vim.opt.signcolumn = "yes"
 
 -- Diagnostic Settings
 -- vim.diagnostic.config({ virtual_text = true })
-vim.diagnostic.config({ virtual_text = { current_line = true } })
+-- vim.diagnostic.config({ virtual_text = { current_line = true } })
 
 -- Set fold settings
 -- vim.opt.foldmethod = "manual"

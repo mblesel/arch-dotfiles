@@ -13,6 +13,10 @@ return {
             -- python = { "pylint" },
         }
 
+        -- https://github.com/mfussenegger/nvim-lint#customize-built-in-linters 
+        -- In case linters need to be configured speciallly
+        -- Most of the time a global config file would be better if the linter supports it
+
         local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
 
         vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave", "TextChanged" }, {

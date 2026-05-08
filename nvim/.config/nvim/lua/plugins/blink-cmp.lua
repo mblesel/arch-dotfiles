@@ -13,7 +13,10 @@ return {
                 "rafamadriz/friendly-snippets",
                 config = function()
                     require("luasnip.loaders.from_vscode").lazy_load()
-                    require("luasnip.loaders.from_vscode").lazy_load({
+                    -- require("luasnip.loaders.from_vscode").lazy_load({
+                    --     paths = { vim.fn.stdpath("config") .. "/snippets" },
+                    -- })
+                    require("luasnip.loaders.from_lua").lazy_load({
                         paths = { vim.fn.stdpath("config") .. "/snippets" },
                     })
                 end,
@@ -66,8 +69,8 @@ return {
 
             ["<C-K>"] = { "select_prev", "fallback" },
             ["<C-J>"] = { "select_next", "fallback" },
-            ["<C-p>"] = { "select_prev", "fallback_to_mappings" },
-            ["<C-n>"] = { "select_next", "fallback_to_mappings" },
+            -- ["<C-p>"] = { "select_prev", "fallback_to_mappings" },
+            -- ["<C-n>"] = { "select_next", "fallback_to_mappings" },
 
             ["<S-k>"] = { "scroll_documentation_up", "fallback" },
             ["<S-j>"] = { "scroll_documentation_down", "fallback" },
