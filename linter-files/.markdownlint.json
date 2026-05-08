@@ -3,7 +3,7 @@
         "style": "asterisk"
     },
     "line-length": {
-        "line_length": 120,
+        "line_length": 240,
         "stern": true
     },
     "no-duplicate-heading": {

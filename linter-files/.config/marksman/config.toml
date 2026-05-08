@@ -1,5 +1,5 @@
 [core]
-markdown.file_extensions = ["md", "markdown"]
+markdown.file_extensions = ["md", "markdown", "mdx"]
 # Enable GitLab Flavored Markdown heading ID disambiguation method described
 # in https://docs.gitlab.com/ee/user/markdown.html#heading-ids-and-links.
 # This enables multiple headings with equal IDs to be deterministically
@@ -34,6 +34,8 @@ paranoid = false
 [code_action]
 # Enable/disable "Table of Contents" code action
 toc.enable = true
+# Heading levels to include when generating a Table of Contents
+toc.include = [1, 2, 3, 4, 5, 6]
 
 # Enable/disable "Create missing linked file" code action
 create_missing_file.enable = true
