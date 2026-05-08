@@ -11,7 +11,10 @@ return {
             callback = function(args)
                 local lang = vim.treesitter.language.get_lang(args.match)
                 if lang and vim.treesitter.language.add(lang) then
-                    vim.treesitter.start()
+                    -- disable highlighting for latex because vimtex does it better
+                    if lang ~= "latex" then 
+                        vim.treesitter.start()
+                    end
                     -- vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()" --- TODO check if this works out or needs to be deactivated
                 end
             end,
