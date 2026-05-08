@@ -65,9 +65,11 @@ vim.keymap.set("n", "<leader>CC", Toggle_qf, { desc = "Quickfix close list" })
 --- spellchecking
 vim.keymap.set("n", "<leader>mst", ":setlocal spell!<cr>", { desc = "Spelling Toggle" })
 -- Show spelling suggestions / spell suggestions
-vim.keymap.set("n", "<leader>mss", function()
-    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("z=", true, false, true), "m", true)
-end, { desc = "Spelling Suggestions" })
+-- vim.keymap.set("n", "<leader>mss", function()
+--     vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("z=", true, false, true), "m", true)
+-- end, { desc = "Spelling Suggestions" })
+local Picker = require("snacks").picker
+vim.keymap.set("n", "<leader>mss", Picker.spelling, { desc = "Spelling Suggestions" })
 
 -- Add word under the cursor as a good word
 vim.keymap.set("n", "<leader>msg", function()
@@ -143,7 +145,7 @@ vim.keymap.set("n", "<C-/>", Picker.pickers, { desc = "Snacks Picker Pickers" })
 vim.keymap.set("n", "<C-C>", Picker.icons, { desc = "Snacks Picker Icons" })
 vim.keymap.set("n", "<C-N>", Picker.explorer, { desc = "Snacks Picker Explorer" })
 -- yanky plugin is loaded before snacks and will auto register this function
-vim.keymap.set("n", "<M-y>", Picker.yanky, { desc = "Snacks Picker Cliphist" }) 
+vim.keymap.set("n", "<M-R>", Picker.yanky, { desc = "Snacks Picker Cliphist" }) 
 
 
 -- harpoon

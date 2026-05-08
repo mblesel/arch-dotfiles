@@ -28,6 +28,7 @@ return {
                 "pyright",
                 "texlab",
                 "rust_analyzer",
+                "harper_ls",
             },
         })
 
