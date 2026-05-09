@@ -3,18 +3,13 @@ local M = {}
 --- movement remaps ---
 --
 -- Press 'H', 'L' to jump to start/end of a line (first/last char)
-vim.keymap.set("n", "L", "$", { desc = "Jump start of line" })
-vim.keymap.set("n", "H", "^", { desc = "Jump end of line" })
-vim.keymap.set("v", "L", "$<left>", { desc = "Jump Line Start" })
-vim.keymap.set("v", "H", "^", { desc = "Jump Line End" })
+vim.keymap.set("n", "L", "$", { desc = "Jump Line End" })
+vim.keymap.set("v", "L", "$<left>", { desc = "Jump Line End" })
+vim.keymap.set({ "n", "v" }, "H", "^", { desc = "Jump Line Start" })
 
 -- Don't add search movements to jumplist
 vim.keymap.set("n", "N", ":keepjumps normal! Nzz<cr>")
 vim.keymap.set("n", "n", ":keepjumps normal! nzz<cr>")
-
--- official binds for this are ]<space> and [<space>
--- vim.keymap.set("n", "<leader>oo", "o<ESC>k", { desc = "Add Empty Line Below" })
--- vim.keymap.set("n", "<leader>OO", "O<ESC>j", { desc = "Add Empty Line Above" })
 
 --- vim functions ---
 --
@@ -65,22 +60,16 @@ vim.keymap.set("n", "<leader>CC", Toggle_qf, { desc = "Quickfix close list" })
 --- spellchecking
 vim.keymap.set("n", "<leader>st", ":setlocal spell!<cr>", { desc = "Spelling Toggle" })
 -- Show spelling suggestions / spell suggestions
--- vim.keymap.set("n", "<leader>mss", function()
---     vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("z=", true, false, true), "m", true)
--- end, { desc = "Spelling Suggestions" })
 local Picker = require("snacks").picker
 vim.keymap.set("n", "<leader>ss", Picker.spelling, { desc = "Spelling Suggestions" })
-
 -- Add word under the cursor as a good word
 vim.keymap.set("n", "<leader>sg", function()
     vim.cmd("normal! zg")
 end, { desc = "Spelling Add Word" })
-
--- Undo zw, remove the word from the entry in 'spellfile'.
+-- Undo zg, remove the word from the entry in 'spellfile'.
 vim.keymap.set("n", "<leader>su", function()
     vim.cmd("normal! zug")
 end, { desc = "Spelling Remove Word" })
-
 -- Repeat the replacement done by |z=| for all matches with the replaced word
 -- in the current window.
 vim.keymap.set("n", "<leader>sr", function()
@@ -88,16 +77,13 @@ vim.keymap.set("n", "<leader>sr", function()
     vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(":spellr\n", true, false, true), "m", true)
 end, { desc = "Spelling Repeat" })
 
--- vim.keymap.set("n", "<leader>msf", "]s", { desc = "Spelling Next" })
--- vim.keymap.set("n", "<leader>msb", "[s", { desc = "Spelling Previous" })
-
 
 --- buffers and splits ---
 
 -- Swap between last two buffers
 vim.keymap.set("n", "<leader>`", "<C-^>", { desc = "Buffer Tab" })
 
--- Buffer stuff
+-- tab stuff
 vim.keymap.set("n", "<leader>t", ":tabe<CR>", { desc = "Tab New" })
 
 -- Split stuff
@@ -106,7 +92,7 @@ vim.keymap.set("n", "<C-J>", "<C-W><C-J>", { noremap = true, desc = "Split go do
 vim.keymap.set("n", "<C-K>", "<C-W><C-K>", { noremap = true, desc = "Split go up" })
 vim.keymap.set("n", "<C-L>", "<C-W><C-L>", { noremap = true, desc = "Split go right" })
 vim.keymap.set("n", "<leader>v", ":vsplit<CR>", { noremap = true, desc = "Split Vertical" })
--- vim.keymap.set("n", "<leader>s", ":split<CR>", { noremap = true, desc = "Split Horizontal" })
+vim.keymap.set("n", "<leader>S", ":split<CR>", { noremap = true, desc = "Split Horizontal" })
 
 -- Resize split windows to be equal size
 vim.keymap.set("n", "<leader>=", "<C-w>=", { desc = "Splits Equal Size" })
@@ -133,8 +119,8 @@ vim.keymap.set("n", "ycc", "yygccp", { remap = true, desc = "Comment and paste c
 
 --- Plugins ---
 
--- Snacks.picker
-local Picker = require("snacks").picker
+-- Snacks.ricker
+-- local Picker = require("snacks").picker
 vim.keymap.set("n", "<C-F>", Picker.files, { desc = "Snacks Picker Files" })
 vim.keymap.set("n", "<C-G>", Picker.grep, { desc = "Snacks Picker Grep" })
 vim.keymap.set("n", "<C-B>", Picker.buffers, { desc = "Snacks Picker Buffers" })
@@ -145,7 +131,7 @@ vim.keymap.set("n", "<C-/>", Picker.pickers, { desc = "Snacks Picker Pickers" })
 vim.keymap.set("n", "<C-C>", Picker.icons, { desc = "Snacks Picker Icons" })
 vim.keymap.set("n", "<C-N>", Picker.explorer, { desc = "Snacks Picker Explorer" })
 -- yanky plugin is loaded before snacks and will auto register this function
-vim.keymap.set("n", "<M-R>", Picker.yanky, { desc = "Snacks Picker Cliphist" }) 
+vim.keymap.set("n", "<M-r>", Picker.yanky, { desc = "Snacks Picker Cliphist" }) 
 
 
 -- harpoon
@@ -157,13 +143,6 @@ vim.keymap.set("n", "<leader>jj", function() harpoon:list():select(1) end)
 vim.keymap.set("n", "<leader>kk", function() harpoon:list():select(2) end)
 vim.keymap.set("n", "<leader>ll", function() harpoon:list():select(3) end)
 
--- undotree
-vim.cmd("packadd nvim.undotree")
-vim.keymap.set("n", "<leader>u", function()
-	require("undotree").open({
-		command = math.floor(vim.api.nvim_win_get_width(0) / 3) .. "vnew",
-	})
-end, { desc = "[U]ndotree toggle" })
 
 -- vim-fugitive
 -- vim.keymap.set("n", "<leader>g", vim.cmd.Git)
@@ -270,9 +249,6 @@ vim.keymap.set("v", "<leader>mlL", MdConvertToLink, { desc = "Markdown Convert t
 -- In visual mode, surround the selected url with markdown link syntax
 vim.keymap.set("n", "<leader>mll", MdConvertToLink2, { desc = "Markdown Convert to Link" })
 
--- vim.keymap.set("n", "<leader>mc", MdCheckbox, { desc = "Markdown Tick Checkbox" })
--- vim.keymap.set("n", "<leader>mC", MdCheckbox2, { desc = "Markdown Tick Checkbox" })
-
 vim.keymap.set("n", "zj", MdFoldlevel2, { desc = "Markdown Fold Level 2+ Headings" })
 vim.keymap.set("n", "zk", MdFoldlevel3, { desc = "Markdown Fold Level 3+ Headings" })
 vim.keymap.set("n", "zl", MdFoldlevel4, { desc = "Markdown Fold Level 4+ Headings" })
@@ -298,14 +274,10 @@ vim.keymap.set("v", "<leader>mb", function()
     end
 end, { desc = "Markdown Bold Selection" })
 
--- Search UP/DOWN for a markdown header
--- Make sure to follow proper markdown convention, and you have a single H1 Heading at the top
--- vim.keymap.set({ "n", "v" }, "üm", MdPrevHeading, { desc = "Markdown Previous Header" })
--- vim.keymap.set({ "n", "v" }, "+m", MdNextHeading, { desc = "Markdown Next Header" })
 
 --- Strudel ---
+-- TODO make these ft specific mappings
 local strudel = require("strudel")
--- TODO redo keybind because they might overlap with spell keybinds
 -- vim.keymap.set("n", "<leader>sl", strudel.launch, { desc = "Launch Strudel" })
 -- vim.keymap.set("n", "<leader>sq", strudel.quit, { desc = "Quit Strudel" })
 -- vim.keymap.set("n", "<leader>st", strudel.toggle, { desc = "Strudel Toggle Play/Stop" })
