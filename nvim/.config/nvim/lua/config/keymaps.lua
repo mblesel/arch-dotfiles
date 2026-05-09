@@ -237,6 +237,7 @@ vim.keymap.set("n", "<leader>zli", "<Cmd>ZkInsertLink<CR>", { desc = "ZK Link In
 --- Latex ---
 
 vim.keymap.set("n", "<leader>lc", ":VimtexCompile<CR>", { desc = "Vimtex Compile" })
+vim.keymap.set("n", "<leader>lv", ":VimtexView<CR>", { desc = "Vimtex Compile" })
 
 --- Markdown ---
 require("config.markdown_funcs")

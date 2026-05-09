@@ -6,7 +6,7 @@ return {
         -- VimTeX configuration goes here, e.g.
         -- vim.g.vimtex_view_general_viewer = "okular"
         vim.g.vimtex_view_method = "zathura_simple"
-        vim.g.vimtex_view_general_viewer = "zathura_simple"
+        -- vim.g.vimtex_view_general_viewer = "zathura_simple"
         vim.g.vimtex_compiler_method = "latexmk"
         vim.g.tex_flavor = "latex"
         vim.g.vimtex_quickfix_mode = 0
@@ -16,6 +16,7 @@ return {
                 "-f",
                 "-file-line-error",
                 "-interaction=nonstopmode",
+                "-synctex=1",
             },
         }
     end,
