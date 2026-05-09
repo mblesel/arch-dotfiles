@@ -1,0 +1,7 @@
+#! /usr/bin/env bash
+# papis-short-help: Add the reference from url and set up some stuff
+
+papis add "$1" --set tags NOTELESS --set project PROJECTLESS
+papis doctor --checks key-type --fix NOTELESS
+papis edit --notes NOTELESS
+papis tag --remove NOTELESS --add TODO --add PROJECTLESS NOTELESS

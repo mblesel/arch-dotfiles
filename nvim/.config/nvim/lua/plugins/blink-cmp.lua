@@ -137,6 +137,9 @@ return {
             -- per_filetype = {
             --     codecompanion = { "codecompanion " },
             -- },
+            per_filetype = {
+                yaml = { "papis" },
+            },
             providers = {
                 supermaven = {
                     name = "supermaven",

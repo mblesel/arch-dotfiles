@@ -1,0 +1,20 @@
+[settings]
+default-library = michael
+opentool = zathura
+editor = nvim
+file-browser = yazi
+add-open = True
+
+[michael]
+dir = /home/michael/Documents/cloud/PAPIS/
+use-git = False
+notes-name = notes.md
+notes-template = /home/michael/Documents/cloud/PAPIS/template.md
+database-backend = papis
+bibtex-unicode = False
+ref-format = {doc[title]:.15} {doc[author]:.6} {doc[year]}
+multiple-authors-format = {au[family]}, {au[given]}
+citations-file-name = citations.yaml
+# Additional stuff to figure out
+# extra-bibtex-keys = ["extra"]
+# extra-bibtex-types = ["thesis"]

@@ -239,11 +239,24 @@ vim.keymap.set("n", "<leader>zli", "<Cmd>ZkInsertLink<CR>", { desc = "ZK Link In
 vim.keymap.set("n", "<leader>lc", ":VimtexCompile<CR>", { desc = "Vimtex Compile" })
 vim.keymap.set("n", "<leader>lv", ":VimtexView<CR>", { desc = "Vimtex Compile" })
 
+--- Papis ---
+vim.keymap.set("n", "<leader>PP", ":Papis search<CR>", { desc = "Papis Search" })
+
+vim.keymap.set("n", "<leader>Pe", ":Papis at-cursor edit<CR>", { desc = "Papis Cursor Edit" })
+vim.keymap.set("n", "<leader>Pn", ":Papis at-cursor open-note<CR>", { desc = "Papis Cursor Note " })
+vim.keymap.set("n", "<leader>Pf", ":Papis at-cursor open-file<CR>", { desc = "Papis Cursor File" })
+vim.keymap.set("n", "<leader>Pi", ":Papis at-cursor show-popup<CR>", { desc = "Papis Cursor Show Popup" })
+
+vim.keymap.set("n", "<leader>P", ":Papis <CR>", { desc = "Papis " })
+
+
+vim.keymap.set("n", "<leader>P", ":Papis <CR>", { desc = "Papis " })
+
 --- Markdown ---
 require("config.markdown_funcs")
 
 vim.keymap.set("n", "<leader>mp", ":MarkdownPreview<CR>", { desc = "Markdown Preview" })
-vim.keymap.set("n", "<leader>P", ":PasteImage<CR>", { desc = "Markdown Paste Image" })
+-- vim.keymap.set("n", "<leader>P", ":PasteImage<CR>", { desc = "Markdown Paste Image" })
 
 -- In visual mode, surround the selected text with markdown link syntax
 vim.keymap.set("v", "<leader>mlL", MdConvertToLink, { desc = "Markdown Convert to Link" })
