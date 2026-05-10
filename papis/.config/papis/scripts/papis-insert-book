@@ -1,0 +1,10 @@
+#! /usr/bin/env bash
+# papis-short-help: Add the pdf as a book
+
+cp ~/.config/papis/templates/book.bib /tmp/book.bib
+$READER $1 &
+$EDITOR /tmp/book.bib
+papis add $1 --from bibtex /tmp/book.bib --set tags NOTELESS --set project PROJECTLESS --no-open
+papis doctor --checks key-type --fix NOTELESS
+papis edit --notes NOTELESS
+papis tag --remove NOTELESS --add TODO --add BOOK --add PROJECTLESS NOTELESS

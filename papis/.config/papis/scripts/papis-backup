@@ -1,0 +1,4 @@
+#! /usr/bin/env bash
+# papis-short-help: Add the reference from url and set up some stuff
+
+papis export --all --format bibtex > ~/.config/papis/backup/backup.bib

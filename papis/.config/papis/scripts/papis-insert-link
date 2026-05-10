@@ -1,0 +1,9 @@
+#! /usr/bin/env bash
+# papis-short-help: Add a online link reference that has no pdf attacheed to it
+
+cp ~/.config/papis/templates/link.bib /tmp/link.bib
+$EDITOR /tmp/link.bib
+papis add --from bibtex /tmp/link.bib --set tags NOTELESS --set project PROJECTLESS --no-open
+papis doctor --checks key-type --fix NOTELESS
+papis edit --notes NOTELESS
+papis tag --remove NOTELESS --add TODO --add MISC --add PROJECTLESS NOTELESS

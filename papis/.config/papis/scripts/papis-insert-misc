@@ -1,0 +1,10 @@
+#! /usr/bin/env bash
+# papis-short-help: Add a online link reference that has a pdf attached
+
+cp ~/.config/papis/templates/misc.bib /tmp/misc.bib
+$READER $1 &
+$EDITOR /tmp/misc.bib
+papis add $1 --from bibtex /tmp/misc.bib --set tags NOTELESS --set project PROJECTLESS --no-open
+papis doctor --checks key-type --fix NOTELESS
+papis edit --notes NOTELESS
+papis tag --remove NOTELESS --add TODO --add MISC --add PROJECTLESS NOTELESS

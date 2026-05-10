@@ -1,0 +1,10 @@
+#! /usr/bin/env bash
+# papis-short-help: Add the pdf as a student thesis
+
+cp ~/.config/papis/templates/thesis.bib /tmp/thesis.bib
+$READER $1 &
+$EDITOR /tmp/thesis.bib
+papis add $1 --from bibtex /tmp/thesis.bib --set tags NOTELESS --set project PROJECTLESS --no-open
+papis doctor --checks key-type --fix NOTELESS
+papis edit --notes NOTELESS
+papis tag --remove NOTELESS --add TODO --add THESIS --add PROJECTLESS NOTELESS

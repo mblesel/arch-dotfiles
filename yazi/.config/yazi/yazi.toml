@@ -1,6 +1,6 @@
 [opener]
 pdff = [
-    { run = 'okular "$@"', desc = "Okular", block = true, for = "unix" },
+    { run = 'zathura "$@"', desc = "Zathura", block = true, for = "unix" },
 ]
 
 play = [

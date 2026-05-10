@@ -15,6 +15,5 @@ bibtex-unicode = False
 ref-format = {doc[title]:.15} {doc[author]:.6} {doc[year]}
 multiple-authors-format = {au[family]}, {au[given]}
 citations-file-name = citations.yaml
-# Additional stuff to figure out
-# extra-bibtex-keys = ["extra"]
-# extra-bibtex-types = ["thesis"]
+extra-bibtex-keys = ["extra"]
+extra-bibtex-types = ["thesis"]
