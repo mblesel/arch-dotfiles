@@ -117,6 +117,12 @@ vim.keymap.set("n", "<leader>RM", confirm_and_delete_buffer, { desc = "File Dele
 -- Comment and paste current line
 vim.keymap.set("n", "ycc", "yygccp", { remap = true, desc = "Comment and paste current line" })
 
+-- Lua related binds
+
+vim.keymap.set("n", "<leader><leader>xx", "<cmd>source %<CR>", { desc = "Neovim Source File" })
+vim.keymap.set("n", "<leader><leader>x", ":.lua<CR>", { desc = "Neovim Source Line" })
+vim.keymap.set("v", "<leader><leader>x", ":lua<CR>", { desc = "Neovim Source Selection" })
+
 --- Plugins ---
 
 -- Snacks.ricker
@@ -172,7 +178,7 @@ vim.keymap.set("n", "<M-S-l>", "<cmd>Treewalker SwapRight<cr>", { silent = true 
 vim.keymap.set("n", "grn", vim.lsp.buf.rename, { desc = "LSP Rename" })
 -- vim.keymap.set({ "n", "v" }, "gra", vim.lsp.buf.code_action, { desc = "LSP Code Action" })
 vim.keymap.set({ "n", "v" }, "gra", require("actions-preview").code_actions, { desc = "LSP Code Action" })
-vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "LSP Hover" })
+-- vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, { desc = "LSP Hover" })
 vim.keymap.set({ "n", "i" }, "<C-s>", vim.lsp.buf.signature_help, { desc = "LSP Signature Help" })
 
 vim.keymap.set("n", "<leader>do", vim.diagnostic.open_float, { desc = "Diagnostic Open Float" })
@@ -246,11 +252,6 @@ vim.keymap.set("n", "<leader>Pe", ":Papis at-cursor edit<CR>", { desc = "Papis C
 vim.keymap.set("n", "<leader>Pn", ":Papis at-cursor open-note<CR>", { desc = "Papis Cursor Note " })
 vim.keymap.set("n", "<leader>Pf", ":Papis at-cursor open-file<CR>", { desc = "Papis Cursor File" })
 vim.keymap.set("n", "<leader>Pi", ":Papis at-cursor show-popup<CR>", { desc = "Papis Cursor Show Popup" })
-
-vim.keymap.set("n", "<leader>P", ":Papis <CR>", { desc = "Papis " })
-
-
-vim.keymap.set("n", "<leader>P", ":Papis <CR>", { desc = "Papis " })
 
 --- Markdown ---
 require("config.markdown_funcs")
@@ -344,8 +345,8 @@ vim.keymap.set("x", ">>", function()
 end, { desc = "TODO" })
 
 --- Disabling overlapping default keymaps ---
-vim.keymap.del("n", "<C-W><C-D>")
-vim.keymap.del("n", "<C-W>d")
+pcall(vim.keymap.del, "n", "<C-W><C-D>")
+pcall(vim.keymap.del, "n", "<C-W>d")
 
 
 return M
