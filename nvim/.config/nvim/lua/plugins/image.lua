@@ -1,6 +1,6 @@
 return {
     "3rd/image.nvim",
-    branch = "feat/toggle-rendering",
+    ft = { "markdown", "vimwiki" },
     config = function()
         require("image").setup({
             backend = "kitty", -- or "ueberzug" or "sixel"
@@ -37,10 +37,38 @@ return {
             scale_factor = 1.0,
             window_overlap_clear_enabled = false,
             window_overlap_clear_ft_ignore = { "cmp_menu", "cmp_docs", "snacks_notif", "scrollview", "scrollview_sign" },
-            editor_only_render_when_focused = false, 
-            tmux_show_only_in_active_window = false, 
+            editor_only_render_when_focused = false,
+            tmux_show_only_in_active_window = false,
             hijack_file_patterns = { "*.png", "*.jpg", "*.jpeg", "*.gif", "*.webp", "*.avif" },
             kitty_method = "normal",
         })
+    end,
+
+    init = function()
+        -- vim.api.nvim_create_autocmd("InsertEnter", {
+        --     callback = function()
+        --         if require("image").is_enabled() then
+        --             require("image").disable()
+        --         end
+        --     end,
+        -- })
+        --
+        -- vim.api.nvim_create_autocmd("InsertLeave", {
+        --     callback = function()
+        --         if not require("image").is_enabled() then
+        --             require("image").enable()
+        --         end
+        --     end,
+        -- })
+
+        vim.api.nvim_create_user_command("ImageToggle", function()
+            if require("image").is_enabled() then
+                require("image").disable()
+            else
+                require("image").enable()
+            end
+        end, {})
+
+        vim.keymap.set("n", "<leader>mit", "<cmd>ImageToggle<CR>", { desc = "Toggle image preview" })
     end,
 }

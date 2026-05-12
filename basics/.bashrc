@@ -18,6 +18,9 @@ alias la='ls -la --color=auto'
 
 alias grep='grep --color=auto'
 
+# use kitten ssh
+alias ssh='kitten ssh'
+
 # Shortcuts
 alias open='xdg-open'
 alias g='grep'
@@ -84,7 +87,7 @@ export PATH="/home/michael/.cargo/bin:$PATH"
 export INVOKEAI_ROOT=/home/michael/Projects/invokeai
 
 # ruby gem
-export PATH="/home/michael/.local/share/gem/ruby/3.0.0/bin:$PATH"
+export PATH="/home/michael/.local/share/gem/ruby/3.4.0/bin:$PATH"
 
 # opam configuration
 test -r /home/michael/.opam/opam-init/init.sh && . /home/michael/.opam/opam-init/init.sh >/dev/null 2>/dev/null || true

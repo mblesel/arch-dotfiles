@@ -1,4 +1,5 @@
 #! /usr/bin/env bash
 # papis-short-help: Export .bib file for given project name
 
+papis cache reset
 papis export --all --format bibtex project:$1 > bibliography.bib
