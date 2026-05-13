@@ -125,7 +125,7 @@ vim.keymap.set("v", "<leader><leader>x", ":lua<CR>", { desc = "Neovim Source Sel
 
 --- Plugins ---
 
--- Snacks.ricker
+-- Snacks.picker
 -- local Picker = require("snacks").picker
 vim.keymap.set("n", "<C-F>", Picker.files, { desc = "Snacks Picker Files" })
 vim.keymap.set("n", "<C-G>", Picker.grep, { desc = "Snacks Picker Grep" })
@@ -139,6 +139,10 @@ vim.keymap.set("n", "<C-N>", Picker.explorer, { desc = "Snacks Picker Explorer" 
 -- yanky plugin is loaded before snacks and will auto register this function
 vim.keymap.set("n", "<M-r>", Picker.yanky, { desc = "Snacks Picker Cliphist" }) 
 
+-- Mini
+vim.keymap.set("n", "<leader>go", function()
+    require("mini.diff").toggle_overlay(0)
+end, { desc = "Toggle mini.diff overlay" })
 
 -- harpoon
 local harpoon = require("harpoon")
@@ -148,7 +152,6 @@ vim.keymap.set("n", "<leader>hh", function() harpoon.ui:toggle_quick_menu(harpoo
 vim.keymap.set("n", "<leader>jj", function() harpoon:list():select(1) end)
 vim.keymap.set("n", "<leader>kk", function() harpoon:list():select(2) end)
 vim.keymap.set("n", "<leader>ll", function() harpoon:list():select(3) end)
-
 
 -- vim-fugitive
 -- vim.keymap.set("n", "<leader>g", vim.cmd.Git)

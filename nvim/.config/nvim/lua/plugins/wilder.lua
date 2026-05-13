@@ -35,7 +35,6 @@ return {
                 min_height = "25%",
                 max_height = "25%",
                 border = "rounded",
-                -- left = { " ", wilder.popupmenu_devicons() }, -- Triggers errors whent trying to complete subcommands
                 right = { " ", wilder.popupmenu_scrollbar() },
             }))
         )

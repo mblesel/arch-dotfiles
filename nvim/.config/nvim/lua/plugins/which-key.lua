@@ -15,8 +15,4 @@ return {
             desc = "Buffer Local Keymaps (which-key)",
         },
     },
-    -- triggers = {
-    --     { "<auto>", mode = "nixsotc" },
-    --     { "<leader>", mode = { "n", "v" } },
-    -- },
 }
