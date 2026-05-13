@@ -16,6 +16,7 @@ return {
                 "-f",
                 "-file-line-error",
                 "-interaction=nonstopmode",
+                "-shell-escape",
                 "-synctex=1",
             },
         }

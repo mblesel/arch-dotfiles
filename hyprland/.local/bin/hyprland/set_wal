@@ -5,6 +5,7 @@
 # killall dunst
 # killall -SIGUSR2 waybar
 
+killall swaybg
 echo "$1" > ~/.wallpaper
 swaybg -m fill -i "$1"
 

@@ -244,6 +244,12 @@ vim.keymap.set("n", "<leader>zli", "<Cmd>ZkInsertLink<CR>", { desc = "ZK Link In
 
 vim.keymap.set("n", "<leader>lc", ":VimtexCompile<CR>", { desc = "Vimtex Compile" })
 vim.keymap.set("n", "<leader>lv", ":VimtexView<CR>", { desc = "Vimtex Compile" })
+vim.keymap.set("v", "<leader>la", "<plug>(vimtex-cmd-create)", { desc = "Vimtex Surround With Command" })
+vim.keymap.set("v", "<leader>le", "<plug>(vimtex-env-surround-visual)", { desc = "Vimtex Surround With Environment" })
+vim.keymap.set("n", "<leader>li", "<plug>(vimtex-info)", { desc = "Vimtex Info" })
+vim.keymap.set("n", "<leader>lt", "<plug>(vimtex-toc-toggle)", { desc = "Vimtex TOC Toggle" })
+vim.keymap.set("n", "<leader>lo", "<plug>(vimtex-compile-output)", { desc = "Vim Compiler Output" })
+vim.keymap.set("n", "<leader>ls", "<plug>(vimtex-status)", { desc = "Vimtex Status" })
 
 --- Papis ---
 vim.keymap.set("n", "<leader>PP", ":Papis search<CR>", { desc = "Papis Search" })

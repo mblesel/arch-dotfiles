@@ -2,4 +2,5 @@
 
 # mv "$(cat ~/.cache/wal/wal)" ~/Images/walls-trash/
 mv "$(cat ~/.wallpaper)" ~/Images/walls-trash/
+killall swaybg
 pypr wall next

@@ -49,6 +49,23 @@ return {
         terminal = {
             enabled = true,
         },
+        image = {
+            enabled = true,
+            doc = {
+                -- enable image viewer for documents
+                -- a treesitter parser must be available for the enabled languages.
+                enabled = true,
+                -- render the image inline in the buffer
+                -- if your env doesn't support unicode placeholders, this will be disabled
+                -- takes precedence over `opts.float` on supported terminals
+                inline = false,
+                -- render the image in a floating window
+                -- only used if `opts.inline` is disabled
+                float = true,
+                max_width = 120,
+                max_height = 80,
+            },
+        },
     },
 
     -- NOTE not sure if this is placed well here in the init function, but seems to work
@@ -60,10 +77,10 @@ return {
                 vim.api.nvim_set_hl(0, "SnacksPicker", { bg = "none", nocombine = true })
                 vim.api.nvim_set_hl(0, "SnacksPickerBorder", { fg = "#316c71", bg = "none", nocombine = true })
                 --- Background for Terminal and Layy/Mason etc.
-                vim.api.nvim_set_hl(0, "NormalFloat", {  bg = "#282727"})
+                vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#282727" })
                 --- Wilder
-                vim.api.nvim_set_hl(0, "Pmenu", {  bg = "#282727", fg = "#E6C384" })
-                vim.api.nvim_set_hl(0, "PmenuSel", {  bg = "#737C73" })
+                vim.api.nvim_set_hl(0, "Pmenu", { bg = "#282727", fg = "#E6C384" })
+                vim.api.nvim_set_hl(0, "PmenuSel", { bg = "#737C73" })
             end,
         })
     end,
