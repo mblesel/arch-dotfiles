@@ -268,11 +268,6 @@ require("config.markdown_funcs")
 vim.keymap.set("n", "<leader>mp", ":MarkdownPreview<CR>", { desc = "Markdown Preview" })
 -- vim.keymap.set("n", "<leader>P", ":PasteImage<CR>", { desc = "Markdown Paste Image" })
 
--- In visual mode, surround the selected text with markdown link syntax
-vim.keymap.set("v", "<leader>mlL", MdConvertToLink, { desc = "Markdown Convert to Link" })
--- In visual mode, surround the selected url with markdown link syntax
-vim.keymap.set("n", "<leader>mll", MdConvertToLink2, { desc = "Markdown Convert to Link" })
-
 vim.keymap.set("n", "zj", MdFoldlevel2, { desc = "Markdown Fold Level 2+ Headings" })
 vim.keymap.set("n", "zk", MdFoldlevel3, { desc = "Markdown Fold Level 3+ Headings" })
 vim.keymap.set("n", "zl", MdFoldlevel4, { desc = "Markdown Fold Level 4+ Headings" })
@@ -298,6 +293,62 @@ vim.keymap.set("v", "<leader>mb", function()
     end
 end, { desc = "Markdown Bold Selection" })
 
+--- MarkdownPlus TODO: make only load in ft=markdown
+-- Lists
+vim.keymap.set("n", "<leader>mx", "<Plug>(MarkdownPlusToggleCheckbox)")
+-- Formatting
+vim.keymap.set("n", "<leader>mb", "<Plug>(MarkdownPlusBold)")
+vim.keymap.set("x", "<leader>mb", "<Plug>(MarkdownPlusBold)")
+vim.keymap.set("n", "<leader>mi", "<Plug>(MarkdownPlusItalic)")
+vim.keymap.set("x", "<leader>mi", "<Plug>(MarkdownPlusItalic)")
+vim.keymap.set("n", "<leader>mf", "<Plug>(MarkdownPlusClearFormatting)")
+vim.keymap.set("x", "<leader>mf", "<Plug>(MarkdownPlusClearFormatting)")
+vim.keymap.set("n", "<leader>m`", "<Plug>(MarkdownPlusCode)")
+vim.keymap.set("x", "<leader>m`", "<Plug>(MarkdownPlusCode)")
+vim.keymap.set("n", "<leader>mu", "<Plug>(MarkdownPlusUnderline)")
+vim.keymap.set("x", "<leader>mu", "<Plug>(MarkdownPlusUnderline)")
+vim.keymap.set("n", "<leader>m=", "<Plug>(MarkdownPlusHighlight)")
+vim.keymap.set("x", "<leader>m=", "<Plug>(MarkdownPlusHighlight)")
+vim.keymap.set("n", "<leader>ms", "<Plug>(MarkdownPlusStrikethrough)")
+vim.keymap.set("x", "<leader>ms", "<Plug>(MarkdownPlusStrikethrough)")
+-- Code Blocks
+vim.keymap.set("n", "<leader>mc", "<Plug>(MarkdownPlusCodeBlockInsert)")
+vim.keymap.set("x", "<leader>mc", "<Plug>(MarkdownPlusCodeBlockInsert)")
+-- Links
+vim.keymap.set("n", "<leader>mll", "<Plug>(MarkdownPlusAutoLinkURL)")
+vim.keymap.set("x", "<leader>mli", "<Plug>(MarkdownPlusSelectionToLink)")
+vim.keymap.set("n", "<leader>mlp", "<Plug>(MarkdownPlusSmartPaste)")
+-- Quotes/Callouts
+vim.keymap.set("n", "<leader>mq", "<Plug>(MarkdownPlusToggleQuote)")
+vim.keymap.set("x", "<leader>mq", "<Plug>(MarkdownPlusToggleQuote)")
+vim.keymap.set("n", "<leader>mQ", "<Plug>(MarkdownPlusInsertCallout)")
+vim.keymap.set("x", "<leader>mQ", "<Plug>(MarkdownPlusInsertCallout)")
+-- Tables
+vim.keymap.set("n", "<leader>mtf", "<Plug>(MarkdownPlusTableFormat)")
+vim.keymap.set("n", "<leader>mtc", "<Plug>(MarkdownPlusTableCreate)")
+vim.keymap.set("n", "<leader>mtk", "<Plug>(MarkdownPlusTableMoveRowUp)")
+vim.keymap.set("n", "<leader>mtj", "<Plug>(MarkdownPlusTableMoveRowDown)")
+vim.keymap.set("n", "<leader>mtdc", "<Plug>(MarkdownPlusTableDeleteColumn)")
+vim.keymap.set("n", "<leader>mth", "<Plug>(MarkdownPlusTableMoveColumnLeft)")
+vim.keymap.set("n", "<leader>mtl", "<Plug>(MarkdownPlusTableMoveColumnRight)")
+vim.keymap.set("n", "<leader>mtiR", "<Plug>(MarkdownPlusTableInsertRowAbove)")
+vim.keymap.set("n", "<leader>mtir", "<Plug>(MarkdownPlusTableInsertRowBelow)")
+vim.keymap.set("n", "<leader>mtiC", "<Plug>(MarkdownPlusTableInsertColumnLeft)")
+vim.keymap.set("n", "<leader>mtic", "<Plug>(MarkdownPlusTableInsertColumnRight)")
+vim.keymap.set("n", "<leader>mta", "<Plug>(MarkdownPlusTableToggleCellAlignment)")
+vim.keymap.set("i", "<M-j>", "<Plug>(MarkdownPlusTableNavLeft)")
+vim.keymap.set("i", "<M-j>", "<Plug>(MarkdownPlusTableNavDown)")
+vim.keymap.set("i", "<M-k>", "<Plug>(MarkdownPlusTableNavUp)")
+vim.keymap.set("i", "<M-l>", "<Plug>(MarkdownPlusTableNavRight)")
+-- Footnotes
+vim.keymap.set("n", "<leader>mfn", "<Plug>(MarkdownPlusFootnoteNext)")
+vim.keymap.set("n", "<leader>mfp", "<Plug>(MarkdownPlusFootnotePrev)")
+vim.keymap.set("n", "<leader>mfe", "<Plug>(MarkdownPlusFootnoteEdit)")
+vim.keymap.set("n", "<leader>mfl", "<Plug>(MarkdownPlusFootnoteList)")
+vim.keymap.set("n", "<leader>mfd", "<Plug>(MarkdownPlusFootnoteDelete)")
+vim.keymap.set("n", "<leader>mfi", "<Plug>(MarkdownPlusFootnoteInsert)")
+vim.keymap.set("n", "<leader>mfr", "<Plug>(MarkdownPlusFootnoteGotoReference)")
+vim.keymap.set("n", "<leader>mfg", "<Plug>(MarkdownPlusFootnoteGotoDefinition)")
 
 --- Strudel ---
 -- TODO make these ft specific mappings
