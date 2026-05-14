@@ -54,6 +54,7 @@ return {
             enable = true,
         },
     },
+
     -- NOTE not sure if this is placed well here in the init function, but seems to work
     init = function()
         vim.api.nvim_create_autocmd("ColorScheme", {

@@ -294,7 +294,15 @@ vim.keymap.set("v", "<leader>mb", function()
 end, { desc = "Markdown Bold Selection" })
 
 --- MarkdownPlus TODO: make only load in ft=markdown
--- Lists
+-- -- Lists
+-- TODO manually binding <CR> in insert mode somehow does not work...
+-- vim.keymap.set("i", "<CR>", "<Plug>(MarkdownPlusListEnter)")
+-- vim.keymap.set("i", "<Tab>", "<Plug>(MarkdownPlusListIndent)")
+-- vim.keymap.set("i", "<S-Tab>", "<Plug>(MarkdownPlusListOutdent)")
+-- vim.keymap.set("i", "<M-CR>", "<Plug>(MarkdownPlusListShiftEnter)")
+-- vim.keymap.set("i", "<BS>", "<Plug>(MarkdownPlusListBackspace)")
+-- vim.keymap.set("n", "O", "<Plug>(MarkdownPlusNewListItemAbove)")
+-- vim.keymap.set("n", "o", "<Plug>(MarkdownPlusNewListItemBelow)")
 vim.keymap.set("n", "<leader>mx", "<Plug>(MarkdownPlusToggleCheckbox)")
 -- Formatting
 vim.keymap.set("n", "<leader>mb", "<Plug>(MarkdownPlusBold)")
