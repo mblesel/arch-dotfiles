@@ -63,4 +63,18 @@ return {
             },
         },
     },
+
+    init = function()
+        vim.api.nvim_create_autocmd("FileType", {
+            pattern = "markdown",
+            callback = function(args)
+                -- Defer so it runs after the plugin sets its mappings
+                vim.schedule(function()
+                    pcall(vim.keymap.del, "i", "<C-T>", { buffer = args.buf })
+                    pcall(vim.keymap.del, "i", "<Tab>", { buffer = args.buf })
+                    pcall(vim.keymap.del, "i", "<S-Tab>", { buffer = args.buf })
+                end)
+            end,
+        })
+    end,
 }

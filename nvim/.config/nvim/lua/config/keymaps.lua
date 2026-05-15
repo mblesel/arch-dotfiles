@@ -24,7 +24,6 @@ vim.keymap.set("n", "<leader>p", '"+p', { desc = "paste from clipboard" })
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move lines down" })
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move lines up" })
 
-
 -- Press gx to open the link under the cursor
 vim.keymap.set(
     "n",
@@ -39,7 +38,7 @@ vim.keymap.set("n", "gm", follow_link, { desc = "Markdown Open Link" })
 -- Macros
 
 -- Terminal
-vim.keymap.set({"n", "t"}, "<C-T>", Snacks.terminal.toggle, { desc = "Snacks Terminal Toggle" })
+vim.keymap.set({ "n", "t" }, "<C-T>", Snacks.terminal.toggle, { desc = "Snacks Terminal Toggle" })
 
 -- AI
 vim.keymap.set({ "n", "v" }, "<leader>al", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
@@ -76,7 +75,6 @@ vim.keymap.set("n", "<leader>sr", function()
     -- vim.cmd(":spellr")
     vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(":spellr\n", true, false, true), "m", true)
 end, { desc = "Spelling Repeat" })
-
 
 --- buffers and splits ---
 
@@ -137,7 +135,7 @@ vim.keymap.set("n", "<C-/>", Picker.pickers, { desc = "Snacks Picker Pickers" })
 vim.keymap.set("n", "<C-C>", Picker.icons, { desc = "Snacks Picker Icons" })
 vim.keymap.set("n", "<C-N>", Picker.explorer, { desc = "Snacks Picker Explorer" })
 -- yanky plugin is loaded before snacks and will auto register this function
-vim.keymap.set("n", "<M-r>", Picker.yanky, { desc = "Snacks Picker Cliphist" }) 
+vim.keymap.set("n", "<M-r>", Picker.yanky, { desc = "Snacks Picker Cliphist" })
 
 -- Mini
 vim.keymap.set("n", "<leader>go", function()
@@ -147,11 +145,21 @@ end, { desc = "Toggle mini.diff overlay" })
 -- harpoon
 local harpoon = require("harpoon")
 
-vim.keymap.set("n", "<leader>ha", function() harpoon:list():add() end)
-vim.keymap.set("n", "<leader>hh", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
-vim.keymap.set("n", "<leader>jj", function() harpoon:list():select(1) end)
-vim.keymap.set("n", "<leader>kk", function() harpoon:list():select(2) end)
-vim.keymap.set("n", "<leader>ll", function() harpoon:list():select(3) end)
+vim.keymap.set("n", "<leader>ha", function()
+    harpoon:list():add()
+end)
+vim.keymap.set("n", "<leader>hh", function()
+    harpoon.ui:toggle_quick_menu(harpoon:list())
+end)
+vim.keymap.set("n", "<leader>jj", function()
+    harpoon:list():select(1)
+end)
+vim.keymap.set("n", "<leader>kk", function()
+    harpoon:list():select(2)
+end)
+vim.keymap.set("n", "<leader>ll", function()
+    harpoon:list():select(3)
+end)
 
 -- vim-fugitive
 vim.keymap.set("n", "<leader>g", vim.cmd.Git)
@@ -186,8 +194,11 @@ vim.keymap.set({ "n", "i" }, "<C-s>", vim.lsp.buf.signature_help, { desc = "LSP 
 
 vim.keymap.set("n", "<leader>do", vim.diagnostic.open_float, { desc = "Diagnostic Open Float" })
 vim.keymap.set("n", "<leader>dl", Picker.diagnostics, { desc = "Snacks Picker Diagnostics" })
-vim.keymap.set('n', '<leader>dt', function() vim.diagnostic.enable(not vim.diagnostic.is_enabled()) end, { desc = "Diagnostics Toggle" })
+vim.keymap.set("n", "<leader>dt", function()
+    vim.diagnostic.enable(not vim.diagnostic.is_enabled())
+end, { desc = "Diagnostics Toggle" })
 vim.keymap.set("n", "<leader>drs", ":LspRestart<CR>", { desc = "Restart LSP" })
+
 
 vim.keymap.set("n", "gd", Picker.lsp_definitions, { desc = "LSP Goto Definition" })
 vim.keymap.set("n", "gD", Picker.lsp_declarations, { desc = "LSP Goto Declaration" })
@@ -210,8 +221,12 @@ end, { desc = "Format File or Selection" })
 
 -- LuaSnip snippet jumps
 local ls = require("luasnip")
-vim.keymap.set({"i", "s"}, "<M-Tab>", function() ls.jump( 1) end, {silent = true})
-vim.keymap.set({"i", "s"}, "<M-S-Tab>", function() ls.jump(-1) end, {silent = true})
+vim.keymap.set({ "i", "s" }, "<M-Tab>", function()
+    ls.jump(1)
+end, { silent = true })
+vim.keymap.set({ "i", "s" }, "<M-S-Tab>", function()
+    ls.jump(-1)
+end, { silent = true })
 
 --- zk ---
 -- This overrides the global `<leader>zn` mapping to create the note in the same directory as the current buffer.
@@ -238,7 +253,9 @@ vim.keymap.set(
 
 vim.keymap.set("n", "<leader>zz", "<Cmd>ZkNotes<CR>", { desc = "ZK Find Notes" })
 vim.keymap.set("n", "<leader>zt", "<Cmd>ZkTags<CR>", { desc = "ZK Browse Tags" })
-vim.keymap.set("n", "<leader>zg", function() Picker.grep({ dirs = { vim.fn.expand("%:p:h") } }) end, { desc = "ZK Grep Notes" })
+vim.keymap.set("n", "<leader>zg", function()
+    Picker.grep({ dirs = { vim.fn.expand("%:p:h") } })
+end, { desc = "ZK Grep Notes" })
 
 vim.keymap.set("n", "<leader>zll", "<Cmd>ZkLinks<CR>", { desc = "ZK Links List" })
 vim.keymap.set("n", "<leader>zli", "<Cmd>ZkInsertLink<CR>", { desc = "ZK Link Insert" })
@@ -268,6 +285,9 @@ require("config.markdown_funcs")
 vim.keymap.set("n", "<leader>mp", ":MarkdownPreview<CR>", { desc = "Markdown Preview" })
 -- vim.keymap.set("n", "<leader>P", ":PasteImage<CR>", { desc = "Markdown Paste Image" })
 
+-- TODO rewrite this function. Currently just AI generated and super long and ugly
+vim.keymap.set("n", "<leader>mlh", MdInsertHeadingLink, { desc = "Insert link to heading" })
+
 vim.keymap.set("n", "zj", MdFoldlevel2, { desc = "Markdown Fold Level 2+ Headings" })
 vim.keymap.set("n", "zk", MdFoldlevel3, { desc = "Markdown Fold Level 3+ Headings" })
 vim.keymap.set("n", "zl", MdFoldlevel4, { desc = "Markdown Fold Level 4+ Headings" })
@@ -275,23 +295,6 @@ vim.keymap.set("n", "z;", MdFoldlevel5, { desc = "Markdown Fold Level 5+ Heading
 vim.keymap.set("n", "zo", MarkdownToggleFold, { desc = "Markdown Toggle Fold" })
 vim.keymap.set("n", "zu", MdUnfoldAll, { desc = "Markdown Unfold all headings level 2 or above" })
 vim.keymap.set("n", "zi", MarkdownToggleParentFold, { desc = "Markdown Toggle Parent Fold" })
-
--- Keymap for English TOC
-vim.keymap.set("n", "<leader>mtt", ":Mtoc<CR>", { desc = "Markdown Insert/update Markdown TOC" })
-
-vim.keymap.set("v", "<leader>mb", function()
-    -- Get the selected text range
-    local start_row, start_col = unpack(vim.fn.getpos("'<"), 2, 3)
-    local end_row, end_col = unpack(vim.fn.getpos("'>"), 2, 3)
-    -- Get the selected lines
-    local lines = vim.api.nvim_buf_get_lines(0, start_row - 1, end_row, false)
-    local selected_text = table.concat(lines, "\n"):sub(start_col, #lines == 1 and end_col or -1)
-    if selected_text:match("^%*%*.*%*%*$") then
-        vim.notify("Text already bold", vim.log.levels.INFO)
-    else
-        vim.cmd("normal 2sa*")
-    end
-end, { desc = "Markdown Bold Selection" })
 
 --- MarkdownPlus TODO: make only load in ft=markdown
 -- -- Lists
@@ -369,7 +372,6 @@ local strudel = require("strudel")
 -- vim.keymap.set("n", "<leader>sb", strudel.set_buffer, { desc = "Strudel set current buffer" })
 -- vim.keymap.set("n", "<leader>sx", strudel.execute, { desc = "Strudel set current buffer and update" })
 
-
 --- generic settings that don't need to be remembered ---
 
 -- Center buffer while navigating
@@ -398,7 +400,6 @@ vim.keymap.set("n", "q:", "<nop>")
 
 -- Visual --
 
-
 -- Reselect the last visual selection
 vim.keymap.set("x", "<<", function()
     vim.keymap.set("x", "<leader>p", '"_dP')
@@ -415,6 +416,5 @@ end, { desc = "TODO" })
 --- Disabling overlapping default keymaps ---
 pcall(vim.keymap.del, "n", "<C-W><C-D>")
 pcall(vim.keymap.del, "n", "<C-W>d")
-
 
 return M
