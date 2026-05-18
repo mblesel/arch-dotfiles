@@ -285,9 +285,6 @@ require("config.markdown_funcs")
 vim.keymap.set("n", "<leader>mp", ":MarkdownPreview<CR>", { desc = "Markdown Preview" })
 -- vim.keymap.set("n", "<leader>P", ":PasteImage<CR>", { desc = "Markdown Paste Image" })
 
--- TODO rewrite this function. Currently just AI generated and super long and ugly
-vim.keymap.set("n", "<leader>mlh", MdInsertHeadingLink, { desc = "Insert link to heading" })
-
 vim.keymap.set("n", "zj", MdFoldlevel2, { desc = "Markdown Fold Level 2+ Headings" })
 vim.keymap.set("n", "zk", MdFoldlevel3, { desc = "Markdown Fold Level 3+ Headings" })
 vim.keymap.set("n", "zl", MdFoldlevel4, { desc = "Markdown Fold Level 4+ Headings" })
