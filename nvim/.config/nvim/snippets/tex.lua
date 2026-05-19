@@ -118,7 +118,7 @@ return {
 
     require("luasnip").snippet(
         { -- Table 1: snippet parameters
-            trig = "\tbf",
+            trig = "\\tbf",
             dscr = "A textbf command",
             regTrig = false,
             priority = 1000,

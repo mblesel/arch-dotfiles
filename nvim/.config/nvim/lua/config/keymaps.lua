@@ -135,7 +135,7 @@ vim.keymap.set("n", "<C-/>", Picker.pickers, { desc = "Snacks Picker Pickers" })
 vim.keymap.set("n", "<C-C>", Picker.icons, { desc = "Snacks Picker Icons" })
 vim.keymap.set("n", "<C-N>", Picker.explorer, { desc = "Snacks Picker Explorer" })
 -- yanky plugin is loaded before snacks and will auto register this function
-vim.keymap.set("n", "<M-r>", Picker.yanky, { desc = "Snacks Picker Cliphist" })
+vim.keymap.set({ "n", "i" }, "<M-r>", Picker.yanky, { desc = "Snacks Picker Cliphist" })
 
 -- Mini
 vim.keymap.set("n", "<leader>go", function()
