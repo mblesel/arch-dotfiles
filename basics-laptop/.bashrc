@@ -18,6 +18,9 @@ alias la='ls -la --color=auto'
 
 alias grep='grep --color=auto'
 
+# use kitten ssh
+alias ssh='kitten ssh'
+
 # Shortcuts
 alias open='xdg-open'
 alias g='grep'

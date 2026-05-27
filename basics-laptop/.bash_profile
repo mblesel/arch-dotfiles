@@ -8,7 +8,7 @@ export EDITOR="nvim"
 # export TERMINAL="st"
 export TERMINAL="kitty"
 export BROWSER="firefox"
-export READER="okular"
+export READER="zathura"
 
 [ -f ~/.bashrc ] && source ~/.bashrc
 
