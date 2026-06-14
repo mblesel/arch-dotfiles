@@ -2,7 +2,7 @@
 
 # Set your Project paths here
 # Currently only a depth of 1 is supported
-KS_PATHS=(~/Projects ~/Documents)
+KS_PATHS=(/home/michael/Projects /home/michael/Documents)
 
 # Check if all requirements are installed
 sanity_check() {
@@ -31,10 +31,11 @@ start_session() {
     done)
 
     # Get all subdirectories from the given paths in KS_PATHS
-    DIRS=$(fd . -t d --max-depth=1 "${KS_PATHS[@]}")
+    # DIRS=$(fd . -t d --max-depth=1 "${KS_PATHS[@]}")
+    DIRS=$(find ${KS_PATHS[@]} -maxdepth 1 -type d)
     # Remove all paths that already contain a kitty session file
     if [[ -n "$SESSION_DIRS" ]]; then
-        FILTERED_DIRS=$(echo "$DIRS" | grep -v -F -f <(echo "$SESSION_DIRS"))
+        FILTERED_DIRS=$(echo "$DIRS" | grep -v -x -F -f <(echo "$SESSION_DIRS" | grep -v '^$'))
         # Tell the user about existing sessions by adding the [KITTY] prefix to them
         DISPLAY_SESSIONS=$(echo "$SESSION_DIRS" | while read -r session; do
             echo "[KITTY] $session"
