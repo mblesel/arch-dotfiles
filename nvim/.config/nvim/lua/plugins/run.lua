@@ -19,6 +19,8 @@ return {
             -- Stop and re run the command, if it's still running. Only created for
             -- the output buffer.
             rerun = "<C-r",
+            -- Clear the output of the currently running command.
+            clear_output = "<leader>rc",
             -- Sends all accumulated error output to quickfix. Invalid entries (eg.
             -- when a line does not match any format in errorformat) are removed
             -- right after creating the list.

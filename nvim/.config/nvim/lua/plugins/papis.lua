@@ -7,6 +7,7 @@ return {
     opts = {
         -- You might want to change the filetypes activating papis.nvim
         init_filetypes = { "markdown", "norg", "yaml", "typst", "tex", "alpha" },
+        -- init_filetypes = { "norg", "yaml", "typst", "tex", },
 
         -- Configuration of the search module.
         ["search"] = {
