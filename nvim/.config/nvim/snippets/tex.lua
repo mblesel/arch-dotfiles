@@ -90,6 +90,31 @@ return {
         -- Table 3, the advanced snippet options, is left blank.
     ),
 
+    require("luasnip").snippet(
+        { -- Table 1: snippet parameters
+            trig = "mintedtex",
+            dscr = "A custom latex inputminted environment",
+            regTrig = false,
+            priority = 1000,
+            snippetType = "autosnippet",
+        },
+        fmta(
+            [[
+            \begin{listing}[ht]
+                \inputminted{<>}{<>}
+                \caption{TODO}
+                \label{lst:<>}
+            \end{listing}
+            ]],
+            {
+                i(2),
+                i(1),
+                i(3),
+            }
+        )
+        -- Table 3, the advanced snippet options, is left blank.
+    ),
+
     -- version starting with \
     -- Example snippet for inline todonotes
     require("luasnip").snippet(
@@ -179,4 +204,30 @@ return {
         })
         -- Table 3, the advanced snippet options, is left blank.
     ),
+
+    require("luasnip").snippet(
+        { -- Table 1: snippet parameters
+            trig = "\\mintedtex",
+            dscr = "A custom latex inputminted environment",
+            regTrig = false,
+            priority = 1000,
+            snippetType = "autosnippet",
+        },
+        fmta(
+            [[
+            \begin{listing}[ht]
+                \inputminted{<>}{<>}
+                \caption{TODO}
+                \label{lst:<>}
+            \end{listing}
+            ]],
+            {
+                i(2),
+                i(1),
+                i(3),
+            }
+        )
+        -- Table 3, the advanced snippet options, is left blank.
+    ),
 }
+
