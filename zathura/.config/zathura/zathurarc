@@ -1,2 +1,6 @@
+set window-title-basename "true"
 set selection-clipboard clipboard
 set synctex true
+
+set highlight-fg "rgba(247, 215, 2, 1)"
+set highlight-color "rgba(0, 0, 0, 0.5)"
