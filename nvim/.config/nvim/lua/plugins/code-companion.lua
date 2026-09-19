@@ -47,7 +47,7 @@ return {
                         return require("codecompanion.adapters").extend("xai", {
                             schema = {
                                 model = {
-                                    default = "grok-4.3",
+                                    default = "grok-4.6",
                                 },
                             },
                             opts = {

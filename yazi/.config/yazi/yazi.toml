@@ -1,18 +1,18 @@
 [opener]
 pdff = [
-    { run = 'zathura "$@"', desc = "Zathura", block = true, for = "unix" },
+    { run = 'zathura %s', desc = "Zathura", block = true, for = "unix" },
 ]
 
 play = [
-	{ run = 'mpv "$@"', orphan = true, for = "unix" },
+	{ run = 'mpv %s', orphan = true, for = "unix" },
 ]
 
 edit = [
-	{ run = 'nvim "$@"', block = true, for = "unix" },
+	{ run = 'nvim %s', block = true, for = "unix" },
 ]
 
 display = [
-    { run = 'sxiv "$@"', block = false, for = "unix" },
+    { run = 'sxiv %s', block = false, for = "unix" },
 ]
 
 [open]

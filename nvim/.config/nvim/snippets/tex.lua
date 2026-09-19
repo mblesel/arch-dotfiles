@@ -10,7 +10,7 @@ return {
             priority = 1000,
             snippetType = "autosnippet",
         },
-        fmta("\\todo[inline]{<>}", { i(1) })
+        fmta("\\todo[inline,inlinewidth=\\linewidth-0.5cm]{<>}", { i(1) })
         -- Table 3, the advanced snippet options, is left blank.
     ),
 
@@ -125,7 +125,7 @@ return {
             priority = 1000,
             snippetType = "autosnippet",
         },
-        fmta("\\todo[inline]{<>}", { i(1) })
+        fmta("\\todo[inline,inlinewidth=\\linewidth-0.5cm]{<>}", { i(1) })
         -- Table 3, the advanced snippet options, is left blank.
     ),
 
