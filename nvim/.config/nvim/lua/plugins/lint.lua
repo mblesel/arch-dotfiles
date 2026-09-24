@@ -10,6 +10,7 @@ return {
             -- cpp = { "cpplint" },
             markdown = { "markdownlint" },
             bash = { "shellcheck" },
+            json = { "jq" },
             -- python = { "pylint" },
         }
 

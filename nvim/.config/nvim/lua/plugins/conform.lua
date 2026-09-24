@@ -9,6 +9,7 @@ return {
             lua = { "stylua" },
             python = { "isort", "black" },
             bash = { "shfmt" },
+            json = { "jq" },
         },
         formatters = {
             stylua = {

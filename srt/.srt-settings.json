@@ -1,38 +1,39 @@
 {
-  "network": {
-    "allowedDomains": [
-        "github.com",
-        "*.github.com",
-        "*.githubusercontent.com",
-
-        "api.x.ai",
-        "api.anthropic.com"
-    ],
-    "deniedDomains": [],
-    "allowAllUnixSockets": true,
-    "allowLocalBinding": false
-  },
-  "filesystem": {
-    "denyRead": ["~"],
-    "allowRead": [
-      "~/.config/opencode",
-      "~/.local/share/opencode",
-      "~/.cache/opencode",
-      "~/.local/state/opencode",
-
-      "."
-    ],
-    "allowWrite": [
-      "~/.config/opencode",
-      "~/.local/share/opencode",
-      "~/.cache/opencode",
-      "~/.local/state/opencode",
-
-      "."
-    ],
-    "denyWrite": []
-  },
-  "enableWeakerNestedSandbox": false,
-  "enableWeakerNetworkIsolation": false,
-  "allowAppleEvents": false
+    "network": {
+        "allowedDomains": [
+            "github.com",
+            "*.github.com",
+            "*.githubusercontent.com",
+            "api.x.ai",
+            "api.anthropic.com"
+        ],
+        "deniedDomains": [],
+        "allowAllUnixSockets": true,
+        "allowLocalBinding": false
+    },
+    "filesystem": {
+        "denyRead": [
+            "~"
+        ],
+        "allowRead": [
+            "~/.config/opencode",
+            "~/.local/share/opencode",
+            "~/.cache/opencode",
+            "~/.local/state/opencode",
+            "/tmp",
+            "."
+        ],
+        "allowWrite": [
+            "~/.config/opencode",
+            "~/.local/share/opencode",
+            "~/.cache/opencode",
+            "~/.local/state/opencode",
+            "/tmp",
+            "."
+        ],
+        "denyWrite": []
+    },
+    "enableWeakerNestedSandbox": false,
+    "enableWeakerNetworkIsolation": false,
+    "allowAppleEvents": false
 }

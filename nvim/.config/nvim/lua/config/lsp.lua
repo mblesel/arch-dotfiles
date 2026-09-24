@@ -20,6 +20,7 @@ return {
             "black",
             "shellcheck",
             "shfmt",
+            "jq",
             -- "pylint",
         },
     }),
