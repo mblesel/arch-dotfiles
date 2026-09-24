@@ -4,3 +4,4 @@ fonts/.local/share/fonts/.uuid
 nvim/.config/nvim/lua/plugins/hardtime.lua
 yazi/.config/yazi/keymap.toml-1749062386535010
 *.kitty-session
+opencode/.config/opencode/service.json

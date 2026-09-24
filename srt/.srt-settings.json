@@ -1,6 +1,8 @@
 {
     "network": {
         "allowedDomains": [
+            "opencode.ai",
+            "*.opencode.ai",
             "github.com",
             "*.github.com",
             "*.githubusercontent.com",
