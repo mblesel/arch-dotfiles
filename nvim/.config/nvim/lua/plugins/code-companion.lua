@@ -21,6 +21,13 @@ return {
                         chat_context = "📎️", -- You can also apply an icon to the fold
                     },
                     fold_context = true,
+                    tools = {
+                        ["web_search"] = {
+                            opts = {
+                                adapter = "duckduckgo",
+                            },
+                        },
+                    },
                 },
             },
             adapters = {
@@ -29,7 +36,7 @@ return {
                         return require("codecompanion.adapters").extend("anthropic", {
                             schema = {
                                 model = {
-                                    default = "claude-opus-4-7",
+                                    default = "claude-opus-5-5",
                                 },
                             },
                         })
@@ -47,7 +54,7 @@ return {
                         return require("codecompanion.adapters").extend("xai", {
                             schema = {
                                 model = {
-                                    default = "grok-4.6",
+                                    default = "grok-4.7",
                                 },
                             },
                             opts = {
@@ -103,7 +110,7 @@ return {
                     },
                 },
                 chat = {
-                    show_settings = true,
+                    show_settings = false,
                 },
                 -- diff = {
                 --     provider = "mini_diff", -- default|mini_diff

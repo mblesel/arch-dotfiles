@@ -162,7 +162,7 @@ vim.keymap.set("n", "<leader>ll", function()
 end)
 
 -- vim-fugitive
-vim.keymap.set("n", "<leader>g", vim.cmd.Git)
+-- vim.keymap.set("n", "<leader>g", vim.cmd.Git)
 
 -- oil.nvim
 vim.keymap.set("n", "<leader>n", "<CMD>Oil<CR>", { desc = "Open parent directory" })
