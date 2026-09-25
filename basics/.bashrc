@@ -107,3 +107,6 @@ webmTOmp4() {
 # (cat ~/.cache/wal/sequences &)
 
 eval "$(starship init bash)"
+
+source '/home/michael/.bash_completions/comfy.sh'
+

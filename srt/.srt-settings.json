@@ -6,12 +6,15 @@
             "github.com",
             "*.github.com",
             "*.githubusercontent.com",
-            "api.x.ai",
-            "api.anthropic.com"
+            "*.x.ai",
+            "*.anthropic.com",
+            "*.openai.com",
+            "127.0.0.1",
+            "localhost"
         ],
         "deniedDomains": [],
         "allowAllUnixSockets": true,
-        "allowLocalBinding": false
+        "allowLocalBinding": true
     },
     "filesystem": {
         "denyRead": [
@@ -19,6 +22,7 @@
         ],
         "allowRead": [
             "~/.config/opencode",
+            "~/Projects/arch-dotfiles/opencode",
             "~/.local/share/opencode",
             "~/.cache/opencode",
             "~/.local/state/opencode",
@@ -27,6 +31,7 @@
         ],
         "allowWrite": [
             "~/.config/opencode",
+            "~/Projects/arch-dotfiles/opencode",
             "~/.local/share/opencode",
             "~/.cache/opencode",
             "~/.local/state/opencode",
