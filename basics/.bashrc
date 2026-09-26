@@ -64,7 +64,7 @@ alias icat='kitty icat'
 bind '"\ef":"tmux-sessionizer\n"'
 
 # OpenCode
-alias opencode='srt opencode'
+# alias opencode='srt opencode'
 
 PS1='[\u@\h \W]\$ '
 
