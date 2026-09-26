@@ -1,0 +1,64 @@
+#!/usr/bin/env python3
+
+import json
+import subprocess
+import sys
+import time
+from pathlib import Path
+from urllib import error, request
+
+SERVER_PORT = 8188
+SERVER_URL = f"http://127.0.0.1:{SERVER_PORT}"
+COMFY_DIR = Path("/home/michael/Projects/comfy-cli/ComfyUI")
+ACTIVATE = COMFY_DIR.parent / ".venv/bin/activate"
+STOP_TIMEOUT = 30
+
+
+def server_ready():
+    try:
+        with request.urlopen(f"{SERVER_URL}/system_stats", timeout=3) as response:
+            stats = json.load(response)
+    except error.HTTPError as exc:
+        raise RuntimeError(f"Server at {SERVER_URL} returned HTTP {exc.code}") from exc
+    except (error.URLError, TimeoutError):
+        return False
+
+    if not isinstance(stats, dict) or "system" not in stats:
+        raise RuntimeError(f"Server at {SERVER_URL} did not return ComfyUI system stats")
+    return True
+
+
+def main():
+    if not server_ready():
+        print(f"ComfyUI is not running at {SERVER_URL}")
+        return
+
+    print("Stopping ComfyUI...", flush=True)
+    result = subprocess.run(
+        [
+            "bash", "-c",
+            'source "$1" && comfy --workspace="$2" stop --port "$3"',
+            "bash", str(ACTIVATE), str(COMFY_DIR), str(SERVER_PORT),
+        ],
+        cwd=COMFY_DIR,
+        capture_output=True,
+        text=True,
+    )
+    if result.returncode != 0:
+        raise RuntimeError(result.stderr.strip() or result.stdout.strip() or "comfy stop failed")
+
+    deadline = time.monotonic() + STOP_TIMEOUT
+    while time.monotonic() < deadline:
+        if not server_ready():
+            print("ComfyUI has stopped")
+            return
+        time.sleep(1)
+    raise TimeoutError(f"ComfyUI did not stop within {STOP_TIMEOUT} seconds")
+
+
+if __name__ == "__main__":
+    try:
+        main()
+    except (OSError, RuntimeError) as exc:
+        print(f"Could not stop ComfyUI: {exc}", file=sys.stderr)
+        sys.exit(1)

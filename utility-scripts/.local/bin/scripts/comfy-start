@@ -1,0 +1,60 @@
+#!/usr/bin/env python3
+
+import json
+import subprocess
+import sys
+import time
+from pathlib import Path
+from urllib import error, request
+
+SERVER_URL = "http://127.0.0.1:8188"
+COMFY_DIR = Path("/home/michael/Projects/comfy-cli/ComfyUI")
+ACTIVATE = COMFY_DIR.parent / ".venv/bin/activate"
+START_TIMEOUT = 120
+
+
+def server_ready():
+    try:
+        with request.urlopen(f"{SERVER_URL}/system_stats", timeout=3) as response:
+            stats = json.load(response)
+    except error.HTTPError as exc:
+        raise RuntimeError(f"Server at {SERVER_URL} returned HTTP {exc.code}") from exc
+    except (error.URLError, TimeoutError):
+        return False
+
+    if not isinstance(stats, dict) or "system" not in stats:
+        raise RuntimeError(f"Server at {SERVER_URL} did not return ComfyUI system stats")
+    return True
+
+
+def main():
+    if server_ready():
+        print(f"ComfyUI is already running at {SERVER_URL}")
+        return
+
+    print("Starting ComfyUI...", flush=True)
+    subprocess.run(
+        [
+            "bash", "-c",
+            'source "$1" && comfy --workspace="$2" launch --background -- --disable-pinned-memory',
+            "bash", str(ACTIVATE), str(COMFY_DIR),
+        ],
+        cwd=COMFY_DIR,
+        check=True,
+    )
+
+    deadline = time.monotonic() + START_TIMEOUT
+    while time.monotonic() < deadline:
+        if server_ready():
+            print(f"ComfyUI is ready at {SERVER_URL}")
+            return
+        time.sleep(2)
+    raise TimeoutError(f"ComfyUI did not become ready within {START_TIMEOUT} seconds")
+
+
+if __name__ == "__main__":
+    try:
+        main()
+    except (OSError, RuntimeError, subprocess.CalledProcessError) as exc:
+        print(f"Could not start ComfyUI: {exc}", file=sys.stderr)
+        sys.exit(1)
