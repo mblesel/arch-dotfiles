@@ -1,0 +1,18 @@
+# Krea 2 Turbo: practical usage notes
+
+Supplement to `krea2.md` for the local **text-to-image** `comfy-generate` workflow. Use `krea2.md` for prompt expansion; these notes add model-specific tactics and distinguish Krea's hosted features from what the local command can do.
+
+## Prompting and iteration
+
+* Krea recommends natural-language descriptions. A short concept can already produce good images; a longer, coherent description usually gives more precise results. Avoid disconnected tag soup. Describe the subject and action, their spatial relationships, the setting, then the desired medium, composition, lighting, palette and texture *when relevant*. Preserve the user's requested medium and details; don't pad with invented props or competing styles.
+* For an open-ended request, try a simple subject first and generate a few times to explore different interpretations. Add a small style cue (e.g. “retro cartoon illustration” or “grainy lo-fi VHS still”) to narrow the range, then add concrete details only when needed. If the user already provided a detailed brief, follow it rather than exploring a different aesthetic.
+* Krea 2 can render intentionally rough, grainy, low-resolution or experimental looks; don't automatically polish such requests into glossy photography. Specify the texture and medium you want.
+* Put **exact visible words in double quotes**: `a sign reading "OPEN LATE"`. Keep lettering requests short and verify the generated result visually if accuracy matters.
+* When a pose is crucial, describe observable geometry instead of only naming it: which leg supports the weight, arm and hand positions, torso and head direction, gaze, silhouette and motion. Use only details visible in the chosen framing; a close-up cannot reliably show foot placement. For an interaction, name which hand touches or holds which object and where.
+* A style description works best when it is concrete and internally consistent: name the medium, mark-making or surface texture, lighting, color treatment and composition. One well-matched style direction beats several conflicting style paragraphs. Keep the subject/action more prominent than decorative style prose.
+
+## Scope: local ComfyUI versus Krea's image tool
+
+* The official Krea 2 prompting docs say Turbo supports images **up to 2K** and show examples at 2K; this is model capability, **not** a promise about `comfy-generate`'s output size or controls. Use only the aspect ratios exposed by the local skill (`1:1`, `2:3`, `3:2`).
+* Krea's hosted image tool offers **style references** (up to four images, each with its own strength) and **moodboards** (collections analyzed for an overall taste profile, keywords and avoids). In the hosted UI, a low reference strength influences lightly and a high strength may overpower the subject. These are *not* options of the current text-only `comfy-generate` command. If a user asks to match a reference here, describe its relevant visual qualities in words if available; do not claim pixel-accurate style transfer or moodboard support.
+* A community ComfyUI workflow described in the gist uses `Krea2PromptWeight` to interpret `(phrase:1.5)` for emphasis or negative weights for inversion, plus optional pose blocks and a large style library. **This is workflow/node-specific, not official Krea prompt syntax.** Do not put weight markup or negative-weight syntax into `comfy-generate` prompts unless its underlying workflow is verified to include that node; the local skill currently only promises a plain prompt string. Use ordinary positive descriptions of the desired framing and appearance instead. Likewise, the gist's sampler, VAE, CFG and enhancer settings describe *that saved graph*, not settings to change through this skill.

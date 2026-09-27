@@ -66,6 +66,9 @@ bind '"\ef":"tmux-sessionizer\n"'
 # OpenCode
 # alias opencode='srt opencode'
 
+# Ollama
+export OLLAMA_MODELS="/home/michael/Projects/ollama"
+
 PS1='[\u@\h \W]\$ '
 
 # source /usr/share/doc/pkgfile/command-not-found.bash

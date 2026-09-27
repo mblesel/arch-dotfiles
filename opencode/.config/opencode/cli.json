@@ -32,7 +32,9 @@
         "help.show": false,
         "input.newline": "shift+return,ctrl+return",
         "dialog.select.prev": "up,ctrl+k",
-        "dialog.select.next": "down,ctrl+j"
+        "dialog.select.next": "down,ctrl+j",
+        "session.half.page.up": "ctrl+alt+u",
+        "session.half.page.down": "ctrl+alt+d"
     },
     "leader": {
         "timeout": 2000

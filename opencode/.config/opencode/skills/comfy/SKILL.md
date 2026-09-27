@@ -10,8 +10,8 @@ The commands `comfy-start`, `comfy-generate`, and `comfy-stop` are available on 
 
 ### Generate an image
 
-1. Obtain the user's image prompt; ask for one if none was supplied. Read `krea2.md` in this skill directory before preparing the generation prompt.
-2. Improve the user's prompt according to `krea2.md`: preserve the requested subject, actions, relationships, medium, and other explicit details. Compose a single cohesive prompt paragraph; keep the planning internal. If the original prompt is already detailed, make only light improvements.
+1. Obtain the user's image prompt; ask for one if none was supplied. Read `krea2.md` and `krea2-usage.md` in this skill directory before preparing the generation prompt. The latter adds Krea 2 prompting and iteration guidance and distinguishes hosted features and community workflow-specific syntax from the local command's capabilities.
+2. Improve the user's prompt according to both resources: preserve the requested subject, actions, relationships, medium, and other explicit details. Compose a single cohesive prompt paragraph; keep the planning internal. If the original prompt is already detailed, make only light improvements. Use only the plain-text prompting techniques applicable to this workflow.
 3. Run `comfy-start` first. It reports whether the local server is already running or starts it and waits until it is ready. If it fails, report the error rather than attempting generation.
 4. Pass the **improved prompt**, safely quoted as one shell argument, to `comfy-generate`. Wait for the command to finish. Its stdout contains the saved image path(s); progress messages go to stderr. Report the actual returned path(s) to the user.
 
