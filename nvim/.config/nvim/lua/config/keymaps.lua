@@ -289,7 +289,7 @@ vim.keymap.set("n", "zj", MdFoldlevel2, { desc = "Markdown Fold Level 2+ Heading
 vim.keymap.set("n", "zk", MdFoldlevel3, { desc = "Markdown Fold Level 3+ Headings" })
 vim.keymap.set("n", "zl", MdFoldlevel4, { desc = "Markdown Fold Level 4+ Headings" })
 vim.keymap.set("n", "z;", MdFoldlevel5, { desc = "Markdown Fold Level 5+ Headings" })
-vim.keymap.set("n", "zo", MarkdownToggleFold, { desc = "Markdown Toggle Fold" })
+vim.keymap.set("n", "zzz", MarkdownToggleFold, { desc = "Markdown Toggle Fold" })
 vim.keymap.set("n", "zu", MdUnfoldAll, { desc = "Markdown Unfold all headings level 2 or above" })
 vim.keymap.set("n", "zi", MarkdownToggleParentFold, { desc = "Markdown Toggle Parent Fold" })
 
