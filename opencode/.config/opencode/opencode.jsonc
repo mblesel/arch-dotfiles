@@ -31,4 +31,12 @@
             { "action": "permission", "resource": "read:*/.secrets", "effect": "deny" },
         ],
     },
+    "provider": {
+        "ollama": {
+            "settings": {
+                "baseURL": "http://localhost:11434/v1",
+                "apiKey": "NONE",
+            },
+        }
+    },
 }

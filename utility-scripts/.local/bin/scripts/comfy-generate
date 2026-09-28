@@ -29,11 +29,22 @@ prompt_text = """
       "title": "Resolution Selector"
     }
   },
+  "51": {
+    "inputs": {
+      "lora_name": "krea2_darkbrush.safetensors",
+      "strength_model": 1,
+      "strength_clip": 1
+    },
+    "class_type": "LoraLoader",
+    "_meta": {
+      "title": "Load LoRA (Model and CLIP)"
+    }
+  },
   "52": {
     "inputs": {
       "output_path": "/tmp/",
-      "filename_prefix": "comfy",
-      "filename_delimiter": "-",
+      "filename_prefix": "ComfyUI",
+      "filename_delimiter": "_",
       "filename_number_padding": 4,
       "filename_number_start": "false",
       "extension": "png",
@@ -54,6 +65,18 @@ prompt_text = """
     "class_type": "Image Save",
     "_meta": {
       "title": "Image Save"
+    }
+  },
+  "53": {
+    "inputs": {
+      "anything": [
+        "52",
+        0
+      ]
+    },
+    "class_type": "easy cleanGpuUsed",
+    "_meta": {
+      "title": "Clean VRAM Used"
     }
   },
   "30:6": {
@@ -91,7 +114,7 @@ prompt_text = """
   },
   "30:3": {
     "inputs": {
-      "seed": 0,
+      "seed": 924027891962685,
       "steps": 8,
       "cfg": 1,
       "sampler_name": "euler",
