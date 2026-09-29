@@ -38,6 +38,8 @@ return {
                 ".cargo",
                 ".zoom",
                 ".mozilla",
+                ".vim/undodir",
+                "comfy-cli",
                 "%.git",
                 "%.sl",
             },

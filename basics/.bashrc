@@ -65,6 +65,7 @@ bind '"\ef":"tmux-sessionizer\n"'
 
 # OpenCode
 # alias opencode='srt opencode'
+alias oc='opencode'
 
 PS1='[\u@\h \W]\$ '
 
