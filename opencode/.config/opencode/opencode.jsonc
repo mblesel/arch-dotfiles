@@ -2,9 +2,8 @@
     "$schema": "https://opencode.ai/config.json",
     "shell": "/bin/bash",
     // default model
-    "model": "openai/gpt-6-sol#medium", 
-    // "default_agent": "TODO",
-    // "formatter": true, TODO check if I want this
+    "model": "openai/gpt-6.1-sol#high", 
+    "default_agent": "Huginn",
     "media": {
         "image": {
             "auto_resize": true,
@@ -12,6 +11,15 @@
             "max_height": 2000,
             "max_base64_bytes": 5242880,
         },
+    },
+    "attention": {
+        "notifications": true,
+        "sound": true,
+        "volume": 0.4,
+        "sound_pack": "opencode.default",
+        // "sounds": {
+            // "permission": "/home/me/sounds/permission.wav"
+        // }
     },
     // "skills": ["./team-skills", "https://example.com/.well-known/skills/"], TODO
     "websearch": {
