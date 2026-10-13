@@ -35,6 +35,16 @@ hl.monitor({
 --     scale = 1,
 -- })
 
+hl.bind("switch:on:Lid Switch", function()
+    if #hl.get_monitors() > 1 then
+        hl.monitor({ output = "eDP-1", disabled = true })
+    end
+end, { locked = true })
+
+hl.bind("switch:off:Lid Switch", function()
+    hl.monitor({ output = "eDP-1", disabled = false })
+end, { locked = true })
+
 ---------------------
 ---- MY PROGRAMS ----
 ---------------------
@@ -172,6 +182,9 @@ hl.config({
 
         sensitivity = 0, -- -1.0 - 1.0, 0 means no modification.
         accel_profile = "flat",
+
+        repeat_rate = 50,
+        repeat_delay = 600,
 
         touchpad = {
             natural_scroll = false,
