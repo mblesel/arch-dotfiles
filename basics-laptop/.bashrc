@@ -61,7 +61,11 @@ alias samedir='st -d "$(pwd)" &> /dev/null & disown'
 alias icat='kitty icat'
 
 # tmux-sessionizer
-bind '"\ef":"tmux-sessionizer\n"'
+# bind '"\ef":"tmux-sessionizer\n"'
+
+# OpenCode
+# alias opencode='srt opencode'
+alias oc='opencode'
 
 PS1='[\u@\h \W]\$ '
 
