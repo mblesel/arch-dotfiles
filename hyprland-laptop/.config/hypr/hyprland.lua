@@ -276,22 +276,9 @@ hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("pypr layout center toggle"))
 hl.bind(mainMod .. " + W", hl.dsp.workspace.toggle_special("stash"))
 hl.bind(mainMod .. " + Q", hl.dsp.window.move({ workspace = "special:stash" }))
 
-hl.bind(mainMod .. " + ", hl.dsp.exec_cmd("pypr wall next"))
-hl.bind(mainMod .. " + ", hl.dsp.exec_cmd("pypr wall clear"))
+hl.bind(mainMod .. " + B", hl.dsp.exec_cmd("pypr wall next"))
+hl.bind(mainMod .. " + SHIFT + B", hl.dsp.exec_cmd("pypr wall clear"))
 
--- Move focus with mainMod + arrow keys
-hl.bind(mainMod .. " + left", hl.dsp.focus({ direction = "left" }))
-hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
-hl.bind(mainMod .. " + up", hl.dsp.focus({ direction = "up" }))
-hl.bind(mainMod .. " + down", hl.dsp.focus({ direction = "down" }))
-
--- Switch workspaces with mainMod + [0-9]
--- Move active window to a workspace with mainMod + SHIFT + [0-9]
-for i = 1, 10 do
-    local key = i % 10 -- 10 maps to key 0
-    hl.bind(mainMod .. " + " .. key, hl.dsp.focus({ workspace = i }))
-    hl.bind(mainMod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
-end
 
 -- Laptop multimedia keys for volume and LCD brightness
 hl.bind(
