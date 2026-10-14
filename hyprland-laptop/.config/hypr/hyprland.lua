@@ -65,9 +65,9 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("dunst")
     hl.exec_cmd("nm-applet")
     hl.exec_cmd("nextcloud --background") -- TODO: check if this works without the hack from old config
+    hl.exec_cmd("wayscriber --daemon --no-tray")
     -- hl.exec_cmd("thunderbird")
     -- hl.exec_cmd("firefox")
-    hl.exec_cmd("wayscriber --daemon --no-tray")
 end)
 
 -------------------------------
@@ -240,7 +240,7 @@ hl.bind(mainMod .. " + C", hl.dsp.exec_cmd("pypr toggle dropdown_calc"))
 hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("pypr toggle dropdown_notes"))
 
 hl.bind(mainMod .. " + I", hl.dsp.exec_cmd("$HOME/Projects/hyprflow/hyprflow"))
-hl.bind(mainMod .. " + A", hl.dsp.exec_cmd("pkill -SIGUSR1 wayscriber"))
+hl.bind(mainMod .. " + A", hl.dsp.exec_cmd("wayscriber --daemon-toggle"))
 
 hl.bind(mainMod .. " + SHIFT + LEFT", hl.dsp.exec_cmd("mpc prev"))
 hl.bind(mainMod .. " + SHIFT + DOWN", hl.dsp.exec_cmd("mpc stop"))
