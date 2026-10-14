@@ -230,7 +230,7 @@ hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("pypr toggle dropdown_notes"))
 
 -- hl.bind(mainMod .. " + I", hl.dsp.exec_cmd("$HOME/Projects/hyprflow/hyprflow"))
 hl.bind(mainMod .. " + I", hl.dsp.exec_cmd("/usr/lib/hyprwhspr/config/hyprland/hyprwhspr-tray.sh record"))
-hl.bind(mainMod .. " + A", hl.dsp.exec_cmd("pkill -SIGUSR1 wayscriber"))
+hl.bind(mainMod .. " + A", hl.dsp.exec_cmd("wayscriber --daemon-toggle"))
 
 hl.bind(mainMod .. " + SHIFT + LEFT", hl.dsp.exec_cmd("mpc prev"))
 hl.bind(mainMod .. " + SHIFT + DOWN", hl.dsp.exec_cmd("mpc stop"))
