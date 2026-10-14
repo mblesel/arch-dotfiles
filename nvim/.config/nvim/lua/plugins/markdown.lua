@@ -1,5 +1,5 @@
 return {
-    "MeanderingProgrammer/markdown.nvim",
+    "MeanderingProgrammer/render-markdown.nvim",
     name = "render-markdown",
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     config = function()
@@ -12,7 +12,7 @@ return {
 
         require("render-markdown").setup({
 
-            file_types = { "markdown", "codecompanion" },
+            file_types = { "markdown", "codecompanion", "opencode_output" },
             render_modes = true,
             completions = { lsp = { enabled = true } },
             anti_conceal = {

@@ -228,7 +228,8 @@ hl.bind(mainMod .. " + SHIFT + M", hl.dsp.exec_cmd("pypr toggle dropdown_music")
 hl.bind(mainMod .. " + C", hl.dsp.exec_cmd("pypr toggle dropdown_calc"))
 hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("pypr toggle dropdown_notes"))
 
-hl.bind(mainMod .. " + I", hl.dsp.exec_cmd("$HOME/Projects/hyprflow/hyprflow"))
+-- hl.bind(mainMod .. " + I", hl.dsp.exec_cmd("$HOME/Projects/hyprflow/hyprflow"))
+hl.bind(mainMod .. " + I", hl.dsp.exec_cmd("/usr/lib/hyprwhspr/config/hyprland/hyprwhspr-tray.sh record"))
 hl.bind(mainMod .. " + A", hl.dsp.exec_cmd("pkill -SIGUSR1 wayscriber"))
 
 hl.bind(mainMod .. " + SHIFT + LEFT", hl.dsp.exec_cmd("mpc prev"))

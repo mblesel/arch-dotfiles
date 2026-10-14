@@ -34,7 +34,8 @@ return {
         vim.keymap.set({ "x", "o" }, "l=", function() select.select_textobject("@assignment.lhs",   "textobjects") end)
         vim.keymap.set({ "x", "o" }, "r=", function() select.select_textobject("@assignment.rhs",   "textobjects") end)
 
-        -- vim.keymap.set({ "x", "o" }, "as", function() select.select_textobject("@block.outer",   "textobjects") end)
+        vim.keymap.set({ "x", "o" }, "is", function() select.select_textobject("@block.inner",   "textobjects") end)
+        vim.keymap.set({ "x", "o" }, "as", function() select.select_textobject("@block.outer",   "textobjects") end)
 
         vim.keymap.set({ "x", "o" }, "ic", function() select.select_textobject("@call.inner",   "textobjects") end)
         vim.keymap.set({ "x", "o" }, "ac", function() select.select_textobject("@call.outer",   "textobjects") end)
@@ -71,7 +72,7 @@ return {
         vim.keymap.set({ "n", "x", "o" }, "]f", function() move.goto_next_start("@function.outer", "textobjects") end)
         vim.keymap.set({ "n", "x", "o" }, "]o", function() move.goto_next_start("@class.outer", "textobjects") end)
         vim.keymap.set({ "n", "x", "o" }, "]/", function() move.goto_next_start("@comment.outer", "textobjects") end)
-        -- vim.keymap.set({ "n", "x", "o" }, "]s", function() move.goto_next_start("@block.outer", "textobjects") end)
+        vim.keymap.set({ "n", "x", "o" }, "]s", function() move.goto_next_start("@block.outer", "textobjects") end)
 
         vim.keymap.set({ "n", "x", "o" }, "]A", function() move.goto_next_end("@parameter.inner", "textobjects") end)
         vim.keymap.set({ "n", "x", "o" }, "]I", function() move.goto_next_end("@conditional.outer","textobjects") end)
@@ -79,7 +80,7 @@ return {
         vim.keymap.set({ "n", "x", "o" }, "]C", function() move.goto_next_end("@call.outer", "textobjects") end)
         vim.keymap.set({ "n", "x", "o" }, "]F", function() move.goto_next_end("@function.outer", "textobjects") end)
         vim.keymap.set({ "n", "x", "o" }, "]O", function() move.goto_next_end("@class.outer", "textobjects") end)
-        -- vim.keymap.set({ "n", "x", "o" }, "]S", function() move.goto_next_end("@block.outer", "textobjects") end)
+        vim.keymap.set({ "n", "x", "o" }, "]S", function() move.goto_next_end("@block.outer", "textobjects") end)
 
         vim.keymap.set({ "n", "x", "o" }, "[=", function() move.goto_previous_start("@assignment.inner", "textobjects") end)
         vim.keymap.set({ "n", "x", "o" }, "[a", function() move.goto_previous_start("@parameter.inner", "textobjects") end)
@@ -89,7 +90,7 @@ return {
         vim.keymap.set({ "n", "x", "o" }, "[f", function() move.goto_previous_start("@function.outer", "textobjects") end)
         vim.keymap.set({ "n", "x", "o" }, "[o", function() move.goto_previous_start("@class.outer", "textobjects") end)
         vim.keymap.set({ "n", "x", "o" }, "[/", function() move.goto_previous_start("@comment.outer", "textobjects") end)
-        -- vim.keymap.set({ "n", "x", "o" }, "[s", function() move.goto_previous_start("@block.outer", "textobjects") end)
+        vim.keymap.set({ "n", "x", "o" }, "[s", function() move.goto_previous_start("@block.outer", "textobjects") end)
 
         vim.keymap.set({ "n", "x", "o" }, "[A", function() move.goto_previous_end("@parameter.inner", "textobjects") end)
         vim.keymap.set({ "n", "x", "o" }, "[I", function() move.goto_previous_end("@conditional.outer","textobjects") end)
@@ -97,7 +98,7 @@ return {
         vim.keymap.set({ "n", "x", "o" }, "[C", function() move.goto_previous_end("@call.outer", "textobjects") end)
         vim.keymap.set({ "n", "x", "o" }, "[F", function() move.goto_previous_end("@function.outer", "textobjects") end)
         vim.keymap.set({ "n", "x", "o" }, "[O", function() move.goto_previous_end("@class.outer", "textobjects") end)
-        -- vim.keymap.set({ "n", "x", "o" }, "[S", function() move.goto_previous_end("@block.outer", "textobjects") end)
+        vim.keymap.set({ "n", "x", "o" }, "[S", function() move.goto_previous_end("@block.outer", "textobjects") end)
 
         -- Swaps
         -- TODO activate this?

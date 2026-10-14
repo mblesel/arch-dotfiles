@@ -48,6 +48,8 @@ vim.keymap.set("v", "<leader>ag", "<cmd>CodeCompanionChat Add<cr>", { noremap = 
 vim.cmd([[cab cc CodeCompanion]])
 vim.cmd([[cab ccc CodeCompanionChat adapter=]])
 
+vim.keymap.set({ "n", "v" }, "<leader>oo", "<cmd>Opencode toggle<cr>", { noremap = true, silent = true })
+
 vim.keymap.set("n", "<leader>at", ":SupermavenToggle<CR>", { desc = "SuperMaven Toggle" })
 
 -- quickfix

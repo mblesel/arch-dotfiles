@@ -17,6 +17,7 @@
     "modules-right": [
         "custom/separator",
         "custom/hyprflow-indicator",
+        "custom/hyprwhspr",
         "custom/separator",
         "mpd",
         "custom/separator",
@@ -287,6 +288,15 @@
         "on-click": "hyprflow",
         "signal": 9,
         "return-type": "json"
-        }
-    }
+    },
+    "custom/hyprwhspr": {
+      "format": "{}",
+      "exec": "/usr/lib/hyprwhspr/config/hyprland/hyprwhspr-tray.sh status",
+      "interval": 1,
+      "return-type": "json",
+      "exec-on-event": true,
+      "on-click": "/usr/lib/hyprwhspr/config/hyprland/hyprwhspr-tray.sh record",
+      "on-click-right": "/usr/lib/hyprwhspr/config/hyprland/hyprwhspr-tray.sh restart",
+      "tooltip": true
+    },
 }

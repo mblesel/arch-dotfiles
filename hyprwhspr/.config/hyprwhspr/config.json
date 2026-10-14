@@ -1,0 +1,14 @@
+{
+    "$schema": "https://raw.githubusercontent.com/goodroot/hyprwhspr/main/share/config.schema.json",
+    "use_hypr_bindings": true,
+    "keyboard_device_names": [
+        "  Bridge75",
+        "  Bridge75 Keyboard",
+        "Razer Razer DeathAdder V3",
+        "Razer Razer DeathAdder V3 Keyboard"
+    ],
+    "transcription_backend": "onnx-asr",
+    "applications": {
+        "kitty": { "auto_paste": "alt+v" }
+    }
+}

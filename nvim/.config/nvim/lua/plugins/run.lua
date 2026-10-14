@@ -41,6 +41,6 @@ return {
         -- with require("run").send_to_quickfix(), or with the keymap 'config.keymaps.send_to_quickfix'
         error_wait_ms = 250,
         -- If true send captured errors, if any, to quickfix when the process finishes.
-        send_to_quickfix_on_exit = true,
+        send_to_quickfix_on_exit = false,
     },
 }
