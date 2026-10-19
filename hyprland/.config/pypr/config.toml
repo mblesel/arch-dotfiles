@@ -67,7 +67,7 @@ margin = 50
 match_by = "class"
 animation = "fromTop"
 # command = "st -c dropdown.music -e ncmpcpp"
-command = "kitty --app-id=dropdown.music -e ncmpcpp"
+command = "kitty --app-id=dropdown.music -e rmpc"
 class = "dropdown.music"
 size = "75% 60%"
 max_size = "1920px 100%"
