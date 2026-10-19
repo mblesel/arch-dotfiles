@@ -5,3 +5,7 @@ nvim/.config/nvim/lua/plugins/hardtime.lua
 yazi/.config/yazi/keymap.toml-1749062386535010
 *.kitty-session
 opencode/.config/opencode/service.json
+music/.config/mpd/database
+music/.config/mpd/log
+music/.config/mpd/state
+music/.config/mpd/sticker.sql
