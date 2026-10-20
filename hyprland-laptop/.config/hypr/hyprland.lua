@@ -235,20 +235,20 @@ end
 
 hl.bind(mainMod .. " + P", hl.dsp.exec_cmd("$HOME/.local/bin/hyprland/passmenu"))
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(terminal .. " -e yazi"))
-hl.bind(mainMod .. " + SHIFT + M", hl.dsp.exec_cmd("pypr toggle dropdown_music"))
+hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("pypr toggle dropdown_music"))
 hl.bind(mainMod .. " + C", hl.dsp.exec_cmd("pypr toggle dropdown_calc"))
 hl.bind(mainMod .. " + N", hl.dsp.exec_cmd("pypr toggle dropdown_notes"))
 
 hl.bind(mainMod .. " + I", hl.dsp.exec_cmd("$HOME/Projects/hyprflow/hyprflow"))
 hl.bind(mainMod .. " + A", hl.dsp.exec_cmd("wayscriber --daemon-toggle"))
 
-hl.bind(mainMod .. " + SHIFT + LEFT", hl.dsp.exec_cmd("mpc prev"))
-hl.bind(mainMod .. " + SHIFT + DOWN", hl.dsp.exec_cmd("mpc stop"))
-hl.bind(mainMod .. " + SHIFT + UP", hl.dsp.exec_cmd("mpc toggle"))
-hl.bind(mainMod .. " + SHIFT + RIGHT", hl.dsp.exec_cmd("mpc next"))
+hl.bind(mainMod .. " + LEFT", hl.dsp.exec_cmd("mpc prev"))
+hl.bind(mainMod .. " + DOWN", hl.dsp.exec_cmd("mpc stop"))
+hl.bind(mainMod .. " + UP", hl.dsp.exec_cmd("mpc toggle"))
+hl.bind(mainMod .. " + RIGHT", hl.dsp.exec_cmd("mpc next"))
 
 hl.bind(mainMod .. " + S", hl.dsp.exec_cmd("hyprshot -m region -o ~/Images/screenshots"))
-hl.bind(mainMod .. " + X", hl.dsp.exec_cmd("killall -SIGUSR1 gpu-screen-recorder"))
+-- hl.bind(mainMod .. " + X", hl.dsp.exec_cmd("killall -SIGUSR1 gpu-screen-recorder"))
 hl.bind("ALT + SPACE", hl.dsp.exec_cmd("dunstctl close"))
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ action = "toggle" }))
 
@@ -269,7 +269,7 @@ hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
 hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
 -- Pyrpland --
-hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("pypr layout center toggle"))
+-- hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("pypr layout center toggle"))
 
 -- hl.bind(mainMod .. " + W", hl.dsp.workspace.toggle_special("stash"))
 -- hl.bind(mainMod .. " + Q", hl.dsp.exec_cmd("pypr toggle_special stash"))
