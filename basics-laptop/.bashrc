@@ -89,4 +89,10 @@ webmTOmp4() {
     ffmpeg -i "$1".webm -qscale 0 "$1".mp4
 }
 
+
+# fzf completions
+source '/usr/share/fzf/completion.bash'
+source '/usr/share/fzf/key-bindings.bash'
+bind -m emacs-standard '"\C-f": " \C-b\C-k \C-u`__fzf_cd__`\e\C-e\C-\e(\C-m\C-y\C-h\e \C-y\ey\C-x\C-x\C-d\C-y\ey\C-_"'
+
 eval "$(starship init bash)"
