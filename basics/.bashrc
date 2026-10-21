@@ -107,7 +107,11 @@ webmTOmp4() {
 # wal --theme kanagawa-dragon -q
 # (cat ~/.cache/wal/sequences &)
 
-eval "$(starship init bash)"
-
 source '/home/michael/.bash_completions/comfy.sh'
 
+# fzf completions
+source '/usr/share/fzf/completion.bash'
+source '/usr/share/fzf/key-bindings.bash'
+bind -m emacs-standard '"\C-f": " \C-b\C-k \C-u`__fzf_cd__`\e\C-e\C-\e(\C-m\C-y\C-h\e \C-y\ey\C-x\C-x\C-d\C-y\ey\C-_"'
+
+eval "$(starship init bash)"
